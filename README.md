@@ -25,8 +25,8 @@ This project came up as a result of my desire to deepen my knowledge of SAP ABAP
     - SQL Query Optimization/Performance Considerations
 - [Commands For Data Handling Processes](Data_Handling_Process.md):
     - Data Querying and Retrieval ( select , read )
-    - Data Manipulation ( Insert, delete , update, modify )
-    - Handling Internal Tables ( append , insert, delete , update, sort, loop )
+    - Data Manipulation ( Insert, delete , update, modify , (read) )
+    - Handling Internal Tables ( append , insert, delete , update, sort, loop, (read) )
     - Transaction Handling ( commit , rollback )
     - Data Transfer ( CALL FUNCTION, submit )
 
