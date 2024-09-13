@@ -24,9 +24,10 @@ This project came up as a result of my desire to deepen my knowledge of SAP ABAP
     - How To Use a Cursor?
     - SQL Query Optimization/Performance Considerations
 - [Commands For Data Handling Processes](Data_Handling_Process.md):
-    - Data Querying and Retrieval ( select , read )
-    - Data Manipulation ( Insert, delete , update, modify , (read) )
-    - Handling Internal Tables ( append , insert, delete , update, sort, loop, (read) )
+    - Data Manipulation ( Insert, delete , update, modify , (read, select) )
+    - Handling Internal Tables ( append , insert, delete , update, sort, loop, (read, select) )
     - Transaction Handling ( commit , rollback )
     - Data Transfer ( CALL FUNCTION, submit )
+- [Data Management and Structuring in SAP](####)
+    -tabelas , estrutura, dominio....chaves ,transaçoes se11, se16, se16n, se16n, sm30, spool, como criar tabela, transaçao queries en sap, colocacion groups, o que sao e para que servem
 
