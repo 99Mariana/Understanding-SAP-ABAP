@@ -196,6 +196,18 @@ First, it is important to know that the online and batch execution of programs d
 - ```ztta/roll_area```: Determines how much memory is reserved for each user session to store their context data (e.g., data, variables).
 - ```ztta/roll_extension```: Specifies the size of the extended memory, which is a shared memory area used by all processes to store user data.
 
+These parameters dictate how much memory can be used in different execution modes (online and batch) and impose limitations on memory usage. On the other hand, execution time is also a limitation to consider in online mode.
+
+The main reason for exceeding these limits is the handling of large amounts of data, which can lead to memory errors and very long response times. To address this, several practices can be implemented:
+
+- **Use Cursors**: Process data in batches to avoid overloading memory in a single operation.
+- **COMMIT WORK Commands**: In some cases, these commands can help free up memory.
+- **Optimize SQL Queries**: Reduce the amount of data selected by handling only the necessary data.
+- **Create Decentralized/Parallel Processing**: Divide data processing into batches and execute them in parallel jobs.
+  
+In the following sections, we will delve deeper into one of these proposed practices to better understand how they work and how to use them effectively.
+
+
 
 
 
