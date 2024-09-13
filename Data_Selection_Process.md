@@ -207,6 +207,12 @@ The main reason for exceeding these limits is the handling of large amounts of d
   
 In the following sections, we will delve deeper into one of these proposed practices to better understand how they work and how to use them effectively.
 
+### How To Use a Cursor?
+
+> [Data Selection Process](#Data_Selection_Process) > [Content](#content) > [This section](#cursor)
+
+
+
 
 
 
