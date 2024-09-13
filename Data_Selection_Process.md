@@ -184,7 +184,7 @@ Main possible reasons to create a dynamic `SELECT`:
 - **Optimizing Performance for Specific Scenarios:** By using dynamic SQL, you can tailor your queries to fetch only the necessary fields based on specific conditions. This optimization reduces the amount of data transferred and processed, leading to better performance.
 
 
-###Online vs. batch execution modes: How to handle large data sets in SAP ABAP?
+### Online vs. batch execution modes: How to handle large data sets in SAP ABAP?
 
 > [Data Selection Process](#Data_Selection_Process) > [Content](#content) > [This section](#large_datasets)
 
