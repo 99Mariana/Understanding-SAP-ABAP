@@ -4,7 +4,7 @@ After 2 years of experience working as a SAP ABAP technical consultant, I wanted
 
 
 Quoting one of the phrases that most impacted me during my academic path:
-> **"You can only say that you really know something when you are able to explain it."**
+> **"You can only say that you really know something when you are able to explain it!"**
 > 
 And why not challenge me to explain it to myself?
 
