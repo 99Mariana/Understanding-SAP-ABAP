@@ -51,7 +51,7 @@ When using the `SELECT` statement is possible to adapt it by incorporating aggre
 
 | Functionality | Example  | Description    |
 | :----------- | :--------------: | -------------------------: |
-| COUNT | ```SELECT COUNT(*) FROM table INTO @data(lv_count)```  | Counts the number of records that match the condition |                   | SUM   | ```SELECT SUM(field) FROM table INTO @data(lv_sum)```  | Calculates the sum of the values of a numeric field   |
+| COUNT | ```SELECT COUNT(*) FROM table INTO @data(lv_count)```  | Counts the number of records that match the condition |                  | SUM   | ```SELECT SUM(field) FROM table INTO @data(lv_sum)```  | Calculates the sum of the values of a numeric field   |
 | AVG   | ```SELECT AVG(field) FROM table INTO @data(lv_avg)```  | Calculates the average of the values of a numeric field |
 | MIN   | ```SELECT MIN(field) FROM table INTO @data(lv_min)```  | Finds the smallest value of a numeric field |
 | MAX   | ```SELECT MAX(field) FROM table INTO @data(lv_max)```  | Finds the largest value of a numeric field |
@@ -120,6 +120,84 @@ When using the `SELECT` statement is possible to adapt it by incorporating aggre
 | :----------- | :--------------: | -------------------------: |
 | UP TO n ROWS  | ```SELECT * FROM table UP TO 10 ROWS INTO TABLE @it_table.```        | Limits the number of records returned.    |
 | OFFSET        | ```SELECT * FROM table OFFSET 5 INTO TABLE @it_table.```            | Shifts the start of the records returned. |
+
+
+### Dynamic Select statement
+
+> [Data Selection Process](#Data_Selection_Process) > [Content](#content) > [This section](#dynamic_select)
+
+Dynamic programming techniques can pose significant security risks if not handled correctly. Therefore, it's important to be careful and validate any content coming from external sources that is used in dynamic statements. This can be done using the ```CL_ABAP_DYN_PRG``` system class.
+
+You can create dynamic SELECT statements at different levels, such as:
+
+-	**Fields/Columns**: Dynamically specifying which fields to select from the database.
+-	**Table Names**: Dynamically choosing which database table to query.
+-	**Conditions**: Dynamically building the WHERE clause based on runtime conditions.
+
+**Code example:**
+
+``` ABAP
+  data: lv_table      type dd02l-tabname,
+        lv_fields     type string,
+        itab(100)     occurs 0 with header line,
+        lv_conditions type string,
+        lt_result     type table of sflight.
+
+  " Framework takes table name, fields, and conditions as input
+  lv_table      = 'SFLIGHT'.
+  lv_fields     = 'CARRID, CONNID'.
+
+  move 'CARRID = ''LH'' AND CONNID = 455' to itab.
+  append itab.
+
+  " Dynamic SELECT for a generic data extraction framework
+  select (lv_fields)
+    from (lv_table)
+    where (itab)
+    into table @lt_result.
+
+  if sy-subrc ne 0.
+    clear lt_result.
+  endif.
+
+"Declaration inline is not posible with the fields or tables define in a variavel.
+  select carrid,
+         connid
+    from sflight
+    where (itab)
+    into table @data(lt_result2).
+
+  if sy-subrc = 0.
+    clear lt_result2.
+  endif.
+```
+
+
+Main possible reasons to create a dynamic `SELECT`:
+
+- **Flexible Queries Based on User Input:** When there is a need to create a tool that adapts to user specifications entered in the selection screen.
+
+- **Building Generic Reports:** To add flexibility in the columns displayed as the output of the retrieval process. Dynamic SQL allows the report to adapt based on the user’s preferences or configuration, making it more versatile.
+
+- **Handling Different Database Tables:** In applications where the database table to query from is determined at runtime (e.g., based on user choices or configuration), dynamic SQL enables the program to adjust which table it selects data from without hardcoding all possible table names.
+
+- **Optimizing Performance for Specific Scenarios:** By using dynamic SQL, you can tailor your queries to fetch only the necessary fields based on specific conditions. This optimization reduces the amount of data transferred and processed, leading to better performance.
+
+
+###Online vs. batch execution modes: How to handle large data sets in SAP ABAP?
+
+> [Data Selection Process](#Data_Selection_Process) > [Content](#content) > [This section](#large_datasets)
+
+First, it is important to know that the online and batch execution of programs depends on the resources that are allocated to the application server part, which are defined by parameters such as:
+
+- ```abap/heap_area_dia```: Defines the maximum amount of private memory that can be used by each individual user in online mode.
+- ```abap/heap_area_nondia```: Defines the maximum amount of private memory that can be used by each individual user in batch mode.
+- ```abap/heap_area_total```: Specifies the maximum amount of memory that can be used across all processes (both online and batch) in the entire SAP instance.
+- ```ztta/roll_area```: Determines how much memory is reserved for each user session to store their context data (e.g., data, variables).
+- ```ztta/roll_extension```: Specifies the size of the extended memory, which is a shared memory area used by all processes to store user data.
+
+
+
 
 
 
