@@ -9,7 +9,7 @@ Quoting one of the phrases that most impacted me during my academic path:
 And why not challenge me to explain it to myself?
 
 
-This project came up as a result of my desire to deepen my knowledge of sap abap, my curiosity to know how things really work and my desire to see answers to the most diverse questions that have been wandering around in me. If, like me, you have the same curiosity, this repository will be ideal for you!
+This project came up as a result of my desire to deepen my knowledge of SAP ABAP, my curiosity to know how things really work and my desire to see answers to the most diverse questions that have been wandering around in me. If, like me, you have the same curiosity, this repository will be ideal for you!
 
 <img width=1000px src="https://t4.ftcdn.net/jpg/03/89/78/77/360_F_389787790_fPGrIGoflvdvo0mX1kBaPbrhWQqh6Cnc.jpg" alt="" >
 
