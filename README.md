@@ -7,14 +7,16 @@ And why not challenge me to explain it to myself?
 
 This project came up as a result of my desire to deepen my knowledge of sap abap, my curiosity to know how things really work and my desire to see answers to the most diverse questions that have been wandering around in me. If, like me, you have the same curiosity, this repository will be ideal for you!
 
+<img width=1000px src="https://t4.ftcdn.net/jpg/03/89/78/77/360_F_389787790_fPGrIGoflvdvo0mX1kBaPbrhWQqh6Cnc.jpg" alt="" >
+
 ## Content
 
 -  [Data Selection Process](Data_Selection_Process.md):
     - Select Statement
     - What Is Happening During The Data Selection Process?
-    - What can you do in a select?
-    - Dynamic Select statement
-    - Online vs. batch execution modes: How to handle large datasets in SAP ABAP?
-    - How to use a cursor?
-    - Optimization SQL queries/performance considerations
+    - What Can You Do In a Select?
+    - Dynamic Select Statement
+    - Online vs. Batch Execution Modes: How To Handle Large Datasets In SAP ABAP?
+    - How To Use a Cursor?
+    - SQL Query Optimization/Performance Considerations
 
