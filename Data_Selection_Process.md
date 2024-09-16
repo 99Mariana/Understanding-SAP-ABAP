@@ -211,15 +211,26 @@ In the following sections, we will delve deeper into one of these proposed pract
 
 > [Data Selection Process](#Data_Selection_Process) > [Content](#content) > [This section](#cursor)
 
+First of all is important to understand what is a cursor. Cursor is a feature that allows to access to the data from database in a progressive or iterative way. The main goal of a cursor is to help the system maintain the current position within the result set, reading row by row efficiently.
 
-
-
-
+There are two types of cursors: implicit and explicit. The implicit cursors are opened automatically( when some query is executed) and managed by Open SQL. The explicit cursors are open through abap code, using the statement ```OPEN CURSOR```. Then the cursor advances to the next line of the result each time the ```FETCH NEXT CURSOR``` command is used. It is important to note that it is possible to define a package size, which basically means defining the number of rows that will be retrieved in each iteration. Finally, the cursor closed with the ```CLOSE CURSOR``` statement. The explicit cursor are particularly useful when the volume of data is too large to load into memory all at once. The cumulative number of rows retrieved by the ```FETCH``` statement is hold in a system fields ```sy-dbcnt```.
 
 
 ### SQL Query Optimization/Performance Considerations
 
 > [Data Selection Process](#Data_Selection_Process) > [Content](#content) > [This section](#performance)
+
+There are some points that should be taken into consideration in order to build the most optimized select possible.
+
+- Used the ```Where``` statement, to restrict the volume of data retrieved.
+- Avoid extra database processing, for example by avoiding the use of statements like ```ORDER BY```, instead prefer to sort the resulting internal table.    
+- Use ```FOR ALL ENTRIES``` when some data is already in a internal table. 
+
+-  
+falar de colocation grupos, while there may be many ABAP servers.
+Avoid using nested SELECT statement and SELECT within LOOPs, better use JOINs or FOR ALL ENTRIES. Use FOR ALL ENTRIES when  the internal table is already there or the end of some processing. Try JOINs if the SELECT are right behind each other.
+Use HASHED tables where-ever possible. Otherwise SORTED tables. STANDARD tables should be the last choice.
+ver site https://community.sap.com/t5/application-development-blog-posts/optimizing-abap-performance-techniques-for-efficient-code-execution/ba-p/13550016
 
 
 
