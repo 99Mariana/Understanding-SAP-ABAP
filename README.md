@@ -23,7 +23,7 @@ This project came up as a result of my desire to deepen my knowledge of SAP ABAP
     - Online vs. Batch Execution Modes: How To Handle Large Datasets In SAP ABAP?
     - How To Use a Cursor?
     - SQL Query Optimization/Performance Considerations
-- [Commands For Data Handling Processes](Data_Handling_Process.md):
+- [Data Handling Process](Data_Handling_Process.md):
     - Data Manipulation ( Insert, delete , update, modify , (read, select) )
     - Handling Internal Tables ( append , insert, delete , update, sort, loop, (read, select) )
     - Transaction Handling ( commit , rollback )
