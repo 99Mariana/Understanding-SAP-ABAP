@@ -38,6 +38,7 @@ In a simple way, the process that occurs when you execute a command for handling
 7. **Release Locks:** Once the transaction is committed, the locks placed on the records are released, making them available for other transactions.
 
 8. **Return Status:** The ABAP program receives a status return code from the database indicating the success or failure of the command executed.
+   
 
 
 ### Handling Data in Internal Tables
