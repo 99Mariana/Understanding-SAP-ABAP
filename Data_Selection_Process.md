@@ -25,8 +25,7 @@ In simple terms, a `SELECT` statement in SAP ABAP is an Open SQL command used to
 
 What happens during the data retrieval process performed in a select statement? This question has been a big enigma for me for a long time, and researching and really understanding the process has helped me improve the way I've been programming from then on. The process of data retrieval is summarized in the diagram below:
 
-Adicionar diagrama---- importante
-
+![image](https://github.com/user-attachments/assets/69314075-458f-481d-b71b-546a28d5dba9)
 
 Let’s take a deeper look at the process:
 
