@@ -26,7 +26,7 @@ In simple terms, a `SELECT` statement in SAP ABAP is an Open SQL command used to
 What happens during the data retrieval process performed in a select statement? This question has been a big enigma for me for a long time, and researching and really understanding the process has helped me improve the way I've been programming from then on. The process of data retrieval is summarized in the diagram below:
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/0bdc5293-0867-47d6-826e-ea08ce3d1002" alt="" style="width:30%";>
+  <img src="https://github.com/user-attachments/assets/0bdc5293-0867-47d6-826e-ea08ce3d1002" alt="" style="width:25%";>
   <br>
   <em>SELECT Statements in SAP ABAP: Step-by-Step Data Retrieval Process</em>
 </p>
@@ -208,8 +208,6 @@ The main reason for exceeding these limits is the handling of large amounts of d
 - **COMMIT WORK Commands**: In some cases, these commands can help free up memory.
 - **Optimize SQL Queries**: Reduce the amount of data selected by handling only the necessary data.
 - **Create Decentralized/Parallel Processing**: Divide data processing into batches and execute them in parallel jobs.
-  
-In the following sections, we will delve deeper into one of these proposed practices to better understand how they work and how to use them effectively.
 
 ### How To Use a Cursor?
 
@@ -218,6 +216,31 @@ In the following sections, we will delve deeper into one of these proposed pract
 First of all is important to understand what is a cursor. Cursor is a feature that allows to access to the data from database in a progressive or iterative way. The main goal of a cursor is to help the system maintain the current position within the result set, reading row by row efficiently.
 
 There are two types of cursors: implicit and explicit. The implicit cursors are opened automatically( when some query is executed) and managed by Open SQL. The explicit cursors are open through abap code, using the statement ```OPEN CURSOR```. Then the cursor advances to the next line of the result each time the ```FETCH NEXT CURSOR``` command is used. It is important to note that it is possible to define a package size, which basically means defining the number of rows that will be retrieved in each iteration. Finally, the cursor closed with the ```CLOSE CURSOR``` statement. The explicit cursor are particularly useful when the volume of data is too large to load into memory all at once. The cumulative number of rows retrieved by the ```FETCH``` statement is hold in a system fields ```sy-dbcnt```.
+
+Example of cursor code: 
+
+```ABAP
+
+DATA: lv_cursor TYPE cursor,
+      lt_tb_temp TYPE TABLE OF spfli.
+
+OPEN CURSOR WITH HOLD @lv_cursor FOR
+  SELECT *
+    FROM spfli
+    ORDER BY carrid.
+
+DO.
+      FETCH NEXT CURSOR @lv_cursor INTO TABLE @lt_tb_temp PACKAGE SIZE @lv_package_size.
+
+      IF sy-subrc = 0.
+                  (........)
+       ELSE.
+        EXIT.
+        CLOSE CURSOR @lv_cursor.
+      ENDIF.
+
+    ENDDO.
+```
 
 
 ### SQL Query Optimization/Performance Considerations
