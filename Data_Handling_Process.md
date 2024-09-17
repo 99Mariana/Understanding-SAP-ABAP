@@ -38,7 +38,20 @@ In a simple way, the process that occurs when you execute a command for handling
 7. **Release Locks:** Once the transaction is committed, the locks placed on the records are released, making them available for other transactions.
 
 8. **Return Status:** The ABAP program receives a status return code from the database indicating the success or failure of the command executed.
-   
+
+#### SAP ABAP Database Operations
+
+| **Operation**      | **ABAP Statement Example**                              | **Description**                                                        |
+|--------------------|---------------------------------------------------------|------------------------------------------------------------------------|
+| **Retrieve Data**   | `SELECT * FROM mara INTO TABLE @lt_mara WHERE matnr = '1000'.` | Retrieves all fields from the `mara` table for material number `1000` and stores them in an internal table `lt_mara`.( see more in [Data Selection Process](Data_Selection_Process.md) )|
+| **Insert Data**     | `INSERT mara FROM TABLE lt_mara_insert.`                | Inserts multiple records into the `mara` table from the internal table `lt_mara_insert`. |
+|                    | `INSERT mara FROM ls_mara.`                             | Inserts a single record into the `mara` table using the work area `ls_mara`. |
+| **Update Data**     | `UPDATE mara SET mtart = 'FERT' WHERE matnr = '1000'.`  | Updates the material type (`mtart`) for the material number `1000` to `'FERT'`. |
+|                    | `MODIFY mara FROM TABLE lt_mara_update.`                | Modifies multiple records in the `mara` table using data from the internal table `lt_mara_update`. |
+| **Delete Data**     | `DELETE FROM mara WHERE matnr = '1000'.`               | Deletes a record from the `mara` table where the material number is `1000`. |
+|                    | `DELETE mara FROM TABLE lt_mara_delete.`                | Deletes multiple records from the `mara` table using an internal table `lt_mara_delete`. |
+| **Modify Data**     | `MODIFY mara FROM ls_mara.`                            | Modifies a single entry in the `mara` table using the data from work area `ls_mara`. |
+|                    | `MODIFY mara FROM TABLE lt_mara_update.`                | Modifies multiple entries in the `mara` table using data from the internal table `lt_mara_update`. |
 
 
 ### Handling Data in Internal Tables
@@ -46,4 +59,20 @@ In a simple way, the process that occurs when you execute a command for handling
 > [Data Handling Process](#Data_Handling_Process) > [Content](#Content) > [This section](#internal_tables)
 
 Unlike database tables, internal tables are handled entirely in memory within the SAP application server. Some key differences between these two processes include: Locking is not applied to internal tables since they are not shared resources outside of the current ABAP program or session; No commit or rollback operations are required or applicable for internal tables, as they are temporary and exist only for the duration of the program’s execution.
+
+#### SAP ABAP Internal Table Operations
+
+| **Operation**       | **ABAP Statement Example**                                 | **Description**                                                                 |
+|---------------------|------------------------------------------------------------|---------------------------------------------------------------------------------|
+| **Append Data**      | `APPEND ls_mara TO lt_mara.`                               | Appends a single work area `ls_mara` to the internal table `lt_mara`.            |
+| **Insert Data**      | `INSERT ls_mara INTO lt_mara INDEX 2.`                     | Inserts the work area `ls_mara` into the internal table `lt_mara` at index 2.    |
+| **Modify Data**      | `MODIFY lt_mara FROM ls_mara INDEX 3.`                     | Modifies the entry at index 3 in the internal table `lt_mara` with `ls_mara`.    |
+| **Read Data**        | `READ TABLE lt_mara INTO ls_mara WITH KEY matnr = '1000'.` | Reads the entry in `lt_mara` where the key `matnr` equals '1000' into `ls_mara`. |
+| **Loop Through Data**| `LOOP AT lt_mara INTO ls_mara.`                            | Loops through all entries in the internal table `lt_mara` into the work area.    |
+| **Delete Data**      | `DELETE lt_mara WHERE matnr = '1000'.`                     | Deletes the entry in `lt_mara` where the key `matnr` equals '1000'.              |
+| **Sort Data**        | `SORT lt_mara BY matnr.`                                   | Sorts the internal table `lt_mara` by the field `matnr`.                         |
+| **Clear Table**      | `CLEAR lt_mara.`                                           | Clears all entries from the internal table `lt_mara`.                            |
+| **Free Table**       | `FREE lt_mara.`                                            | Frees up memory by completely deallocating the internal table `lt_mara`.         |
+| **Delete Adjacent Duplicates** | `DELETE ADJACENT DUPLICATES FROM lt_mara COMPARING matnr.` | Deletes consecutive duplicate entries from the internal table based on `matnr`.  |
+
 
