@@ -250,15 +250,15 @@ DO.
 There are some points that should be taken into consideration in order to build the most optimized select possible.
 
 - Used the ```Where``` statement, to restrict the volume of data retrieved.
-- Avoid extra database processing, for example by avoiding the use of statements like ```ORDER BY```, instead prefer to sort the resulting internal table.    
-- Use ```FOR ALL ENTRIES``` when some data is already in a internal table. 
+- Avoid extra database processing, for example by avoiding the use of statements like ```ORDER BY```, instead prefer to sort the resulting internal table.
 
--  
-falar de colocation grupos, while there may be many ABAP servers.
-Avoid using nested SELECT statement and SELECT within LOOPs, better use JOINs or FOR ALL ENTRIES. Use FOR ALL ENTRIES when  the internal table is already there or the end of some processing. Try JOINs if the SELECT are right behind each other.
-Use HASHED tables where-ever possible. Otherwise SORTED tables. STANDARD tables should be the last choice.
-ver site https://community.sap.com/t5/application-development-blog-posts/optimizing-abap-performance-techniques-for-efficient-code-execution/ba-p/13550016
+- Avoid using nested ```SELECT``` statements or ```SELECT``` within ```LOOPs```, as this increases system effort and results in multiple database hits. Instead, prefer a single selection and then use a READ statement, for example.
 
+- Use ```FOR ALL ENTRIES``` when data is already present in an internal table. The database engine compares records from the internal table with the selected table in a batch. In this case, the internal table's data is replicated in a query that acts as a selection condition, which occurs at the application level (ABAP layer). However, ```FOR ALL ENTRIES``` can lead to performance issues if the internal table contains a large number of records.
+
+- ```INNER JOIN``` is generally faster when merging large datasets from multiple tables because the database can optimize the join process internally. Since the data is combined directly within the database, rather than in the ABAP layer, it is more efficient for handling large-scale joins. However, in this context, it is recommended to define the colocation group condition in the WHERE clause to ensure that data remains on the same node. This allows joins and data aggregations to be processed locally, minimizing data transfer.
+
+- When tables involved in frequent joins are stored on different nodes, the system has to move data between nodes during query execution, which increases processing time and involves data movement across the network. In this scenario, it's better to handle different tables with separate query selections.
 
 
 
