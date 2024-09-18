@@ -53,6 +53,15 @@ In a simple way, the process that occurs when you execute a command for handling
 | **Modify Data**     | `MODIFY mara FROM ls_mara.`                            | Modifies a single entry in the `mara` table using the data from work area `ls_mara`. |
 |                    | `MODIFY mara FROM TABLE lt_mara_update.`                | Modifies multiple entries in the `mara` table using data from the internal table `lt_mara_update`. |
 
+#### Performance considerations
+
+To achieve the best possible performance in data handling operations, the following recommendations apply:
+
+- ***INSERT***: Prefer inserting multiple rows at once rather than one-by-one. Indexes can help speed up data handling operations. However, be aware that indexes slightly slow down insertions, as each new entry must be indexed.
+- ***DELETE***: Avoid deleting large volumes at once to minimize lock time and resource usage. Define the WHERE condition properly to speed up the operation.
+- ***UPDATE***: Avoid updating large volumes at once to minimize lock time and resource usage. Define the WHERE condition properly to optimize the operation, and update only the necessary fields.
+- ***MODIFY***: Prefer modifying multiple rows at once rather than one-by-one. If you know beforehand which records already exist in the database and which ones are new, splitting MODIFY into separate INSERT and UPDATE operations is more efficient.
+
 
 ### Handling Data in Internal Tables
 
