@@ -68,6 +68,7 @@ Unlike database tables, internal tables are handled entirely in memory within th
 | **Insert Data**      | `INSERT ls_mara INTO lt_mara INDEX 2.`                     | Inserts the work area `ls_mara` into the internal table `lt_mara` at index 2.    |
 | **Modify Data**      | `MODIFY lt_mara FROM ls_mara INDEX 3.`                     | Modifies the entry at index 3 in the internal table `lt_mara` with `ls_mara`.    |
 | **Read Data**        | `READ TABLE lt_mara INTO ls_mara WITH KEY matnr = '1000'.` | Reads the entry in `lt_mara` where the key `matnr` equals '1000' into `ls_mara`. |
+|       | `lt_mara = value #( for ls_line in lt_mara where ( martnr > '1000' ) (ls_line ))` | Reads the entry in `lt_mara` where the `matnr` field is greater than '1000'. |
 | **Loop Through Data**| `LOOP AT lt_mara INTO ls_mara.`                            | Loops through all entries in the internal table `lt_mara` into the work area.    |
 | **Delete Data**      | `DELETE lt_mara WHERE matnr = '1000'.`                     | Deletes the entry in `lt_mara` where the key `matnr` equals '1000'.              |
 | **Sort Data**        | `SORT lt_mara BY matnr.`                                   | Sorts the internal table `lt_mara` by the field `matnr`.                         |
