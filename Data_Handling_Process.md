@@ -53,15 +53,15 @@ In a simple way, the process that occurs when you execute a command for handling
 | **Modify Data**     | `MODIFY mara FROM ls_mara.`                            | Modifies a single entry in the `mara` table using the data from work area `ls_mara`. |
 |                    | `MODIFY mara FROM TABLE lt_mara_update.`                | Modifies multiple entries in the `mara` table using data from the internal table `lt_mara_update`. |
 
-#### Performance considerations
+#### Performance Considerations
 
 To achieve the best possible performance in data handling operations, the following recommendations apply:
 
-- ***INSERT***: Prefer inserting multiple rows at once rather than one-by-one. Indexes can help speed up data handling operations. However, be aware that indexes slightly slow down insertions, as each new entry must be indexed.
-- ***DELETE***: Avoid deleting large volumes at once to minimize lock time and resource usage. Define the ```WHERE``` condition properly to speed up the operation.
-- ***UPDATE***: Avoid updating large volumes at once to minimize lock time and resource usage. Define the ```WHERE``` condition properly to optimize the operation, and update only the necessary fields.
-- ***MODIFY***: Prefer modifying multiple rows at once rather than one-by-one. If you know in advance which records already exist in the database and which ones are new, splitting ```MODIFY``` into separate ```INSERT``` and ```UPDATE``` operations can be more efficient.
-- ***SELECT***: Read more in the section: [Data Selection Process](Data_Selection_Process.md)
+- **INSERT**: Prefer inserting multiple rows at once rather than one-by-one. Indexes can help speed up data handling operations. However, be aware that indexes slightly slow down insertions, as each new entry must be indexed.
+- **DELETE**: Avoid deleting large volumes at once to minimize lock time and resource usage. Define the ```WHERE``` condition properly to speed up the operation.
+- **UPDATE**: Avoid updating large volumes at once to minimize lock time and resource usage. Define the ```WHERE``` condition properly to optimize the operation, and update only the necessary fields.
+- **MODIFY**: Prefer modifying multiple rows at once rather than one-by-one. If you know in advance which records already exist in the database and which ones are new, splitting ```MODIFY``` into separate ```INSERT``` and ```UPDATE``` operations can be more efficient.
+- **SELECT**: Read more in the section: [Data Selection Process](Data_Selection_Process.md)
 
 
 ### Handling Data in Internal Tables
@@ -79,7 +79,7 @@ Unlike database tables, internal tables are handled entirely in memory within th
 | **Modify Data**      | `MODIFY lt_mara FROM ls_mara INDEX 3.`                     | Modifies the entry at index 3 in the internal table `lt_mara` with `ls_mara`.    |
 | **Read Data**        | `READ TABLE lt_mara INTO ls_mara WITH KEY matnr = '1000'.` | Reads the entry in `lt_mara` where the key `matnr` equals '1000' into `ls_mara`. |
 |       | `lt_mara = value #( for ls_line in lt_mara where ( martnr > '1000' ) (ls_line ))` | Reads the entry in `lt_mara` where the `matnr` field is greater than '1000'. |
-| **Loop Through Data**| `LOOP AT lt_mara INTO ls_mara.`                            | Loops through all entries in the internal table `lt_mara` into the work area.    |
+| **Loop**| `LOOP AT lt_mara INTO ls_mara.`                            | Loops through all entries in the internal table `lt_mara` into the work area.    |
 | **Delete Data**      | `DELETE lt_mara WHERE matnr = '1000'.`                     | Deletes the entry in `lt_mara` where the key `matnr` equals '1000'.              |
 | **Sort Data**        | `SORT lt_mara BY matnr.`                                   | Sorts the internal table `lt_mara` by the field `matnr`.                         |
 | **Clear Table**      | `CLEAR lt_mara.`                                           | Clears all entries from the internal table `lt_mara`.                            |
