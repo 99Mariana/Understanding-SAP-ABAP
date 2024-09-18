@@ -95,6 +95,11 @@ Unlike database tables, internal tables are handled entirely in memory within th
 
 - Prefer ```LINE_EXISTS``` to ```READ TABLE``` or ```LOOP AT``` when the intention is to verify if some record exist in the internal table.
 - Prefer ```READ TABLE``` to ```LOOP AT``` when the intention is to verify get the data from a specific record of the table .
-- Consider to include the ```WHERE``` condition in a ```LOOP``` instead of the usage of the ```IF``` inside the ```LOOP``` iteration. 
+- Consider to include the ```WHERE``` condition in a ```LOOP``` instead of the usage of the ```IF``` inside the ```LOOP``` iteration.
+
+
+### Transaction Handling in ABAP
+
+> [Data Handling Process](#Data_Handling_Process) > [Content](#Content) > [This section](#transaction)
 
 
