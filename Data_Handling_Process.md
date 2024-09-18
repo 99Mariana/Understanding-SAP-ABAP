@@ -9,6 +9,7 @@
     - [Transaction Handling in ABAP](#transaction)
     - [Data Transfer Techniques](#data_transfer)
     - [Best Practices for Data Manipulation and Performance](#performance)
+    - Error handling and logs
 
  
 ### Introduction
