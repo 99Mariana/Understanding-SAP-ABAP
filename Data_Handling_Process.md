@@ -43,7 +43,7 @@ In a simple way, the process that occurs when you execute a command for handling
 
 | **Operation**      | **ABAP Statement Example**                              | **Description**                                                        |
 |--------------------|---------------------------------------------------------|------------------------------------------------------------------------|
-| **Retrieve Data**   | `SELECT * FROM mara INTO TABLE @lt_mara WHERE matnr = '1000'.` | Retrieves all fields from the `mara` table for material number `1000` and stores them in an internal table `lt_mara`.( see more in [Data Selection Process](Data_Selection_Process.md) )|
+| **Retrieve Data**   | `SELECT * FROM mara INTO TABLE @lt_mara WHERE matnr = '1000'.` | Retrieves all fields from the `mara` table for material number `1000` and stores them in an internal table `lt_mara`.( Read more in the section: [Data Selection Process](Data_Selection_Process.md) )|
 | **Insert Data**     | `INSERT mara FROM TABLE lt_mara_insert.`                | Inserts multiple records into the `mara` table from the internal table `lt_mara_insert`. |
 |                    | `INSERT mara FROM ls_mara.`                             | Inserts a single record into the `mara` table using the work area `ls_mara`. |
 | **Update Data**     | `UPDATE mara SET mtart = 'FERT' WHERE matnr = '1000'.`  | Updates the material type (`mtart`) for the material number `1000` to `'FERT'`. |
@@ -58,9 +58,10 @@ In a simple way, the process that occurs when you execute a command for handling
 To achieve the best possible performance in data handling operations, the following recommendations apply:
 
 - ***INSERT***: Prefer inserting multiple rows at once rather than one-by-one. Indexes can help speed up data handling operations. However, be aware that indexes slightly slow down insertions, as each new entry must be indexed.
-- ***DELETE***: Avoid deleting large volumes at once to minimize lock time and resource usage. Define the WHERE condition properly to speed up the operation.
-- ***UPDATE***: Avoid updating large volumes at once to minimize lock time and resource usage. Define the WHERE condition properly to optimize the operation, and update only the necessary fields.
-- ***MODIFY***: Prefer modifying multiple rows at once rather than one-by-one. If you know beforehand which records already exist in the database and which ones are new, splitting MODIFY into separate INSERT and UPDATE operations is more efficient.
+- ***DELETE***: Avoid deleting large volumes at once to minimize lock time and resource usage. Define the ```WHERE``` condition properly to speed up the operation.
+- ***UPDATE***: Avoid updating large volumes at once to minimize lock time and resource usage. Define the ```WHERE``` condition properly to optimize the operation, and update only the necessary fields.
+- ***MODIFY***: Prefer modifying multiple rows at once rather than one-by-one. If you know in advance which records already exist in the database and which ones are new, splitting ```MODIFY``` into separate ```INSERT``` and ```UPDATE``` operations can be more efficient.
+- ***SELECT***: Read more in the section: [Data Selection Process](Data_Selection_Process.md)
 
 
 ### Handling Data in Internal Tables
@@ -84,5 +85,16 @@ Unlike database tables, internal tables are handled entirely in memory within th
 | **Clear Table**      | `CLEAR lt_mara.`                                           | Clears all entries from the internal table `lt_mara`.                            |
 | **Free Table**       | `FREE lt_mara.`                                            | Frees up memory by completely deallocating the internal table `lt_mara`.         |
 | **Delete Adjacent Duplicates** | `DELETE ADJACENT DUPLICATES FROM lt_mara COMPARING matnr.` | Deletes consecutive duplicate entries from the internal table based on `matnr`.  |
+
+
+#### Performance considerations
+
+- ```HASHED``` tables are usefull when we are working with large data tables that are filled in a single step, don´t need to be modified but they are read often by their key. Basically in the ```HASHED``` tables when they are filled generate a hash value, which determines the position (or "bucket") in memory where the corresponding record is stored, then when we use the key in a read statement directly the record is accessed.
+
+- ```SORTED``` tables are automatically kept in sorted order based on the key when entries are inserted. Sorted tables demonstrate their value only for large numbers of read accesses. Use a binary search in a read operation can have good repercussions in improving performance in the read accesses process.
+
+- Prefer ```LINE_EXISTS``` to ```READ TABLE``` or ```LOOP AT``` when the intention is to verify if some record exist in the internal table.
+- Prefer ```READ TABLE``` to ```LOOP AT``` when the intention is to verify get the data from a specific record of the table .
+- Consider to include the ```WHERE``` condition in a ```LOOP``` instead of the usage of the ```IF``` inside the ```LOOP``` iteration. 
 
 
