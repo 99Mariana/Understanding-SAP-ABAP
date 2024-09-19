@@ -5,6 +5,7 @@
 -  [Data Handling Process](Data_Handling_Process.md):
     - [Introduction](#Introduction)
     - [Handling Data in Database Tables](#sap_tables)
+      - Process Description
       - SAP ABAP Database Operations
       - Performance Considerations
     - [Handling Data in Internal Tables](#internal_tables)
@@ -28,6 +29,8 @@ In this section, we will explore different commands that allow us to handle data
 ### Handling Data in Database Tables
 
 > [Data Handling Process](#Data_Handling_Process) > [Content](#Content) > [This section](#sap_tables)
+
+#### Process Description
 
 In a simple way, the process that occurs when you execute a command for handling data involves the following steps:
 
