@@ -16,11 +16,11 @@
     - [Transaction Handling in ABAP](#transaction)
       - COMMIT
       - ROLLBACK
+    - [Error Handling](#error)
     - [Data Transfer Techniques](#data_transfer)
        - CALL FUNCTION (RFC)
        - SUBMIT
        - CALL TRANSACTION
-    - [Error Handling](#error)
 
  
 ### Introduction
@@ -182,6 +182,15 @@ The `ROLLBACK` command can negatively affect performance because this operation 
 
 Effective error handling can help mitigate these challenges. For instance, validating data before committing can reduce the need for rollbacks.
 
+### Error Handling
+
+> [Data Handling Process](#Data_Handling_Process) > [Content](#Content) > [This section](#error)
+
+
+
+
+
+
 ### Data Transfer Techniques
 
 > [Data Handling Process](#Data_Handling_Process) > [Content](#Content) > [This section](#data_transfer)
@@ -199,7 +208,7 @@ The `CALL FUNCTION` statement is widely used to execute Function Modules, which 
 ```` ABAP
 
 CALL FUNCTION 'REMOTE_FUNCTION_MODULE'
-  *DESTINATION 'DESTINATION_NAME'
+  "DESTINATION 'DESTINATION_NAME'
   STARTING NEW TASK 'TASK_NAME'
   PERFORMING callback_subroutine ON END OF TASK
   EXPORTING
