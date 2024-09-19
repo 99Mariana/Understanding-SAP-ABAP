@@ -165,6 +165,8 @@ Unlike database tables, internal tables are handled entirely in memory within th
 
 In this section, we will explore the `COMMIT` and `ROLLBACK` statements. These transactions are crucial for maintaining data integrity and preventing data inconsistencies, especially when multiple operations depend on each other. For example, when updating a customer's information and related billing data, transactions ensure that either both updates succeed or neither does.
 
+Both statements include ISU functions( `DB_COMMIT`, `DB_ROLLBACK` ) that can achieve the same goals as the simple `COMMIT` and `ROLLBACK` commands. These functions can be very useful in processes that use a `CURSOR`, for instance, because the `COMMIT` and `ROLLBACK` commands inherently close the `CURSOR`, whereas the ISU functions do not.
+
 #### COMMIT
 The `COMMIT` command is responsible for saving all changes made during the transaction to the database permanently.
 
