@@ -17,6 +17,9 @@
       - COMMIT
       - ROLLBACK
     - [Data Transfer Techniques](#data_transfer)
+       - CALL FUNCTION (RFC)
+       - SUBMIT
+       - CALL TRANSACTION
     - [Error Handling](#error)
 
  
@@ -178,5 +181,77 @@ The `ROLLBACK` command reverts any changes made during a transaction. It is very
 The `ROLLBACK` command can negatively affect performance because this operation requires considerable resources, as it involves reading the original values from disk and writing them back. This can generate significant input/output (I/O) activity and slow down performance due to locking.
 
 Effective error handling can help mitigate these challenges. For instance, validating data before committing can reduce the need for rollbacks.
+
+### Data Transfer Techniques
+
+> [Data Handling Process](#Data_Handling_Process) > [Content](#Content) > [This section](#data_transfer)
+
+In this section, we will take a deeper look at some of the data transfer techniques between different entities, such as programs, reports, function modules, and more. Various methods are available depending on specific requirements, such as performance, reliability, or the need for real-time communication. Two of the most common methods are using `CALL FUNCTION` and `SUBMIT`. In this section, we will also cover `CALL TRANSACTION`.
+
+#### CALL FUNCTION - Remote Function Calls and Data Transfer
+
+The `CALL FUNCTION` statement is widely used to execute Function Modules, which can be called either locally (within the same system) or remotely. For Remote Function Calls (RFC), the destination must be defined. These calls can be either synchronous or asynchronous:
+
+- **Synchronous** means that the program calling the function module waits for the function's execution to complete before continuing its own processing.
+
+- **Asynchronous** means that the program does not wait for the function to complete. The function is executed in parallel, and the response is received later in the program’s process. To define an asynchronous RFC, the `STARTING NEW TASK` clause must be used. It is possible to specify what should be executed `ON END OF TASK`, either by calling a method of a class using the `CALLING` statement or executing a subroutine using the `PERFORMING` statement.
+
+```` ABAP
+
+CALL FUNCTION 'REMOTE_FUNCTION_MODULE'
+  *DESTINATION 'DESTINATION_NAME'
+  STARTING NEW TASK 'TASK_NAME'
+  PERFORMING callback_subroutine ON END OF TASK
+  EXPORTING
+    param1 = value1
+  CHANGING
+   pio_table = lw_table.
+    
+  EXCEPTIONS
+    system_failure = 1
+    communication_failure = 2.
+
+FORM callback_subroutine USING taskname.
+ " Process the result if the 'REMOTE_FUNCTION_MODULE' function after the asynchronous call finishes
+   RECEIVE RESULTS
+    FROM FUNCTION 'REMOTE_FUNCTION_MODULE'
+    CHANGING pio_table = lw_table.
+
+ENDFORM.
+
+````
+
+#### SUBMIT - Executing Reports and Transferring Data
+
+The goal of the `SUBMIT` statement is to execute an ABAP report program from within another program. It is possible to pass parameters and selection criteria to the report using the `WITH` clause.
+
+By default, the `SUBMIT` statement displays the output of the report on the screen. However, it is possible to capture the output, store it in memory using the `EXPORTING LIST TO MEMORY` clause, and later retrieve it using the `LIST_FROM_MEMORY` clause, and even display it using the `DISPLAY_LIST` statement.
+
+```ABAP
+SUBMIT z_my_report WITH p_date = sy-datum
+  EXPORTING LIST TO MEMORY.
+
+CALL FUNCTION 'LIST_FROM_MEMORY'
+  IMPORTING listobject = it_list.
+
+CALL FUNCTION 'DISPLAY_LIST'
+  TABLES listobject = it_list.
+```
+
+#### CALL TRANSACTION - Executing Transactions with Data Transfer
+
+The `CALL TRANSACTION` statement is used to execute an SAP transaction code (T-code) from within an ABAP program. Similar to RFCs, the transaction can be executed either synchronously or asynchronously. To define the values used in the SAP transaction, a special structure called `BDCDATA` is used. Take a look at the example below:
+
+```ABAP
+DATA: bdcdata TYPE TABLE OF bdcdata.
+
+PERFORM bdc_dynpro USING 'SAPMM06E' '0101'.  " Transaction Screen Details
+PERFORM bdc_field  USING 'BDC_OKCODE' '/00'.
+PERFORM bdc_field  USING 'RM06E-BUKRS' '1000'.  " Input Data for Company Code
+
+CALL TRANSACTION 'ME21N' USING bdcdata
+     MODE 'A'  " Processing Mode: A (Display), N (Background), E (Error Screen)
+     UPDATE 'S'.  " Update Mode: S (Synchronous), A (Asynchronous)
+```
 
 
