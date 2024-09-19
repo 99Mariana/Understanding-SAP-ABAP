@@ -17,6 +17,9 @@
       - COMMIT
       - ROLLBACK
     - [Error Handling](#error)
+      - Messages
+      - Exceptions
+      - Catching
     - [Data Transfer Techniques](#data_transfer)
        - CALL FUNCTION (RFC)
        - SUBMIT
@@ -186,6 +189,22 @@ Effective error handling can help mitigate these challenges. For instance, valid
 
 > [Data Handling Process](#Data_Handling_Process) > [Content](#Content) > [This section](#error)
 
+In this section we will analyse deeply the diffent ways to handle errors by using messages, return Codes, exceptions and the catch statement. 
+
+#### Messages 
+
+The messages are the simplest way to inform users about the status of a program execution. The messages can be define in the transaction SE91.
+
+```` ABAP
+MESSAGE e001(MESSAGE_CLASS) INTO DATA(message).
+````
+
+#### Exceptions
+
+#### Catching
+
+
+
 
 
 
@@ -208,13 +227,13 @@ The `CALL FUNCTION` statement is widely used to execute Function Modules, which 
 ```` ABAP
 
 CALL FUNCTION 'REMOTE_FUNCTION_MODULE'
-  "DESTINATION 'DESTINATION_NAME'
+  DESTINATION 'NONE'
   STARTING NEW TASK 'TASK_NAME'
   PERFORMING callback_subroutine ON END OF TASK
   EXPORTING
     param1 = value1
   CHANGING
-   pio_table = lw_table.
+   pio_table = lt_table.
     
   EXCEPTIONS
     system_failure = 1
@@ -224,7 +243,7 @@ FORM callback_subroutine USING taskname.
  " Process the result if the 'REMOTE_FUNCTION_MODULE' function after the asynchronous call finishes
    RECEIVE RESULTS
     FROM FUNCTION 'REMOTE_FUNCTION_MODULE'
-    CHANGING pio_table = lw_table.
+    CHANGING pio_table = lt_table.
 
 ENDFORM.
 
