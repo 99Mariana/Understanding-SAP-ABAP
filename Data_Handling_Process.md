@@ -36,11 +36,14 @@ In a simple way, the process that occurs when you execute a command for handling
 
 5. **Commit or Rollback:** If the operation is successful, a commit statement is issued, making the changes permanent in the database. If an error occurs during the execution of the SQL commands, a rollback is issued, which reverts the database to its previous state.
 
-6. **Write-Ahead Logging (WAL):** Many databases use a write-ahead logging mechanism to ensure that changes can be recovered in case of a failure. The operation is recorded in the log before it is committed to the database.
+6. **Release Locks:** Once the transaction is committed, the locks placed on the records are released, making them available for other transactions.
 
-7. **Release Locks:** Once the transaction is committed, the locks placed on the records are released, making them available for other transactions.
+7. **Return Status:** The ABAP program receives a status return code from the database indicating the success or failure of the command executed.
 
-8. **Return Status:** The ABAP program receives a status return code from the database indicating the success or failure of the command executed.
+![image](https://github.com/user-attachments/assets/c9edb8c5-0d34-4c02-9da9-912e9a51f926)
+
+
+
 
 #### SAP ABAP Database Operations
 
