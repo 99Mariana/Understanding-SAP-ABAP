@@ -25,11 +25,13 @@ This project came up as a result of my desire to deepen my knowledge of SAP ABAP
     - SQL Query Optimization/Performance Considerations
 - [Data Handling Process](Data_Handling_Process.md):
     - Introduction
-    - Handling Data in Database Tables
-    - Handling Data in Internal Tables
-    - Transaction Handling in ABAP
+    - Handling Data in Database Tables ( Process Description; SAP ABAP Operations; Performance Considerations )
+    - Handling Data in Internal Tables ( SAP ABAP Operations; Performance Considerations )
+    - String Manipulation
+    - Numeric Data Manipulation
+    - Transaction Handling in ABAP ( COMMIT; ROLLBACK)
     - Data Transfer Techniques
-    - Best Practices for Data Manipulation and Performance
+    - Error Handling
 - [Data Management and Structuring in SAP](####)
     -tabelas , estrutura, dominio....chaves ,transaçoes se11, se16, se16n, se16n, sm30, spool, como criar tabela, transaçao queries en sap, colocacion groups, o que sao e para que servem
 
