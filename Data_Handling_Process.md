@@ -5,13 +5,18 @@
 -  [Data Handling Process](Data_Handling_Process.md):
     - [Introduction](#Introduction)
     - [Handling Data in Database Tables](#sap_tables)
+      - SAP ABAP Database Operations
+      - Performance Considerations
     - [Handling Data in Internal Tables](#internal_tables)
+      - SAP ABAP Internal Table Operations
+      - Performance Considerations
     - [String Manipulation](#string)
     - [Numeric Data Manipulation](#numeric)
     - [Transaction Handling in ABAP](#transaction)
+      - COMMIT
+      - ROLLBACK
     - [Data Transfer Techniques](#data_transfer)
-    - [Best Practices for Data Manipulation and Performance](#performance)
-    - Error handling and logs
+    - [Error Handling](#error)
 
  
 ### Introduction
