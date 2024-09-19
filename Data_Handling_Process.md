@@ -6,6 +6,8 @@
     - [Introduction](#Introduction)
     - [Handling Data in Database Tables](#sap_tables)
     - [Handling Data in Internal Tables](#internal_tables)
+    - [String Manipulation](#string)
+    - [Numeric Data Manipulation](#numeric)
     - [Transaction Handling in ABAP](#transaction)
     - [Data Transfer Techniques](#data_transfer)
     - [Best Practices for Data Manipulation and Performance](#performance)
@@ -86,6 +88,11 @@ Unlike database tables, internal tables are handled entirely in memory within th
 | **Clear Table**      | `CLEAR lt_mara.`                                           | Clears all entries from the internal table `lt_mara`.                            |
 | **Free Table**       | `FREE lt_mara.`                                            | Frees up memory by completely deallocating the internal table `lt_mara`.         |
 | **Delete Adjacent Duplicates** | `DELETE ADJACENT DUPLICATES FROM lt_mara COMPARING matnr.` | Deletes consecutive duplicate entries from the internal table based on `matnr`.  |
+| **COLLECT**           | `COLLECT wa INTO lt_table.`                                       | Groups records by key fields of `wa` and adds up numeric fields into `lt_table`.                    |
+| **FILTER**            | `lt_filtered = FILTER #( lt_table WHERE status = 'Active' ).`     | Filters `lt_table` for entries where the `status` field equals `'Active'`.                           |
+| **REDUCE**            | `lv_total = REDUCE i( INIT sum = 0 FOR wa IN lt_table NEXT sum = sum + wa-amount ).` | Aggregates (sums) the `amount` field of each entry in `lt_table`.                                   |
+| **MOVE-CORRESPONDING** | `MOVE-CORRESPONDING wa_src TO wa_dest.`                           | Copies matching fields from `wa_src` to `wa_dest`.                                                  |
+| **VALUE** | `VALUE ty_type( for <f_z> in it_table ( field1 = <f_z>-field1 field2 = lv_value..... )` |  Possible to define a table base in values of other tables and variables  |
 
 
 #### Performance considerations
@@ -97,6 +104,43 @@ Unlike database tables, internal tables are handled entirely in memory within th
 - Prefer ```LINE_EXISTS``` to ```READ TABLE``` or ```LOOP AT``` when the intention is to verify if some record exist in the internal table.
 - Prefer ```READ TABLE``` to ```LOOP AT``` when the intention is to verify get the data from a specific record of the table .
 - Consider to include the ```WHERE``` condition in a ```LOOP``` instead of the usage of the ```IF``` inside the ```LOOP``` iteration.
+
+
+### String Manipulation
+
+> [Data Handling Process](#Data_Handling_Process) > [Content](#Content) > [This section](#string)
+
+| **Command**           | **ABAP Statement Example**           | **Description**                                                                                       |
+|-----------------------|------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| **SPLIT**             | `SPLIT 'AB-CD-EF' AT '-' INTO lv_part1 lv_part2 lv_part3.`    | Splits 'AB-CD-EF' into `lv_part1 = 'AB'`, `lv_part2 = 'CD'`, `lv_part3 = 'EF'`.                  |
+| **CONCATENATE**       | `CONCATENATE lv_part1 lv_part2 INTO lv_result.`                | Combines `lv_part1` and `lv_part2`. If `lv_part1 = 'AB'` and `lv_part2 = 'CD'`, then `lv_result = 'ABCD'`. |
+| **REPLACE**           | `REPLACE 'AB' WITH 'XY' INTO lv_string.`                       | Replaces 'AB' with 'XY' in `lv_string`. If `lv_string = 'ABCD'`, it becomes `lv_string = 'XYCD'`. |
+| **SUBSTRING**         | `lv_substring = lv_string+2(3).`                                | Extracts a substring starting at position 2 with length 3. If `lv_string = 'ABCDEFG'`, then `lv_substring = 'CDE'`. |
+| **SUBSTRING_AFTER**   | `lv_result = substring_after( val = 'A-B-C' sub = '-' ).`     | Returns the part of a string after '-'. If `val = 'A-B-C'`, then `lv_result = 'B-C'`.              |
+| **SUBSTRING_BEFORE**  | `lv_result = substring_before( val = 'A-B-C' sub = '-' ).`    | Returns the part of a string before '-'. If `val = 'A-B-C'`, then `lv_result = 'A'`.              |
+| **TRANSLATE**         | `TRANSLATE lv_string TO UPPER CASE.`                            | Converts `lv_string` to uppercase. If `lv_string = 'abcd'`, it becomes `lv_string = 'ABCD'`.      |
+| **SHIFT**             | `SHIFT lv_string LEFT BY 3 PLACES.`                             | Shifts `lv_string` left by 3 places. If `lv_string = 'abcdef'`, it becomes `lv_string = 'def'`.   |
+| **CONDENSE**          | `CONDENSE lv_string.`                                           | Removes extra spaces. If `lv_string = ' AB CD '`, it becomes `lv_string = 'AB CD'`.               |
+| **CONV**              | `lv_num = CONV i( '123' ).`                                     | Converts '123' (string) to an integer `123`.      |
+
+### Numeric Data Manipulation
+
+> [Data Handling Process](#Data_Handling_Process) > [Content](#Content) > [This section](#numeric)
+
+| **Command**           | **ABAP Statement Example**           | **Description**       |
+|-----------------------|------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| **ROUND**             | `lv_result = ROUND( val = 123.456 precision = 2 ).`            | Rounds 123.456 to 123.46.                                                                            |
+| **FLOOR**             | `lv_result = FLOOR( 123.9 ).`                                   | Rounds down 123.9 to 123.                                                                           |
+| **CEIL**              | `lv_result = CEIL( 123.1 ).`                                    | Rounds up 123.1 to 124.                                                                             |
+| **TRUNC**             | `lv_result = TRUNC( 123.456 ).`                                 | Truncates 123.456 to 123.                                                                           |
+| **ABS**               | `lv_result = ABS( -123 ).`                                     | Converts -123 to 123.                                                                                |                                                 |
+| **MOD**               | `lv_remainder = 10 MOD 3.`                                     | Divides 10 by 3, remainder is 1.                                                                    |
+| **ADD**               | `lv_result = lv_num1 + lv_num2.`                               | Adds `lv_num1` and `lv_num2`.                                                                       |
+| **SUBTRACT**          | `lv_result = lv_num1 - lv_num2.`                              | Subtracts `lv_num2` from `lv_num1`.                                                                 |
+| **MULTIPLY**          | `lv_result = lv_num1 * lv_num2.`                               | Multiplies `lv_num1` by `lv_num2`.                                                                   |
+| **DIVIDE**            | `lv_result = lv_num1 / lv_num2.`                               | Divides `lv_num1` by `lv_num2`.                                                                     |
+| **CONVERSION_EXIT_ALPHA_INPUT**   | `CALL FUNCTION 'CONVERSION_EXIT_ALPHA_INPUT' EXPORTING input = '123' IMPORTING output = lv_out.` | Converts the input '123' to '0000000123' by adding leading zeros.                                  |
+| **CONVERSION_EXIT_ALPHA_OUTPUT**  | `CALL FUNCTION 'CONVERSION_EXIT_ALPHA_OUTPUT' EXPORTING input = '0000000123' IMPORTING output = lv_out.` | Converts '0000000123' to '123' by removing leading zeros.                                          |
 
 
 ### Transaction Handling in ABAP
