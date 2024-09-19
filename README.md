@@ -29,7 +29,7 @@ This project came up as a result of my desire to deepen my knowledge of SAP ABAP
     - Handling Data in Internal Tables ( SAP ABAP Operations; Performance Considerations )
     - String Manipulation
     - Numeric Data Manipulation
-    - Transaction Handling in ABAP ( COMMIT; ROLLBACK)
+    - Transaction Handling in ABAP ( COMMIT; ROLLBACK )
     - Data Transfer Techniques
     - Error Handling
 - [Data Management and Structuring in SAP](####)
