@@ -36,7 +36,7 @@ This project came up as a result of my desire to deepen my knowledge of SAP ABAP
     - Introduction
     - Tables Visualizacion
     - Tables Struture Changes
-    - Parametric tables
+    - Parametric Tables
     - Colocation Groups ( What is it?, When Use them?, Why Use them? )
     - Queries in SAP
  
