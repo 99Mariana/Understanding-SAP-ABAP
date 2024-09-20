@@ -5,10 +5,8 @@
 -  [DataBase Structure in SAP](DataBase_Structure.md):
     - [Introduction](#Introduction)
     - [Tables T_codes](#t-codes)
+    - [How is data stored in SAP HANA?](#hana)
     - [Colocation Groups](#cc)
-        - What is a Colocation Group?
-        - When to Use Colocation Groups?
-        - Why Use Colocation Groups?
     - [Queries in SAP](#Query)
  
 
