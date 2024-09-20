@@ -5,7 +5,7 @@
 -  [DataBase Structure in SAP](DataBase_Structure.md):
     - [Introduction](#Introduction)
     - [Tables T_codes](#t-codes)
-    - [How is data stored in SAP HANA?](#hana)
+    - [How Is Data Stored In SAP HANA?](#hana)
     - [Colocation Groups](#cc)
     - [Queries in SAP](#Query)
  
