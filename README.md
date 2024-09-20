@@ -34,9 +34,7 @@ This project came up as a result of my desire to deepen my knowledge of SAP ABAP
     - Data Transfer Techniques ( CALL FUNCTION (RFC); SUBMIT; CALL TRANSACTION )
 -  [DataBase Structure in SAP](DataBase_Structure.md):
     - Introduction
-    - Tables Visualizacion ( SE11, SE16, SE16N, SE16H )
-    - Tables Struture Changes ( SE11, SE14 , SPRO )
-    - Parametric tables ( SM30 )
+    - Tables T_codes
     - Colocation Groups ( What is it?, When Use them?, Why Use them? )
     - Queries in SAP
  
