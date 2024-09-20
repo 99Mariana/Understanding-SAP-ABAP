@@ -205,7 +205,7 @@ Primary structure used for exception handling in ABAP. It allows you to ```TRY``
 
 Is possible to define our own exception classes by creating a class that inherits for instance from ```CX_STATIC_CHECK```, ```CX_DYNAMIC_CHECK```, or ```CX_NO_CHECK```.
 
-Exceptions help keep method signatures clean. It is possible to return a result using the standard return parameter while still throwing exceptions alongside. This approach is preferable to using a return parameter just to indicate that an error occurred. Using exceptions for error handling allows us to defer reacting to them, meaning the CATCH statement can be used at the end of the method or even outside it. Additionally, exceptions can provide detailed information about the error through their attributes.
+Exceptions help keep method signatures clean. It is possible to return a result using the standard return parameter while still throwing exceptions alongside. This approach is preferable to using a return parameter just to indicate that an error occurred. Using exceptions for error handling allows us to defer reacting to them, meaning the ```CATCH``` statement can be used at the end of the method or even outside it. Additionally, exceptions can provide detailed information about the error through their attributes.
 
 Example of Full Exception Handling in a Program:
 
