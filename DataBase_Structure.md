@@ -1,4 +1,4 @@
-# Data Structure in SAP
+# DataBase Structure in SAP
 
 ## Content
 
