@@ -19,7 +19,6 @@
     - [Error Handling](#error)
       - Messages
       - Exceptions
-      - Catching
     - [Data Transfer Techniques](#data_transfer)
        - CALL FUNCTION (RFC)
        - SUBMIT
@@ -201,12 +200,76 @@ MESSAGE e001(MESSAGE_CLASS) INTO DATA(message).
 
 #### Exceptions
 
-#### Catching
+Exceptions are events that occur during the execution of an ABAP program, disrupting its flow when the program can no longer continue in a meaningful way. Exceptions can be handleable or non-handleable. Handleable exceptions are class-based. 
+Primary structure used for exception handling in ABAP. It allows you to ```TRY``` a block of code and ```CATCH``` any exceptions that are raised during execution.
 
+Is possible to define our own exception classes by creating a class that inherits for instance from ```CX_STATIC_CHECK```, ```CX_DYNAMIC_CHECK```, or ```CX_NO_CHECK```.
 
+Exceptions help keep method signatures clean. It is possible to return a result using the standard return parameter while still throwing exceptions alongside. This approach is preferable to using a return parameter just to indicate that an error occurred. Using exceptions for error handling allows us to defer reacting to them, meaning the CATCH statement can be used at the end of the method or even outside it. Additionally, exceptions can provide detailed information about the error through their attributes.
 
+Example of Full Exception Handling in a Program:
 
+``` ABAP
+class lcx_error definition inheriting from cx_dynamic_check.
 
+  public section.
+    interfaces if_t100_dyn_msg.
+    interfaces if_t100_message .
+
+endclass.
+
+class lcl_report definition.
+
+  public section.
+   methods constructor.
+   methods process.
+
+  private section.
+    methods raise_no_data raising lcx_error.
+    methods get_data returning value(rt_table) type table_type.
+
+endclass.
+
+class lcl_report implementation.
+
+  method constructor.
+  endmethod.
+
+  method process.
+
+    try .
+        " Code that may raise exceptions
+         lt_data = get_data( ).
+      catch lcx_error into data(lo_exp).
+         " Code to handle the exception
+        message lo_exp type 'S'.
+    endtry.
+
+  endmethod.
+
+  method raise_no_data.
+    raise exception type lcx_error message e001(MESSAGE_CLASS).
+  endmethod.
+
+   method get_data.
+
+     select *
+       from <TABLE>
+       where (...)
+     into table @rt_table.
+
+     if sy-subrc <> 0
+          clear rt_table
+          raise_no_data( ).
+      endif.
+
+  endmethod.
+
+endclass.
+
+````
+
+Non-handleable exceptions are raised only by the ABAP runtime environment, and  response to errors that cannot be handled meaningfully in a program. Non-handled exceptions produce a runtime error/dump.
 
 
 
