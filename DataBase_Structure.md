@@ -77,7 +77,7 @@ When defining tables in SAP HANA, colocation groups can be explicitly set to ens
 
 Colocation groups should be used when records in different large tables are often accessed together, so these tables should be grouped in the same colocation group to optimize access. Additionally, when parallel processing is needed, the correct use of colocation groups can reduce the number of remote accesses, further improving performance.
 
-In SAP ISU the classe `CL_FKK_COLOGRP_UTIL` can be used to determine the colocation groups from different entities, a example of the code could be: 
+In SAP IS-U, the class `CL_FKK_COLOGRP_UTIL` can be used to determine the colocation groups from different entities. When using the class `CL_FKK_COLOGRP_UTIL`, only the installation values and the values of the partner are accepted. An example of the code could be:
 
 ``` ABAP
 
@@ -105,6 +105,8 @@ In SAP ISU the classe `CL_FKK_COLOGRP_UTIL` can be used to determine the colocat
                                                          option = 'EQ'
                                                          low    = ls_cologrp-cologrp ) ).
 ```
+
+If the colocation group is already defined as a field in a table, you can access it directly and use it in queries to improve performance in operations such as data retrieval. It is important to note that creating a colocation group field in an existing table is more complex than just adding a field; it involves the creation of a script to balance the data in the database. The processor must be prepared to work with colocation group blocks.
 
 
 
