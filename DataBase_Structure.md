@@ -43,3 +43,38 @@ There are many t-code transacions that allows the sap users to visualize the dat
 "*" Same tables have a view related and that should be ajust( in SE14 ) when a table struture is changed, in order to maintain data integrity. A view is a virtual table , it does not store data itself but instead provides a way to logically combine and display data from different tables, allowing users to query, filter, and analyze data without directly modifying the underlying tables. Not every table have a view, the decision depens on the specific needs of the organization, many tables have them to improve data access, ensure consistency, maintain security, and encapsulate logic. 
 
 
+### How Is Data Stored In SAP?
+
+> [DataBase Structure in SAP](#Data_Structure) > [Content](#Content) > [This section](#hana)
+
+In this chapter we will take a look at two types of storage in SAP:
+   -Relational Database Management System(RDBMS)
+   -In-Memory Databases(IMDB)
+
+#### Relational Database Management System(RDBMS)
+
+Some popular RDBMS platforms include Oracle Database, MySQL, Microsoft SQL Server, PostgreSQL, and IBM Db2.
+
+In an RDBMS, tables are stored on disk, with each table included in a single database schema and assigned to a particular tablespace or partition for storage. Tables store data in rows or columns, depending on the database design.  RDBMS follows traditional relational database concepts, where relationships between tables are defined using primary and foreign keys, enabling structured data storage and efficient querying.
+
+
+#### In-Memory Databases(IMDB)
+
+SAP HANA uses an in-memory database (IMDB), which means that data is primarily stored in the system's main memory (RAM) rather than on disk, with changes written back to disk at the end of the process. This allows for much faster data access and processing. In SAP HANA, tables are stored in a columnar format, and large tables can be partitioned across multiple nodes/servers, enabling parallel processing and scalability.
+
+However, if partitions are spread widely across multiple nodes, cross-node operations can slow down performance. Colocating related tables on the same node reduces the overhead of these operations. This is where colocation groups become important.
+
+When you create tables without specifying colocation groups, SAP HANA distributes them across the available nodes based on its internal algorithms. This distribution is generally aimed at balancing load and optimizing resource usage. While tables can still be partitioned, without defined colocation groups, there is no guarantee that related data will be stored on the same node.
+
+
+### Colocation Groups
+
+> [DataBase Structure in SAP](#Data_Structure) > [Content](#Content) > [This section](#cc)
+
+When defining tables in SAP HANA, colocation groups can be explicitly set to ensure that certain tables reside on the same physical node or partition. This ensures that related tables, which frequently join or reference each other, remain physically close, improving performance by minimizing cross-node communication.
+
+Colocation groups should be used when records in different large tables are often accessed together, so these tables should be grouped in the same colocation group to optimize access. Additionally, when parallel processing is needed, the correct use of colocation groups can reduce the number of remote accesses, further improving performance.
+
+
+
+
