@@ -39,6 +39,11 @@ This project came up as a result of my desire to deepen my knowledge of SAP ABAP
     - Colocation Groups
     - Performance Considerations
 -  [Trace Analysis in SAP](Trace_Analysis.md):
+    - Introduction
+    - SQL Trace VS ABAP Runtime Trace
+    - Overview Of Trace T_Codes
+    - Single Transaction Analysis (ST12)
+    - Trace analysis( analyzing SQL Trace and ABAP Trace )
 
  
 
