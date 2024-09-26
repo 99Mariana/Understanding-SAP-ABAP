@@ -4,14 +4,22 @@
 
 -  [Trace Analysis in SAP](Trace_Analysis.md):
     - [Introduction](#introduction)
-    - [Overview Of Trace T_Codes](#t_codes)
     - [SQL Trace VS ABAP Runtime Trace](#sql_abap)
+    - [Overview Of Trace T_Codes](#t_codes)
     - [Single Transaction Analysis (ST12)](#st12)
+    - [Trace analysis](#analysis)
+      - SQL Trace
+      - ABAP Trace
 
 ### Introduction
 
 > [Trace Analysis in SAP](#Trace_Analysis_in_SAP) > [Content](#content) > [This section](#introduction)
+
 .....
+
+### SQL Trace VS ABAP Runtime Trace
+
+> [Trace Analysis in SAP](#Trace_Analysis_in_SAP) > [Content](#content) > [This section](#sql_abap)
 
 ### Overview of Trace T-Codes
 
@@ -25,14 +33,9 @@
 | **ST12** | Combined (ABAP & SQL) | End-to-end analysis of ABAP and SQL interactions | Full transaction analysis to find whether ABAP code or SQL queries are causing performance issues |
 
 
-### SQL Trace VS ABAP Runtime Trace
-
-> [Trace Analysis in SAP](#Trace_Analysis_in_SAP) > [Content](#content) > [This section](#sql_abap)
-
-
-
-
 ### Single Transaction Analysis (ST12)
+
+> [Trace Analysis in SAP](#Trace_Analysis_in_SAP) > [Content](#content) > [This section](#st12)
 
 In the image bellow we can see the structure of the transaction ST12 
     ![image](https://github.com/user-attachments/assets/0bdb06f4-572e-4674-baf2-3c97c8f9027b)
@@ -40,8 +43,6 @@ In the image bellow we can see the structure of the transaction ST12
 Now we will take a deeper look on these analysis of the different trace parameters.
 
 #### Traces For
-
-> [Trace Analysis in SAP](#Trace_Analysis_in_SAP) > [Content](#content) > [This section](#st12)
 
 ST12 trace can be captured for “User/Tasks”, “Work Process”, “Current Mode” and “For a Schedule”.
 
@@ -64,4 +65,14 @@ ST12 trace can be captured for “User/Tasks”, “Work Process”, “Current 
 #### Type of Trace  
 
  In the lower part of the screen you define the measurement scope. The left part is for the ABAP trace (equivalent to the transaction SE30) and the right part for the Performance Trace (equivalent to the transaction ST05).
+
+
+### Trace analysis
+
+> [Trace Analysis in SAP](#Trace_Analysis_in_SAP) > [Content](#content) > [This section](#analysis)
+
+#### SQL Trace
+
+
+#### ABAP Trace
 
