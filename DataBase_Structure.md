@@ -6,8 +6,8 @@
     - [Introduction](#Introduction)
     - [Tables T_Codes](#t-codes)
     - [How Is Data Stored?](#hana)
-      - Relational Database Management System(RDBMS)
-      - In-Memory Databases(IMDB)
+      - Relational Database Management System (RDBMS)
+      - In-Memory Databases (IMDB)
     - [Colocation Groups](#cc)
     - [Queries in SAP](#Query)
  
