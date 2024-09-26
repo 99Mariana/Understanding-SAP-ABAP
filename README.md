@@ -35,8 +35,8 @@ This project came up as a result of my desire to deepen my knowledge of SAP ABAP
 -  [DataBase Structure in SAP](DataBase_Structure.md):
     - Introduction
     - Tables T_Codes
-    - How Is Data Stored In SAP HANA?
-    - Colocation Groups ( What are them?, When Use them?, Why Use them? )
+    - How Is Data Stored? ( RDBMS, IMDB )
+    - Colocation Groups 
     - Queries in SAP
  
 
