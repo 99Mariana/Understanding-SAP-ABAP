@@ -4,11 +4,12 @@
 
 -  [Trace Analysis in SAP](Trace_Analysis.md):
     - [Introduction](#introduction)
-    - [Trace T_Codes](#t_codes)
+    - [Overview Of Trace T_Codes](#t_codes)
+    - [Single Transaction Analysis (ST12)](#st12)
 
  
 
-### Trace T_Codes
+### Overview of Traces T-Codes
 
 > [Trace Analysis in SAP](#Trace_Analysis_in_SAP) > [Content](#content) > [This section](#t_codes)
 
@@ -20,9 +21,9 @@
 | **ST12** | Combined (ABAP & SQL) | End-to-end analysis of ABAP and SQL interactions | Full transaction analysis to find whether ABAP code or SQL queries are causing performance issues |
 
 
-### Select Statement
+### Single Transaction Analysis (ST12)
 
-> [Data Selection Process](#Data_Selection_Process) > [Content](#content) > [This section](#select-statement)
+> [Trace Analysis in SAP](#Trace_Analysis_in_SAP) > [Content](#content) > [This section](#st12)
 
-> ![image](https://github.com/user-attachments/assets/0bdb06f4-572e-4674-baf2-3c97c8f9027b)
+![image](https://github.com/user-attachments/assets/0bdb06f4-572e-4674-baf2-3c97c8f9027b)
 
