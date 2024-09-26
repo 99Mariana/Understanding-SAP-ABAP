@@ -3,7 +3,7 @@
 ## Content
 
 -  [Trace Analysis in SAP](Trace_Analysis.md):
-    - [Introdution](#introduction)
+    - [Introduction](#introduction)
     - [Trace T_Codes](#t_codes)
 
  
