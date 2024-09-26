@@ -1,8 +1,8 @@
-# DataBase Structure in SAP
+# Database Structure in SAP
 
 ## Content
 
--  [DataBase Structure in SAP](DataBase_Structure.md):
+-  [Database Structure in SAP](DataBase_Structure.md):
     - [Introduction](#Introduction)
     - [Tables T_Codes](#t-codes)
     - [How Is Data Stored?](#hana)
