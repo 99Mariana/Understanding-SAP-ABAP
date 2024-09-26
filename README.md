@@ -36,6 +36,7 @@ This project came up as a result of my desire to deepen my knowledge of SAP ABAP
     - Introduction
     - Tables T_Codes
     - How Is Data Stored? ( RDBMS, IMDB )
-    - Colocation Groups 
+    - Colocation Groups
+    - Performance Considerations
  
 
