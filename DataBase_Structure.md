@@ -9,6 +9,7 @@
       - Relational Database Management System (RDBMS)
       - In-Memory Databases (IMDB)
     - [Colocation Groups](#cc)
+    - [Performance Considerations](#performance)
  
 
 ### Introduction
@@ -108,6 +109,18 @@ In SAP IS-U, the class `CL_FKK_COLOGRP_UTIL` can be used to determine the coloca
 If the colocation group is already defined as a field in a table, you can access it directly and use it in queries to improve performance in operations such as data retrieval.
 
 It is important to note that creating a colocation group field in an existing table is more complex than just adding a field, it involves the creation of a script to balance the data in the database. The processor must be prepared to work with colocation group blocks.
+
+### Performance Considerations
+
+> [DataBase Structure in SAP](#Data_Structure) > [Content](#Content) > [This section](#performance)
+
+Like we see in the sections above the colocations can be very usefull in SAP ABAP programming, resulting in better performance. 
+Some considerations to have related of colocation groups are: 
+
+- Co-locate frequently joined tables on the same node whenever possible.
+- Large tables are often partitioned across multiple nodes; avoid joining these tables. Instead, access the tables individually and join the results in ABAP.
+- Identify the colocation groups of the records and use them in the `WHERE` clause whenever possible.
+- When constructing a parallel process, consider dividing the input data based on the colocation groups.
 
 
 
