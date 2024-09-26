@@ -79,7 +79,7 @@ Colocation groups should be used when records in different large tables are ofte
 
 In SAP ISU the classe `CL_FKK_COLOGRP_UTIL` can be used to determine the colocation groups from different entities, a example of the code could be: 
 
-```` SAP ABAP
+``` ABAP
 
   types:begin of ty_val,
              nr type nrfrom,
@@ -104,7 +104,7 @@ In SAP ISU the classe `CL_FKK_COLOGRP_UTIL` can be used to determine the colocat
       ro_colgr = value #( for ls_cologrp in lt_cologrp ( sign   = 'I'
                                                          option = 'EQ'
                                                          low    = ls_cologrp-cologrp ) ).
-````
+```
 
 
 
