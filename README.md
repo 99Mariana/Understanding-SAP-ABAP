@@ -32,7 +32,7 @@ This project came up as a result of my desire to deepen my knowledge of SAP ABAP
     - Transaction Handling in ABAP ( COMMIT; ROLLBACK )
     - Error Handling ( Messages; Exceptions )
     - Data Transfer Techniques ( CALL FUNCTION (RFC); SUBMIT; CALL TRANSACTION )
--  [DataBase Structure in SAP](DataBase_Structure.md):
+-  [Database Structure in SAP](Database_Structure.md):
     - Introduction
     - Tables T_Codes
     - How Is Data Stored? ( RDBMS, IMDB )
