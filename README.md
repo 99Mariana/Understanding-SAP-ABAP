@@ -44,6 +44,7 @@ This project came up as a result of my desire to deepen my knowledge of SAP ABAP
     - Overview Of Trace T_Codes
     - Single Transaction Analysis (ST12)
     - Trace Analysis ( Analyzing SQL Trace and ABAP Trace )
+    - Important Considerations
 
  
 
