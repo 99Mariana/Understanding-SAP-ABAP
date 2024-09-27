@@ -125,3 +125,18 @@ For each line three functions are possible:
 
 #### ABAP Trace
 
+The ABAP trace is a highly valuable analysis tool within the ST12 trace framework. It offers a top-down view of program/transaction, along with a functional time distribution of the process. This trace outlines the hierarchical sequence in which the call statements are executed. 
+
+The most important information on this screen is the total runtime, that is shown over the three categories ABAP, Database and System.
+
+![abap trace](https://github.com/user-attachments/assets/4d84be21-0d22-4d5a-9a84-154ebb600c44)
+
+System and database may be very small, or even zero. Typically if system time is 10% is considered already too large, and for the database, 50% is quite large. A ratio of 20 to 40% for database is desirable. The reason why database time should be significantly higher than ABAP time is that after data retrieval from the database, some processing is required on those records.
+
+The ABAP trace has two different views: "Per Call View" and "Per Mod Unit".
+
+In the table resulting from an ABAP trace, the Gross Time (total time required for the operation, including the time for related sub-operations) and the Net Time (total time required for the operation, excluding the time for sub-operations), and the correspondent program where the operation is included, are shown. It is useful to sort the ABAP trace table by Net(%) in ascending order to analyze the operations that require more time to execute.
+
+
+
+
