@@ -21,6 +21,13 @@
 
 > [Trace Analysis in SAP](#Trace_Analysis_in_SAP) > [Content](#content) > [This section](#sql_abap)
 
+There are two main types of trace: the SQL Trace and the ABAP Runtime Trace. In this section, we will take a closer look at each of these types and analyze their differences, main purposes, scope, and when to use them.
+
+**SQL Trace**: This tool is designed to analyze the performance of interactions between ABAP and the database. Through this type of trace, it is possible to identify bottlenecks in SQL execution. SQL Traces are triggered by an ABAP program or transaction and cover statements such as `SELECT`, `INSERT`, `UPDATE`, and `DELETE`. SQL trace logs typically detail the time taken for each SQL statement, the database tables accessed, and the number of records fetched or modified. This type of trace is very useful for SQL optimization, as it helps identify redundant queries or poorly indexed tables.
+
+**ABAP Runtime Trace**: Its main focus is analyzing performance at the ABAP level. Through this type of trace, it is possible to measure the execution time and memory consumption of ABAP programs or transactions. ABAP Runtime Traces are useful for identifying bottlenecks in ABAP code, such as expensive statements (`LOOPs`, function calls, etc.) and procedures that consume the most processing time.
+
+
 ### Overview of Trace T-Codes
 
 > [Trace Analysis in SAP](#Trace_Analysis_in_SAP) > [Content](#content) > [This section](#t_codes)
