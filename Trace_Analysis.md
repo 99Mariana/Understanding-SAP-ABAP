@@ -104,10 +104,11 @@ The main information to analyze here is the following columns:
 - **Statement String with Placeholders**: This shows the statement under analysis.
 
 For each line three functions are possible: 
- 
+    
   ![image](https://github.com/user-attachments/assets/7a529fa1-ed4b-4faf-9f04-9cfba0f76eef)
 
 - **Statement Details**: This section shows the statement details, such as the actual values and the time for each execution.  
+
   ![sql detail](https://github.com/user-attachments/assets/63eae17b-f6e0-4b0d-b16b-522a0dcc20a8)
 
 - **Explain**: This shows the SQL statement as it is sent to the database, along with the execution plan used by the database.
