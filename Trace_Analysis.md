@@ -48,34 +48,36 @@ There are two main types of trace: the SQL Trace and the ABAP Runtime Trace. In 
 
 > [Trace Analysis in SAP](#Trace_Analysis_in_SAP) > [Content](#content) > [This section](#st12)
 
-In the image bellow we can see the structure of the transaction ST12 
-    ![image](https://github.com/user-attachments/assets/0bdb06f4-572e-4674-baf2-3c97c8f9027b)
+First of all, to better understand the features of the ST12, we will explore its structure and the main options available. In the image below, we can see the structure of the ST12 transaction.
 
-Now we will take a deeper look on these analysis of the different trace parameters.
+  ![Captura de ecrã 2024-09-27 142208](https://github.com/user-attachments/assets/53ed5209-1e91-4d87-9b17-c68f30b8c399)
 
-#### Traces For
+As shown in the image, we can divide the ST12 into three sections:
+
+- **Record the trace** – In this section, we define the parameters that will dictate the target object of evaluation.
+- **Define the measurement** – Define the measurement scope and technical parameters to be considered in the ABAP trace and SQL trace.
+- **Analyze and manage the traces** – Collect the traces for further analysis.
 
 ST12 trace can be captured for “User/Tasks”, “Work Process”, “Current Mode” and “For a Schedule”.
 
-- **User/Tasks:** allows the developer to select a User for whom the trace is to be captured and a task for which the trace is to be captured. Task can vary from Dialog, batch etc. Selecting * in Tasks indicate all the tasks will be captured.
+- **User/Tasks:** allows the developer to select a User for whom the trace is to be captured, apart of the task for which the trace is to be captured( Dialog, batch ...)
+
+   ![image](https://github.com/user-attachments/assets/f296a854-ade3-4b64-aa41-f5d3e38f612b)
+
   
-  ![image](https://github.com/user-attachments/assets/8306add5-12f3-489a-9d8e-cc4d6c2691e7)
+- **Workprocess:** allows to select the server for which the trace is to be captured, if this is not specified all the servers will be captured.
   
-- **Workprocess:** allows to select the server for which the trace is to be captured. In general all the servers will be captured when not specified.
-  
-  ![image](https://github.com/user-attachments/assets/8f9810de-07dd-49ef-8495-e3e5dfc8ed17)
+   ![image](https://github.com/user-attachments/assets/ce16c435-26e9-43f9-9b80-6584b179b234)
+
 
 - **Current Mode:** option is used trace the flow of a Transaction or a Program
   
-  ![image](https://github.com/user-attachments/assets/d7360613-3af5-403a-b61c-5bb3b26e2b96)
+  ![image](https://github.com/user-attachments/assets/05dbba94-add4-4ca0-8e04-613298f8aa93)
 
-- **Schedule:** option is used to run the trace for a batch job for a varied selection criterion as Job name, User name, Program associated with the Job.
 
-  ![image](https://github.com/user-attachments/assets/481b80cb-712d-4c66-9b2a-afd9629872e1)
+- **Schedule:** option is used to run the trace for a batch job for a varied selection criterion as Job name, User name, Program associated with the Job. Is also possible to define the timeframe with parameters such as the maximum duration, the check interval or the start delay of the trace schedule. Note that in this window is also to schedule a trace for Workprocess or for User/Tasks. 
 
-#### Type of Trace  
-
- In the lower part of the screen you define the measurement scope. The left part is for the ABAP trace (equivalent to the transaction SE30) and the right part for the Performance Trace (equivalent to the transaction ST05).
+  ![image](https://github.com/user-attachments/assets/f7eabdea-0405-409a-9148-3b317a412489)
 
 
 ### Trace analysis
@@ -83,6 +85,41 @@ ST12 trace can be captured for “User/Tasks”, “Work Process”, “Current 
 > [Trace Analysis in SAP](#Trace_Analysis_in_SAP) > [Content](#content) > [This section](#analysis)
 
 #### SQL Trace
+
+In the following image, we can see a typical output for a SQL Trace. 
+
+![sql](https://github.com/user-attachments/assets/9a3bb627-2645-4c3a-bc3b-cfd0f949898f)
+
+The main information to analyze here is the following columns:
+
+- **Executions**: This shows how many times this statement was executed.
+- **Redundant#**: This indicates the number of executions that are redundant. If the number is greater than 0, it means that some executions are unnecessary because they perform the same function as previous executions.
+- **Identical%**: This corresponds to the percentage of records obtained that are identical between executions.
+- **Duration**: This is the total execution time of the statement.
+- **Records**: This is the total number of records handled in the statement.
+- **Time/Exec**: This represents the average time per execution.
+- **Rec/Exec**: This indicates the average number of records handled in each execution.
+- **BfTp**: This refers to the buffer type.
+- **Table Name**: This indicates the target tables of the SQL statement.
+- **Statement String with Placeholders**: This shows the statement under analysis.
+
+For each line three functions are possible: 
+ 
+  ![image](https://github.com/user-attachments/assets/7a529fa1-ed4b-4faf-9f04-9cfba0f76eef)
+
+- **Statement Details**: This section shows the statement details, such as the actual values and the time for each execution.  
+  ![sql detail](https://github.com/user-attachments/assets/63eae17b-f6e0-4b0d-b16b-522a0dcc20a8)
+
+- **Explain**: This shows the SQL statement as it is sent to the database, along with the execution plan used by the database.
+- **Table Info**: This provides useful information about the table, including its structure and technical settings.
+
+#### Methodology to analyze a SQL trace
+
+1- **Sort by Duration**- The trace normaly is displayed by the order of execution of the statement, sort the lines for duration in descending way can be very useful for identify the statements that are require more time. 
+
+2- **Check for Expensive Statements**-  Ensure that the SQL queries are fetching only the required data, whether indexes are missing, or the query itself can be optimized.
+
+3- **Check the Redundant SQL Calls**- if the Redundant# parameters is greater than 0, the statement is being executed multiple times unnecessarily. This can be avoid by restructuring the logic.
 
 
 #### ABAP Trace
