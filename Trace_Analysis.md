@@ -10,6 +10,7 @@
     - [Trace analysis](#analysis)
       - SQL Trace
       - ABAP Trace
+    - [Important Considerations](#imp)
 
 ### Introduction
 
@@ -139,7 +140,19 @@ In the table resulting from an ABAP trace, the Gross Time (total time required f
 
  ![abap_trace](https://github.com/user-attachments/assets/66c71a84-5cc4-46ef-b3b3-3fe24c5462ea)
 
-It is useful to sort the ABAP trace table by Net(%) in ascending order to analyze the operations that require more time to execute, and then try to analyze some way to optimize this operation.
+It is useful to sort the ABAP trace table by Net(%) in ascending order to analyze the operations that require more time to execute, and then try to analyze some way to optimize this operation. 
+
+### Important Considerations
+
+> [Trace Analysis in SAP](#Trace_Analysis_in_SAP) > [Content](#content) > [This section](#imp)
+
+The importance of the trace and perfomance analyses are unquestionable. However is important to have some consideractions in account before start one of this process. 
+
+Before making any changes, it is important to understand the process that is being assessed and how it can be tested. Ensure that there is quality data available to allow the entire process to be executed effectively. Keep in mind that a trace should be planned for a program that handles a large amount of data; the more data processed, the more reliable the trace results will be for analysis. 
+
+As we seen in previous sections, Traces can be a very useful tool for identifying improvement points. It is important that even when a developer knows some specific points that can be improved without any initial trace realized, this initial trace should still be made. It will serve as an important reference for future traces, planned after the changes are implemented, and will allow us to measure the impact of these changes on overall process performance.
+
+
 
 
 
