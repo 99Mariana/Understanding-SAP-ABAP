@@ -5,5 +5,7 @@
 
 - [SAP Enhancements](SAP_Enhancements.md):
     - [What is a SAP Enhancement?](#what)
+    - [Types of Enhancement Techniques](#types)
     - [User Exits](#Exits)
-    - [BADIs](#Badis)
+    - [Business add-ins (BADIs)](#Badis)
+
