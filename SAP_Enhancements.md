@@ -37,6 +37,9 @@ All explicit enhancement options and all enhancement implementation elements mus
    ![image](https://github.com/user-attachments/assets/171380ba-eca1-4236-8e85-c521a4dc7394)
 
 
+When an enhancement is created the respective container have to be create first, and in a similar way a Badi not exist independently, they are part of an enhancement spot
+
+
 
 
 
