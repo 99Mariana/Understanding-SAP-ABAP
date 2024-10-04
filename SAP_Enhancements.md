@@ -44,7 +44,7 @@ When an enhancement is created the respective container have to be create first,
 
 > [SAP Enhancements](#SAP_Enhancements) > [Content](#content) > [This section](#types)
 
-There are diffent types of enhancement techinques:
+There are different types of enhancement techinques:
 
 - **User-Exit** - These are predefined locations in SAP's standard code where custom code can be inserted, implemented as subroutines. To find a user exit, first identify the main program of the transaction code using SE93. Then, go to the program's hierarchy and navigate to the subroutines section, where you'll find all available user exits. Note that a **User-Exit** is considered a modification, not an enhancement, because it involves changing the existing code.
 
