@@ -51,7 +51,7 @@ There are different types of enhancement techinques:
 
 - **Customer-Exit** -  Are created for specific programs, screens, and menus within standard SAP applications, and allow developers to enhance the SAP standard objects without modifying SAP Object itself. They are created/viewed on t-codes: CMOD/SMOD.
 
-- **Business Transaction Events (BTEs)** - BTEs allow you to attach additional components, such as function modules, in a reusable way. Unlike Customer-Exits, BTEs support multiple types of additional logic by providing an interface that can be used flexibly.
+- **Business Transaction Events (BTEs)** - BTEs allow you to attach additional components, such as function modules, in a reusable way. Unlike Customer-Exits, BTEs support multiple types of additional logic by providing an interface that can be used flexibly. Is basically developed for FI module. There are 2 types of BTE interface: Process Interface and Publish and subscribe interface. Is possible to find both in T-code – FIBF
 
 - **Business Add-Ins (BAdIs)** - BAdIs are object-oriented enhancements that allow you to implement custom logic within standard SAP applications. They support multiple implementations with limited filter options, providing a more flexible enhancement method than traditional exits.
 
@@ -79,13 +79,26 @@ For add code in the user exits is required to create a block of rows like we can
 Customer exit as we see before, is a type of SAP enhancement that allow develops to enhance the SAP standard objects without modifying SAP Object itself.
 
 There are four type of customer exit:
-1. Functional Exit -  Here we use the statement Call customer-function, develops to enhance the SAP standard program without modifying SAP Object. Since the custom code written for these Customer-Exits is separated from the original SAP code, maintenance is easier compared to User-Exits.
-2. Menu Exit - Provides an option to the customer/user to enhance the menu option on the standard screen. We can see an example of it on: https://sapcodes.com/2015/11/20/menu-exit/
-3. Screen Exit - It allows the user to add fields to a screen in the SAP program via sub-screen which is called within standard screen’s flow logic. We can see an example of it on: https://sapcodes.com/2015/11/20/screen-exit-me21nme22nme23n-header/
-4. Field Exit - Allows for instance to update the description of this standard data element. We can see an example of it on: https://sapcodes.com/2015/11/20/field-exit/
+1. **Functional Exit** -  Here we use the statement ```CALL CUSTOMER-FUNCTION i program```, develops to enhance the SAP standard program without modifying SAP Object. Since the custom code written for these Customer-Exits is separated from the original SAP code, maintenance is easier compared to User-Exits. Is important to notice that the exits already exist, there are created by SAP, in order to be possible to modify and add custom code is required to activit the function module exit.  See an example in: https://sapcodes.com/2015/11/20/function-module-exit/
+   
+2. **Menu Exit** - Provides an option to the customer/user to enhance the menu option on the standard screen. See an example of it on: https://sapcodes.com/2015/11/20/menu-exit/
+
+3. **Screen Exit** - It allows the user to add fields to a screen in the SAP program via sub-screen which is called within standard screen’s flow logic. See an example of it on: https://sapcodes.com/2015/11/20/screen-exit-me21nme22nme23n-header/
+   
+4. **Field Exit** - Allows for instance to update the description of this standard data element. See an example of it on: https://sapcodes.com/2015/11/20/field-exit/
+
 
 All Enhancements provided by SAP stored in the table: MODSAP.
 ![image](https://github.com/user-attachments/assets/8538f710-d1c0-4c2f-9a82-2ed0a64b7dec)
+
+
+### Business add-ins (BADIs)
+
+> [SAP Enhancements](#SAP_Enhancements) > [Content](#content) > [This section](#Badis)
+
+
+
+
 
 
 
