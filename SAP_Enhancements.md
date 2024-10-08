@@ -9,7 +9,7 @@
     - [Types of Enhancement Techniques](#types)
     - [User Exits](#Exits)
     - [Customer Exits](#customer)
-    - [Business add-ins (BADIs)](#Badis)
+    - [Business Add-Ins (BADIs)](#Badis)
  
 
 ### What is a SAP Enhancement?
@@ -92,7 +92,7 @@ All Enhancements provided by SAP stored in the table: MODSAP.
 ![image](https://github.com/user-attachments/assets/8538f710-d1c0-4c2f-9a82-2ed0a64b7dec)
 
 
-### Business add-ins (BADIs)
+### Business Add-Ins (BADIs)
 
 > [SAP Enhancements](#SAP_Enhancements) > [Content](#content) > [This section](#Badis)
 
