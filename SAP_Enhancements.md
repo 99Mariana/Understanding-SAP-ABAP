@@ -57,6 +57,12 @@ There are different types of enhancement techinques:
 
 - **Business Add-Ins (BAdIs)** - BAdIs are object-oriented enhancements that allow you to implement custom logic within standard SAP applications. They support multiple implementations with limited filter options, providing a more flexible enhancement method than traditional exits.
 
+The flow of execution is considered to be:
+    1. Standard Program runs.
+    2. User Exits/Customer Exits are triggered.
+    3. BAdIs are executed at their defined points.
+    4. Implicit/Explicit Enhancements are triggered next.
+    5. Modifications (if any) are executed as part of the overall code flow.
 
 
 ### User Exits
