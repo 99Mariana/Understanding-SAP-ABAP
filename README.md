@@ -47,8 +47,11 @@ This project came up as a result of my desire to deepen my knowledge of SAP ABAP
     - Important Considerations
 - [SAP Enhancements](SAP_Enhancements.md):
     - What is a SAP Enhancement?
+    - Enhancement Framework
+    - Types of Enhancement Techniques
     - User Exits
-    - BADIs
+    - Customer Exits
+    - Business Add-Ins (BADIs)
 
 
  
