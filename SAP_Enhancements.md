@@ -37,6 +37,8 @@ All explicit enhancement options and all enhancement implementation elements mus
 
    ![image](https://github.com/user-attachments/assets/171380ba-eca1-4236-8e85-c521a4dc7394)
 
+   https://mayankchourasia2.medium.com/enhancement-in-sap-abap-55d6242825b3
+
 
 When an enhancement is created the respective container have to be create first, and in a similar way a Badi not exist independently, they are part of an enhancement spot. 
 
@@ -79,14 +81,17 @@ For add code in the user exits is required to create a block of rows like we can
 Customer exit as we see before, is a type of SAP enhancement that allow develops to enhance the SAP standard objects without modifying SAP Object itself.
 
 There are four type of customer exit:
-1. **Functional Exit** -  Here we use the statement ```CALL CUSTOMER-FUNCTION i program```, develops to enhance the SAP standard program without modifying SAP Object. Since the custom code written for these Customer-Exits is separated from the original SAP code, maintenance is easier compared to User-Exits. Is important to notice that the exits already exist, there are created by SAP, in order to be possible to modify and add custom code is required to activit the function module exit.  See an example in: https://sapcodes.com/2015/11/20/function-module-exit/
+
+1. **Field Exit** - Allows for instance to update the description of this standard data element. See an example of it on: https://sapcodes.com/2015/11/20/field-exit/
    
-2. **Menu Exit** - Provides an option to the customer/user to enhance the menu option on the standard screen. See an example of it on: https://sapcodes.com/2015/11/20/menu-exit/
+2. **Menu Exit** - Provides an option to the customer/user to enhance the menu option on the standard screen. Sap creates menu exist by definning special menu items in the menu painter. these special entries have function codes that begin with "+". See an example of it on: https://sapcodes.com/2015/11/20/menu-exit/
+https://www.youtube.com/watch?v=PH4GCn6xquk
 
 3. **Screen Exit** - It allows the user to add fields to a screen in the SAP program via sub-screen which is called within standard screen’s flow logic. See an example of it on: https://sapcodes.com/2015/11/20/screen-exit-me21nme22nme23n-header/
-   
-4. **Field Exit** - Allows for instance to update the description of this standard data element. See an example of it on: https://sapcodes.com/2015/11/20/field-exit/
 
+4. **Functional Exit** -  Here we use the statement ```CALL CUSTOMER-FUNCTION i program```, develops to enhance the SAP standard program without modifying SAP Object. Since the custom code written for these Customer-Exits is separated from the original SAP code, maintenance is easier compared to User-Exits. Is important to notice that the exits already exist, there are created by SAP, in order to be possible to modify and add custom code is required to activit the function module exit. See an example in: https://sapcodes.com/2015/11/20/function-module-exit/
+
+Function module exits play a role in menu and screen exits. When a  new menu item is added the actions are defined  in the function module. In a similar way data flow between standard programs and screen exit fields are controled thought the funcition modules. 
 
 All Enhancements provided by SAP stored in the table: MODSAP.
 ![image](https://github.com/user-attachments/assets/8538f710-d1c0-4c2f-9a82-2ed0a64b7dec)
@@ -95,6 +100,18 @@ All Enhancements provided by SAP stored in the table: MODSAP.
 ### Business Add-Ins (BADIs)
 
 > [SAP Enhancements](#SAP_Enhancements) > [Content](#content) > [This section](#Badis)
+
+BAdIs (Business Add-Ins) are a more modern and flexible mechanism for improving SAP programs by allowing developers to define their own custom methods and properties to extend the functionality of SAP programs.
+
+It can be implemented several times, and each implementation can be activated or deactivated selectively depending on certain conditions.
+Examples of when using BAdIs include adding custom fields to a standard SAP screen or modifying the behavior of a standard SAP function module.
+
+Each BAdI has: at least on badi definition, a badi interface( with 'IF_' inserted in the first characters of the badi name) and a class ( with 'CL_' inserted in the first characters of the badi name) that implements the interface. 
+
+Some step by step important information are shared here, take a look: 
+https://sapcodes.com/enhancements/
+
+In the t-code SE18, you can create news BAdI implementations, activate/deactivate or delete them.
 
 
 
