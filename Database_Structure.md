@@ -1,6 +1,6 @@
-# Database Structure in SAP
+# [DataBase Structure in SAP](#Data_Structure)
 
-## Content
+## [Content](#Content)
 
 -  [Database Structure in SAP](DataBase_Structure.md):
     - [Introduction](#Introduction)
