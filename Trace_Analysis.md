@@ -1,6 +1,6 @@
-# Trace Analysis in SAP
+# [Trace Analysis in SAP](#Trace_Analysis_in_SAP)
 
-## Content
+## [Content](#content)
 
 -  [Trace Analysis in SAP](Trace_Analysis.md):
     - [Introduction](#introduction)
