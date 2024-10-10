@@ -2,7 +2,7 @@
 
 ## [Content](#Content)
 
--  [Data Handling Process](#Data_Handling_Process):
+-  [Data Handling Process]:
     - [Introduction](#Introduction)
     - [Handling Data in Database Tables](#sap_tables)
       - Process Description
