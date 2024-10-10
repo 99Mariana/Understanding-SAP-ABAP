@@ -52,6 +52,7 @@ This project came up as a result of my desire to deepen my knowledge of SAP ABAP
     - User Exits
     - Customer Exits
     - Business Add-Ins (BADIs)
+- [SAP Mass Data Processing vs Dynamic Job Launching](Mass_Activity.md)
 
 
  
