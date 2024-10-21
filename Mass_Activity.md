@@ -41,16 +41,20 @@ In order to execute a mass activity the following steps must be followed:
 
 ![image](https://github.com/user-attachments/assets/3fd17950-8241-42ba-b7a7-04dc4ec1ff33)
 
-3- Interval Creation, or parallelization of objects. The parallelization can be dynamic or statistic. In the Dynamic parallelization objects, the creation of the intervals is doing during the execution od the mass activity , the system adapt to the workload and resources in real time, adjusting the intervals as needed for optimal performance. In the Statistic parallelization objects, report RFKKDI01 needs to be scheduled before execution of mass activity (daily). For each combination of Object and Variant a standard variant needs to be created.The size of an interval determines how many objects will be included in one interval.
+3- Interval Creation or Parallelization of Objects: Parallelization can be either dynamic or static. In dynamic parallelization, the creation of intervals occurs during the execution of the mass activity. The system adapts to the workload and available resources in real-time, adjusting the intervals as needed for optimal performance. In static parallelization, report RFKKDI01 must be scheduled before the execution of the mass activity (daily). A standard variant needs to be created for each combination of object and variant. The size of an interval determines how many objects will be included within that interval.
 
-4- Definition of technical settings. That include the definition of the number of the jobs executed in parallel and the interval of records allocated. The split is controlled by variants in which you can specify the number and size of the intervals, and which key area each interval covers. The block size controls how many selected items are held in the main memory. In a automatic load distribution, that mean that the target host is not specified, the system distributes the number of jobs defined by the application servers available. In the Explicit Load Distribution method you can define the target host by the execution of the jobs. 
+4- Definition of Technical Settings: This includes defining the number of jobs executed in parallel and the allocation of record intervals. The split is controlled by variants, where you can specify the number and size of intervals, and which key area each interval covers. The block size controls how many selected items are kept in the main memory. In automatic load distribution (where the target host is not specified), the system distributes the number of jobs across the available application servers. In the explicit load distribution method, you can specify the target host for the execution of the jobs.
 
 ![image](https://github.com/user-attachments/assets/5c1a5754-5bb4-4e0b-bd24-5178ca02f8ba)
 
-5- Log analysis: The job log records status information and any errors that occur during the program run. Some ajustements can be done in the application logs, for example, is possible to determine the importance a message must have to be output in the application log by a specification in the field Problem Class. Another feature related is the expiry date, that specifies the earliest date on which the log expires, and is relevant because from the application log, you can schedule jobs, and delete logs where the expiry date has been reached from the database.
-The application logs are displayed in Enhanced Message Management (transaction EMMA). There you can create and monitor clarification cases for error messages. 
+5 - Log Analysis: The job log records status information and any errors that occur during the program run. Some adjustments can be made in the application logs. For example, it is possible to determine the importance a message must have to be included in the application log by specifying the **Problem Class** field. Another related feature is the **expiry date**, which specifies the earliest date on which the log can expire. This is important because from the application log, you can schedule jobs and delete logs from the database once the expiry date has been reached.
+
+   The application logs are displayed in **Enhanced Message Management** (transaction EMMA), where you can create and monitor clarification cases for error messages.
 
 ![image](https://github.com/user-attachments/assets/7bc15cd3-d360-4f25-8d1d-7421097cc1b0)
+
+
+
 
 
 
