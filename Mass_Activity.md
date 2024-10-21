@@ -41,6 +41,16 @@ In order to execute a mass activity the following steps must be followed:
 
 ![image](https://github.com/user-attachments/assets/3fd17950-8241-42ba-b7a7-04dc4ec1ff33)
 
+3- Interval Creation, or parallelization of objects. The parallelization can be dynamic or statistic. In the Dynamic parallelization objects, the creation of the intervals is doing during the execution od the mass activity , the system adapt to the workload and resources in real time, adjusting the intervals as needed for optimal performance. In the Statistic parallelization objects, report RFKKDI01 needs to be scheduled before execution of mass activity (daily). For each combination of Object and Variant a standard variant needs to be created.The size of an interval determines how many objects will be included in one interval.
+
+4- Definition of technical settings. That include the definition of the number of the jobs executed in parallel and the interval of records allocated. The split is controlled by variants in which you can specify the number and size of the intervals, and which key area each interval covers. The block size controls how many selected items are held in the main memory. In a automatic load distribution, that mean that the target host is not specified, the system distributes the number of jobs defined by the application servers available. In the Explicit Load Distribution method you can define the target host by the execution of the jobs. 
+
+![image](https://github.com/user-attachments/assets/5c1a5754-5bb4-4e0b-bd24-5178ca02f8ba)
+
+5- Logs ana
+
+
+
 
 
 
