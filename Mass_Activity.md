@@ -30,7 +30,7 @@ Mass Activities are a tool used in FI-CA for parallelized job processing in a wa
 
 The creation of a new Mass Activity is a complex process that requires the creation of **FQEVENTS** to handle intervals and variants, the creation of a **Function Group**, and a transaction that will act as the trigger for the mass activity. It also involves the creation of a **Z-Structure** to define screen parameters, as well as the configuration in **SPRO** for group frames, layout, and the preparation of the Mass Activity.
 
-The steps required in the creacion of a new mass activity process are described and explaned in the follow link: 
+The steps required in the creation of a new mass activity process are described and explaned in the follow link: 
 https://community.sap.com/t5/sap-for-utilities-blogs/create-custom-mass-activity-for-your-program-config/ba-p/13243855
 
 
@@ -84,6 +84,8 @@ The main ideia of the usage of this tool is to speed up the recognition of probl
 ### Dynamic Job Launching Programs
 
 > [SAP Mass Data Processing and Dynamic Job Launching](#Mass_Activity) > [Content](#content) > [This section](#parallelization)
+
+An alternative to creating a Mass Activity to parallelize a process, split the data, and execute it in independent jobs is to create a program that launches the original program in jobs. In this section, we will explore how to implement and manage the process using this solution.
 
 
 
