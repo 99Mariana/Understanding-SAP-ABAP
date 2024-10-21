@@ -23,7 +23,15 @@ In this chapter, we will explore possible ways to execute a process/program for 
 
 Mass Activities are a tool used in FI-CA for parallelized job processing in a way that reduce the runtime. This is used in business processed that required a really large volume of data to be processed. A Mass activity split the dataset, according the parallelization object defined, such as business partners or contract accounts, and over several jobs that the system then processes in parallel.
 
-#### How to execute a Mass Activity
+#### How to Create a Mass Activity
+
+The creation of a new Mass Activity is a complex process that requires the creation of **FQEVENTS** to handle intervals and variants, the creation of a **Function Group**, and a transaction that will act as the trigger for the mass activity. It also involves the creation of a **Z-Structure** to define screen parameters, as well as the configuration in **SPRO** for group frames, layout, and the preparation of the Mass Activity.
+
+The steps required in the creacion of a new mass activity process are described and explaned in the follow link: 
+https://community.sap.com/t5/sap-for-utilities-blogs/create-custom-mass-activity-for-your-program-config/ba-p/13243855
+
+
+#### How to Execute a Mass Activity
 
 The Mass activities has a uniform layout, which includes the tab pages: 
 - General Selections
@@ -53,7 +61,7 @@ In order to execute a mass activity the following steps must be followed:
 
 ![image](https://github.com/user-attachments/assets/7bc15cd3-d360-4f25-8d1d-7421097cc1b0)
 
-#### How to monitor a Mass Activity 
+#### How to Monitor a Mass Activity 
 
 The Mass Run Analysis Tool (transaction ST13, also known as MassMan) is a toll that displays the main information about the mass runs, besides of that , the MassMan is also a data collector for SAP Solution Manager business process monitoring, where all the information from MassMan can be reported and used for automatic alerting.
 
