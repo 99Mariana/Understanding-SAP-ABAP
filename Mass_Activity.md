@@ -53,6 +53,24 @@ In order to execute a mass activity the following steps must be followed:
 
 ![image](https://github.com/user-attachments/assets/7bc15cd3-d360-4f25-8d1d-7421097cc1b0)
 
+#### How to monitor a Mass Activity 
+
+The Mass Run Analysis Tool (transaction ST13, also known as MassMan) is a toll that displays the main information about the mass runs, besides of that , the MassMan is also a data collector for SAP Solution Manager business process monitoring, where all the information from MassMan can be reported and used for automatic alerting.
+
+To open MassMan, use transaction ST13 and choose the MASS_MAN_MONITORING application with the F4 help.
+
+![image](https://github.com/user-attachments/assets/77bc08c2-c115-4523-8241-fc3ec3a25aa2)
+
+Is recomended to enter a date( in the startdate parameter ) to ensure that old runs are not included in the list of runs.
+
+As we can see in the image below in one screen we receive an overview of Start-/Endtime of each job, the overall duration the amount of Intervals and Jobs, as well as information about the performance, CPU and DB usage per server, the Counter and the Throughput/hour.
+
+![image](https://github.com/user-attachments/assets/40fad574-dca3-4abe-809a-3e0314547e1b)
+
+The main ideia of the usage of this tool is to speed up the recognition of problems, in order to be able to analyse and define necessary corrective actions depending on the situations. Some possible problems are: Abnormal runtimes (low throughput, expected runtime is out of range); Unusual data volumes; Run cancellations; Processing problems (data quality).
+
+
+
 
 
 
