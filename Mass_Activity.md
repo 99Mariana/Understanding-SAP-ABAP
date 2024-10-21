@@ -47,7 +47,12 @@ In order to execute a mass activity the following steps must be followed:
 
 ![image](https://github.com/user-attachments/assets/5c1a5754-5bb4-4e0b-bd24-5178ca02f8ba)
 
-5- Logs ana
+5- Log analysis: The job log records status information and any errors that occur during the program run. Some ajustements can be done in the application logs, for example, is possible to determine the importance a message must have to be output in the application log by a specification in the field Problem Class. Another feature related is the expiry date, that specifies the earliest date on which the log expires, and is relevant because from the application log, you can schedule jobs, and delete logs where the expiry date has been reached from the database.
+The application logs are displayed in Enhanced Message Management (transaction EMMA). There you can create and monitor clarification cases for error messages. 
+
+![image](https://github.com/user-attachments/assets/7bc15cd3-d360-4f25-8d1d-7421097cc1b0)
+
+
 
 
 
