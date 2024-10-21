@@ -88,6 +88,78 @@ The main ideia of the usage of this tool is to speed up the recognition of probl
 An alternative to creating a Mass Activity to parallelize a process, split the data, and execute it in independent jobs is to create a program that launches the original program in jobs. In this section, we will explore how to implement and manage the process using this solution.
 
 
+#### How to launch a program trigger by a program father
+
+````abap
+
+
+    data: mo_job          type ref to zxxx_cl_job_launch,
+          lt_params       type ty_rsparams,
+          lv_cursor       type cursor,
+          lv_package_size type i,
+          lt_tb_temp      type table of erch-belnr.
+
+    "the method constructor save the name of the program to launch in a atribute of the class
+    mo_job = new zxxx_cl_job_launch( 'ZMIG_R_DATOS_CR' ).
+
+    "save the information if is required to only plan the job or submit aswell
+    mo_job->set_submit( abap_false ).
+
+    lv_package_size = p_njob.
+
+    open cursor @lv_cursor for
+      select distinct b~belnr
+          from [table]
+
+    do.
+
+      fetch next cursor @lv_cursor into table @lt_tb_temp package size @lv_package_size.
+
+      if sy-subrc = 0.
+        describe table lt_tb_temp lines data(lv_lines).
+
+        "fill the parameters needed in the program that we need to launch
+        loop at lt_tb_temp assigning field-symbol(<lfs_dc>).
+        
+          append value #( selname   = 'S_DC'
+                          kind      = 'S'
+                          sign      = 'I'
+                          option    = 'EQ'
+                          low       =  <lfs_dc> )
+                          to lt_params.
+
+        endloop.
+
+        "this method create 
+        mo_job->create_variant( it_params = lt_params iv_control = abap_true ).
+
+        clear lt_params.
+
+        if lv_lines < lv_package_size.
+          exit.
+          close cursor @lv_cursor.
+        endif.
+
+      else.
+        exit.
+        close cursor @lv_cursor.
+      endif.
+
+    enddo.
+
+    " cria os jobs como pendentes
+    mo_job->create_job_control( ).
+
+    while mo_job->get_pending_jobs( ) > 0.
+      mo_job->job_control_launch( iv_n_max_jobs ).
+    endwhile.
+
+
+````
+
+
+
+
 
 
 
