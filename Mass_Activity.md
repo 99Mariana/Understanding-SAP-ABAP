@@ -81,6 +81,11 @@ As we can see in the image below in one screen we receive an overview of Start-/
 The main ideia of the usage of this tool is to speed up the recognition of problems, in order to be able to analyse and define necessary corrective actions depending on the situations. Some possible problems are: Abnormal runtimes (low throughput, expected runtime is out of range); Unusual data volumes; Run cancellations; Processing problems (data quality).
 
 
+### Dynamic Job Launching Programs
+
+> [SAP Mass Data Processing and Dynamic Job Launching](#Mass_Activity) > [Content](#content) > [This section](#parallelization)
+
+
 
 
 
