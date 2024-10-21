@@ -6,6 +6,9 @@
 - [SAP Mass Data Processing and Dynamic Job Launching](Mass_Activity.md):
     - [Introduction](#Introduction)
     - [Mass Activity](#Mass_activity)
+      - How to Create a Mass Activity? 
+      - How to Execute a Mass Activity?
+      - How to Monitor a Mass Activity?
     - [Dynamic Job Launching Programs](#parallelization)
     - [Comparison: Mass Activities in SAP vs Custom Job Launching Programs](#comparison)
 
