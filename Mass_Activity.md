@@ -90,9 +90,9 @@ An alternative to creating a Mass Activity to parallelize a process, split the d
 
 #### How to launch a program trigger by a program father
 
+In the following example is show how to code a launch of different jobs, dividing the data in different batches. This process include the creacion of variants for each job with the informacion of the parameters requested in the program target, also the creacion of the respective jobs and their activation, according to the maximum number of simultaneous jobs defined.
+
 ````abap
-
-
     data: mo_job          type ref to zxxx_cl_job_launch,
           lt_params       type ty_rsparams,
           lv_cursor       type cursor,
@@ -130,7 +130,7 @@ An alternative to creating a Mass Activity to parallelize a process, split the d
 
         endloop.
 
-        "this method create 
+        "this method create the variarants calling the function 'RS_CREATE_VARIANT'. For that the name of program, a estructure of the type varid, a table of the paramameters(it_params) and a table of type varit is informed
         mo_job->create_variant( it_params = lt_params iv_control = abap_true ).
 
         clear lt_params.
@@ -147,16 +147,48 @@ An alternative to creating a Mass Activity to parallelize a process, split the d
 
     enddo.
 
-    " cria os jobs como pendentes
+    " create jobs using the varients created , for that the function 'JOB_OPEN' is called for each of the variants, for that the job name and jobcount is informed. Then the function 'JOB_SUBMIT' is called by informing also the program name, variant, job name, job count and username.
     mo_job->create_job_control( ).
+
+    "verify the number of pending jobs by the status of the variants, get the information of the next job to launch, and with 'JOB_CLOSE' function Close Background Request With COMMIT WORK, in this way the job became active
 
     while mo_job->get_pending_jobs( ) > 0.
       mo_job->job_control_launch( iv_n_max_jobs ).
     endwhile.
-
-
 ````
 
+In order to know when all planned jobs endend and so the process is finished, the status of the jobs show be verified in the table tbtco. In the following example it is verified that none of the jobs are active and if there are some jobs that are canceled.
+
+```` ABAP
+
+    select single count( * )
+        from tbtco
+       where ( jobname like @iv_progid
+         and jobname ne @iv_progid_var )
+         and ( status = 'S'
+          or   status = 'R'
+          or   status = 'Y' )
+       into @data(lv_jobs_activos).
+
+    if sy-subrc ne 0.
+      clear lv_jobs_activos.
+
+      select single status
+       from tbtco
+       where ( jobname like @iv_progid
+       and jobname ne @iv_progid_var )
+       and status = 'A'
+       and sdlstrtdt ge @sy-datum
+       and sdlstrttm ge @sy-uzeit
+       and sdluname  eq @sy-uname
+      into @data(lv_canc).
+
+      if sy-subrc ne 0.
+        clear lv_canc.
+      endif.
+    endif.
+
+````
 
 
 
