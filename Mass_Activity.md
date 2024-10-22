@@ -200,22 +200,29 @@ In order to know when all planned jobs endend and so the process is finished, th
 In this section we will explore a little bit the jobs features and how can they can be schedule, create a jobs with multiple steps and how additionaly associate that job with a event. the tutorial below is based on information from the website: 
 https://sapcodes.com/2015/11/23/running-background-job-by-triggering-an-event/
 
-Step1. Create a program/programs that you need for to execute in the job.
+**Step1.** Create a program/programs that you need for to execute in the job.
+
 ![image](https://github.com/user-attachments/assets/1e7add04-aaf8-4ac8-b4e6-69f270e6135b)
 
-Step2. In Tx- SM36 and create a job. Provide the job step- i.e the report that will run when job will be executed. Multiple steps can be define in a single job. 
+**Step2.** In Tx- SM36 and create a job. Provide the job step- i.e the report that will run when job will be executed. Multiple steps can be define in a single job. 
+
 ![image](https://github.com/user-attachments/assets/9ef7b892-84eb-44ee-9c13-6d418be62560)
 
-Step3. Go back and Select the Job Start Condition. Here you can define how the job will be trigger.
+**Step3.** Go back and Select the Job Start Condition. Here you can define how the job will be trigger.
+
 ![image](https://github.com/user-attachments/assets/3a8a9cda-4d14-4242-a3a6-84b8a86e3e02)
 
 
-Step4. In Tx- SM37 you can se the job and the status of that. Here is posible to consult the job logs and the output generated.
+**Step4.** In Tx- SM37 you can se the job and the status of that. Here is posible to consult the job logs and the output generated.
+
 ![image](https://github.com/user-attachments/assets/c774292b-a7ed-4f4c-b981-239895abff91)
+
 ![image](https://github.com/user-attachments/assets/dd984d36-49ed-4e0d-baa6-811eb08c3668)
+
 ![image](https://github.com/user-attachments/assets/360e8d33-d34b-48de-b897-1bd484fa5b7e)
 
 Sometimes it is useful to debbug a job to understand the row of problems of some process. In order to debbug a job, create the break point and then in the SM37 select the JOB and in the Command Box write "jdbg".
+
 ![image](https://github.com/user-attachments/assets/6f57a6e3-a21c-4160-8096-fc68c886cfec)
 
 
