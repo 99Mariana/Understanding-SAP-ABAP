@@ -10,6 +10,8 @@
       - How to Execute a Mass Activity?
       - How to Monitor a Mass Activity?
     - [Dynamic Job Launching Programs](#parallelization)
+      - How to Code Job Launch of a Program Trigger by a Program Father?
+      - How to Schedule, Execute, Analyse a Job ( SM36/SM37 )?
     - [Comparison: Mass Activities in SAP vs Custom Job Launching Programs](#comparison)
 
 
@@ -88,7 +90,7 @@ The main ideia of the usage of this tool is to speed up the recognition of probl
 An alternative to creating a Mass Activity to parallelize a process, split the data, and execute it in independent jobs is to create a program that launches the original program in jobs. In this section, we will explore how to implement and manage the process using this solution.
 
 
-#### How to Launch a Program Trigger by a Program Father
+#### How to Code Job Launch of a Program Trigger by a Program Father
 
 In the following example is show how to code a launch of different jobs, dividing the data in different batches. This process include the creacion of variants for each job with the informacion of the parameters requested in the program target, also the creacion of the respective jobs and their activation, according to the maximum number of simultaneous jobs defined.
 
