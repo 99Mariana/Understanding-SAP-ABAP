@@ -88,7 +88,7 @@ The main ideia of the usage of this tool is to speed up the recognition of probl
 An alternative to creating a Mass Activity to parallelize a process, split the data, and execute it in independent jobs is to create a program that launches the original program in jobs. In this section, we will explore how to implement and manage the process using this solution.
 
 
-#### How to launch a program trigger by a program father
+#### How to Launch a Program Trigger by a Program Father
 
 In the following example is show how to code a launch of different jobs, dividing the data in different batches. This process include the creacion of variants for each job with the informacion of the parameters requested in the program target, also the creacion of the respective jobs and their activation, according to the maximum number of simultaneous jobs defined.
 
@@ -130,7 +130,9 @@ In the following example is show how to code a launch of different jobs, dividin
 
         endloop.
 
-        "this method create the variarants calling the function 'RS_CREATE_VARIANT'. For that the name of program, a estructure of the type varid, a table of the paramameters(it_params) and a table of type varit is informed
+        "this method create the variarants calling the function 'RS_CREATE_VARIANT'.
+        "For that the name of program, a estructure of the type varid, a table of the paramameters(it_params)
+        "and a table of type varit is informed
         mo_job->create_variant( it_params = lt_params iv_control = abap_true ).
 
         clear lt_params.
@@ -147,10 +149,13 @@ In the following example is show how to code a launch of different jobs, dividin
 
     enddo.
 
-    " create jobs using the varients created , for that the function 'JOB_OPEN' is called for each of the variants, for that the job name and jobcount is informed. Then the function 'JOB_SUBMIT' is called by informing also the program name, variant, job name, job count and username.
+    " create jobs using the varients created , for that the function 'JOB_OPEN' is called for each of the variants,
+    " for that the job name and jobcount is informed. Then the function 'JOB_SUBMIT' is called by informing also
+    " the program name, variant, job name, job count and username.
     mo_job->create_job_control( ).
 
-    "verify the number of pending jobs by the status of the variants, get the information of the next job to launch, and with 'JOB_CLOSE' function Close Background Request With COMMIT WORK, in this way the job became active
+    "verify the number of pending jobs by the status of the variants, get the information of the next job to launch,
+    " and with 'JOB_CLOSE' function Close Background Request With COMMIT WORK, in this way the job became active
 
     while mo_job->get_pending_jobs( ) > 0.
       mo_job->job_control_launch( iv_n_max_jobs ).
@@ -190,7 +195,10 @@ In order to know when all planned jobs endend and so the process is finished, th
 
 ````
 
+#### How to Schedule a Job ( SM36 )
 
+In this section we will explore a little bit the jobs features and how can they can be schedule, create a jobs with multiple steps and how additionaly associate that job with a event. the tutorial below is based on information from the website: 
+https://sapcodes.com/2015/11/23/running-background-job-by-triggering-an-event/
 
 
 
