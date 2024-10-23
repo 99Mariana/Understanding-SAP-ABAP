@@ -21,3 +21,11 @@ In this section we will take a deep look of the concepts of OOP in ABAP, such as
 ### Core Concepts
 
 > [Object Oriented Programming in ABAP](#ABAP_OO) > [Content](#content) > [This section](#core)
+
+**Class** - is a template of objects which can handle more than one characteristics. It defines the properties (attributes) and actions (methods) that the object will have.
+
+**Objects** - is an instance of a class. It represents a specific example of a class with its own unique set of attribute values.
+
+**Attributes** - Attributes are variables,structures or tables, defined in a class to hold the object’s data.
+
+**Methods** - Methods are actions or functions that objects of a class can perform. 
