@@ -6,6 +6,7 @@
 - [Object Oriented Programming in ABAP](ABAP_OO.md):
     - [Introduction](#introduction)
     - [Key OOP Concepts and Principles](#core)
+    - [Instance vs. Static Attributes and Methods](#instance_vs_static)
  
 
 ### Introduction
@@ -175,6 +176,10 @@ START-OF-SELECTION.
   movable_obj->move( ).  " Calls man's implementation of move
 
 ````
+
+### Instance vs. Static Attributes and Methods
+
+> [Object Oriented Programming in ABAP](#ABAP_OO) > [Content](#content) > [This section](##instance_vs_static)
 
 
 
