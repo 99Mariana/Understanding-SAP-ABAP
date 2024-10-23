@@ -36,7 +36,146 @@ In this section we will take a deep look of the concepts of OOP in ABAP, such as
 #### OOP Principles
 
 **Encapsulation** - By hiding internal data and exposing only necessary parts of an object, encapsulation ensures that the integrity of the data is protected, reducing the likelihood of unintended side effects. In ABAP, the visibility can be controlled using the PUBLIC, PRIVATE, and PROTECTED sections of a class. 
-    - PUBLIC section defines attributes and methods that are accessible from anywhere in the program,  this means that can directly accessed and interacted by the outside. 
-    - In the PRIVATE section are defined attributes and methods that are accessible only within the class itself( but not from other classes or programs, not even by subclasses that inherit from the class). 
-    - Finally the PROTECTED allows subclasses to extend the behavior of the parent class while keeping some control over how the data is accessed, this means that can be accessed by the class itself and any subclasses. 
+
+   - PUBLIC section defines attributes and methods that are accessible from anywhere in the program,  this means that can directly accessed and interacted by the outside. 
+   - In the PRIVATE section are defined attributes and methods that are accessible only within the class itself( but not from other classes or programs, not even by subclasses that inherit from the class).
+   - Finally the PROTECTED allows subclasses to extend the behavior of the parent class while keeping some control over how the data is accessed, this means that can be accessed by the class itself and any subclasses.
+
+**Inheritance** - It allows one class, known as the child class or subclass, to inherit the attributes and methods of another class, known as the parent class or superclass. This feature promotes code reuse and simplifies the addition of new functionalities
+by creating new child classes without modifying the parent class.
+
+```` ABAP
+"
+CLASS cake DEFINITION.
+  PUBLIC SECTION.
+    METHODS: start,
+             stop.
+  PROTECTED SECTION.
+    DATA: speed TYPE i.
+ENDCLASS.
+
+CLASS cake IMPLEMENTATION.
+  METHOD start.
+    WRITE: 'Cake starting'.
+  ENDMETHOD.
+  METHOD stop.
+    WRITE: 'Cake stopping'.
+  ENDMETHOD.
+ENDCLASS.
+
+"This class inherits from cake. It reuses the start and stop methods and defines an additional
+" method open_cooker and a new attribute number_of_doors.
+
+CLASS brownie DEFINITION INHERITING FROM cake.
+  PUBLIC SECTION.
+    METHODS: open_cooker.
+  PROTECTED SECTION.
+    DATA: number_of_doors TYPE i.
+ENDCLASS.
+
+CLASS car IMPLEMENTATION.
+  METHOD open_cooker.
+    WRITE: 'Opening cooker'.
+  ENDMETHOD.
+ENDCLASS.
+
+````
+
+**Polymorphism** - Enables objects of different classes to be treated as objects of a common superclass. This is useful when you want to create flexible and generic code. In ABAP, polymorphism is achieved using interfaces and method overriding. his is useful when you want to call the same method on objects from different classes, but expect them to behave differently based on their class.
+
+   - Method Overriding (when a subclass provides a specific implementation of a method that is already defined in the superclass).
+     
+```` ABAP
+ CLASS person DEFINITION.
+  PUBLIC SECTION.
+    METHODS: move.
+ENDCLASS.
+
+CLASS person IMPLEMENTATION.
+  METHOD move.
+    WRITE: 'The person is moving.'.
+  ENDMETHOD.
+ENDCLASS.
+
+CLASS woman DEFINITION INHERITING FROM person. 
+  PUBLIC SECTION.
+    METHODS: move REDEFINITION.
+ENDCLASS.
+
+CLASS woman IMPLEMENTATION.
+  METHOD move.
+    WRITE: 'The woman is walking on the road'.
+  ENDMETHOD.
+ENDCLASS.
+
+CLASS man DEFINITION INHERITING FROM person. 
+  PUBLIC SECTION.
+    METHODS: move REDEFINITION.
+ENDCLASS.
+
+CLASS woman IMPLEMENTATION.
+  METHOD move.
+    WRITE: 'The man is walking on the road'.
+  ENDMETHOD.
+ENDCLASS.
+
+START-OF-SELECTION.
+  DATA: obj_person TYPE REF TO person,
+        obj_woman TYPE REF TO woman,
+        obj_man TYPE REF TO man.
+
+  obj_person = NEW person( ).
+  obj_person->move( ).  " Calls person's move method
+
+  obj_person = NEW woman( ). 
+  obj_person->move( ).  " Calls woman's move method (polymorphism)
+
+  obj_person = NEW man( ).
+  obj_person->move( ).  " Calls man's move method (polymorphism)
+
+````
+
+   - Interfaces (which allows different classes to implement the same set of methods in their own way, while still being treated as objects of the interface type).
+
+```` ABAP
+
+INTERFACE if_movable.
+  METHODS move.
+ENDINTERFACE.
+
+CLASS woman DEFINITION.
+  PUBLIC SECTION.
+    INTERFACES: if_movable.
+ENDCLASS.
+
+CLASS woman IMPLEMENTATION.
+  METHOD if_movable~move.
+    WRITE: 'The woman is moving on the road.'.
+  ENDMETHOD.
+ENDCLASS.
+
+CLASS man DEFINITION.
+  PUBLIC SECTION.
+    INTERFACES: if_movable.
+ENDCLASS.
+
+CLASS boat IMPLEMENTATION.
+  METHOD if_movable~move.
+    WRITE: 'The man is moving on the road.'.
+  ENDMETHOD.
+ENDCLASS.
+
+START-OF-SELECTION.
+  DATA: movable_obj TYPE REF TO if_movable.
+
+  movable_obj = NEW woman( ).
+  movable_obj->move( ).  " Calls woman's implementation of move
+
+  movable_obj = NEW man( ).
+  movable_obj->move( ).  " Calls man's implementation of move
+
+````
+
+
+
 
