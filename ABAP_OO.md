@@ -35,5 +35,8 @@ In this section we will take a deep look of the concepts of OOP in ABAP, such as
 
 #### OOP Principles
 
-**Encapsulation** - By hiding internal data and exposing only necessary parts of an object, encapsulation ensures that the integrity of the data is protected, reducing the likelihood of unintended side effects. In ABAP, the visibility can be controlled using the PUBLIC, PRIVATE, and PROTECTED sections of a class. PUBLIC section defines attributes and methods that are accessible from anywhere in the program,  this means that can directly accessed and interacted by the outside. In the PRIVATE section are defined attributes and methods that are accessible only within the class itself( but not from other classes or programs, not even by subclasses that inherit from the class). Finally the PROTECTED allows subclasses to extend the behavior of the parent class while keeping some control over how the data is accessed, this means that can be accessed by the class itself and any subclasses. 
+**Encapsulation** - By hiding internal data and exposing only necessary parts of an object, encapsulation ensures that the integrity of the data is protected, reducing the likelihood of unintended side effects. In ABAP, the visibility can be controlled using the PUBLIC, PRIVATE, and PROTECTED sections of a class. 
+    - PUBLIC section defines attributes and methods that are accessible from anywhere in the program,  this means that can directly accessed and interacted by the outside. 
+    - In the PRIVATE section are defined attributes and methods that are accessible only within the class itself( but not from other classes or programs, not even by subclasses that inherit from the class). 
+    - Finally the PROTECTED allows subclasses to extend the behavior of the parent class while keeping some control over how the data is accessed, this means that can be accessed by the class itself and any subclasses. 
 
