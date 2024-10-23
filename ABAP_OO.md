@@ -1,9 +1,9 @@
-# [SAP Enhancements](#SAP_Enhancements)
+# [Object Oriented Programming in ABAP](#ABAP_OO)
 
 
 ## [Content](#content)
 
-- [SAP Enhancements](SAP_Enhancements.md):
+- [Object Oriented Programming in ABAP](ABAP_OO.md):
     - [What is a SAP Enhancement?](#what)
     - [Enhancement Framework](#framework)
     - [Types of Enhancement Techniques](#types)
