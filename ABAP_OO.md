@@ -7,6 +7,7 @@
     - [Introduction](#introduction)
     - [Key OOP Concepts and Principles](#core)
     - [Instance vs. Static Attributes and Methods](#instance_vs_static)
+    - [Static Class vs Singleton Class](#singleton)
  
 
 ### Introduction
@@ -180,6 +181,8 @@ START-OF-SELECTION.
 ### Instance vs. Static Attributes and Methods
 
 > [Object Oriented Programming in ABAP](#ABAP_OO) > [Content](#content) > [This section](##instance_vs_static)
+
+
 
 
 
