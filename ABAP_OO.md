@@ -5,7 +5,7 @@
 
 - [Object Oriented Programming in ABAP](ABAP_OO.md):
     - [Introduction](#introduction)
-    - [Core Concepts](#core)
+    - [Key OOP Concepts and Principles](#core)
  
 
 ### Introduction
@@ -18,9 +18,11 @@ In ABAP, OOP enables developers to design software around real-world objects, fo
 
 In this section we will take a deep look of the concepts of OOP in ABAP, such as defining classes, creating objects, and understanding important concepts like inheritance, interfaces, and exception handling. We will also explore practical applications, highlighting how OOP in ABAP improves code quality comparing to the tradiotional procedural programing. 
 
-### Core Concepts
+### Key OOP Concepts and Principles
 
 > [Object Oriented Programming in ABAP](#ABAP_OO) > [Content](#content) > [This section](#core)
+
+#### OOP Concepts
 
 **Class** - is a template of objects which can handle more than one characteristics. It defines the properties (attributes) and actions (methods) that the object will have.
 
@@ -29,3 +31,6 @@ In this section we will take a deep look of the concepts of OOP in ABAP, such as
 **Attributes** - Attributes are variables,structures or tables, defined in a class to hold the object’s data.
 
 **Methods** - Methods are actions or functions that objects of a class can perform. 
+
+
+#### OOP Principles
