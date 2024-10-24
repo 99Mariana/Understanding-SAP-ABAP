@@ -184,7 +184,7 @@ START-OF-SELECTION.
 
 #### Attributes 
 
-Instance attributes are declared using the DATA command within the class definition block. Each instance attribute declares an independent variable for each created object.
+Instance attributes are declared using the `DATA` command within the class definition block. Each instance attribute declares an independent variable for each created object.
 
 Static attributes are commonly said to belong to classes. These attributes can be used regardless of whether there are objects created or not.
 
@@ -192,6 +192,62 @@ Note that a static attribute is not a constant, as is often mistaken. A constant
 
 
 ####  Methods
+
+Instance methods are declared using the `METHODS` command in the class definition block and implemented using the `METHOD … ENDMETHOD` block in the implementation block. Such methods can only be used with the reference to an object.
+
+Instance methods can use self-reference (me) to read and change attributes of the object, as well as be used to call other methods belonging to the same object.
+
+To declare static methods, the `CLASS-METHODS` command is used in the class definition block and the `METHOD… ENDMETHOD` block within the class implementation block. Static methods do not need instances created to be executed. However, instances can also make use of them.
+
+#### Example of Instance Attributes and Methods:
+
+```` ABAP
+
+CLASS employee DEFINITION.
+  PUBLIC SECTION.
+    METHODS: get_name.
+  PRIVATE SECTION.
+    DATA: name TYPE string. " Instance attribute
+ENDCLASS.
+
+CLASS employee IMPLEMENTATION.
+  METHOD get_name.
+    WRITE name.
+  ENDMETHOD.
+ENDCLASS.
+
+````
+#### Example of Static Attributes and Methods:
+
+```` ABAP
+
+CLASS employee DEFINITION.
+  PUBLIC SECTION.
+    CLASS-METHODS: get_total_employees.
+  PRIVATE SECTION.
+    CLASS-DATA: total_employees TYPE i. " Static attribute
+ENDCLASS.
+
+CLASS employee IMPLEMENTATION.
+  METHOD get_total_employees.
+    WRITE total_employees.
+  ENDMETHOD.
+ENDCLASS.
+
+````
+
+##### Comparicion
+
+| **Aspect**               | **Instance Attributes & Methods**                                         | **Static Attributes & Methods**                                       |
+|--------------------------|---------------------------------------------------------------------------|----------------------------------------------------------------------|
+| **Definition**            | Attributes and methods that belong to an instance of a class (i.e., an object). | Attributes and methods that belong to the class itself, not to individual objects. |
+| **Access**                | Accessed through an object of the class (i.e., `obj->method`).             | Accessed directly through the class without creating an object (i.e., `class=>method`). |
+| **Memory Allocation**     | Separate memory is allocated for each object's instance attributes.        | Only one shared memory allocation across all instances of the class. |
+| **Scope**                 | Scoped to the specific object (instance). Each object has its own copy.    | Scoped globally to the class. Shared by all objects of the class.    |
+| **Lifecycle**             | Exists as long as the object (instance) exists.                           | Exists as long as the program (or class) exists, regardless of object instantiation. |
+| **Example (Attributes)**  | `obj->name` (where `name` is an instance attribute).                     | `class=>counter` (where `counter` is a static attribute).            |
+| **Example (Methods)**     | `obj->calculate_salary( )` (instance method).                             | `class=>get_total_employees( )` (static method).                     |
+
 
 
 
