@@ -182,6 +182,19 @@ START-OF-SELECTION.
 
 > [Object Oriented Programming in ABAP](#ABAP_OO) > [Content](#content) > [This section](##instance_vs_static)
 
+#### Attributes 
+
+Instance attributes are declared using the DATA command within the class definition block. Each instance attribute declares an independent variable for each created object.
+
+Static attributes are commonly said to belong to classes. These attributes can be used regardless of whether there are objects created or not.
+
+Note that a static attribute is not a constant, as is often mistaken. A constant is an immutable data object, while a static attribute can have its value change normally. However these changes are reflected in all instances of the class because in fact, there is only one variable shared by all objects.
+
+
+####  Methods
+
+
+
 
 
 
