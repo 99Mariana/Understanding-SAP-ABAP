@@ -300,7 +300,7 @@ The concept of finalization is used when one wants to avoid the use of inheritan
 ```` ABAP
 
 CLASS lcl_saida_alv DEFINITION.
-    PUBLICSECTION.
+    PUBLIC SECTION.
     METHODSformat_columnsFINAL.
 
 ENDCLASS.
