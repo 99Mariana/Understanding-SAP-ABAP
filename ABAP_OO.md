@@ -8,6 +8,7 @@
     - [Key OOP Concepts and Principles](#core)
     - [Instance vs. Static Attributes and Methods](#instance_vs_static)
     - [Static Class vs Singleton Class](#singleton)
+    - [Advanced OOP Concepts: Final Class & Abstract Class](#advance)
  
 
 ### Introduction
@@ -44,14 +45,15 @@ In this section we will take a deep look of the concepts of OOP in ABAP, such as
    - Finally the PROTECTED allows subclasses to extend the behavior of the parent class while keeping some control over how the data is accessed, this means that can be accessed by the class itself and any subclasses.
 
 **Inheritance** - It allows one class, known as the child class or subclass, to inherit the attributes and methods of another class, known as the parent class or superclass. This feature promotes code reuse and simplifies the addition of new functionalities
-by creating new child classes without modifying the parent class.
+by creating new child classes without modifying the parent class. To make a class a child of another, it is necessary to add the `INHERITING FROM` variation in the definition of the child class. Methods defined in the parent class can be called by the child class by using the `SUPER->` statement. 
 
 ```` ABAP
 "
 CLASS cake DEFINITION.
   PUBLIC SECTION.
     METHODS: start,
-             stop.
+             stop,
+             constructor.
   PROTECTED SECTION.
     DATA: speed TYPE i.
 ENDCLASS.
@@ -63,6 +65,9 @@ CLASS cake IMPLEMENTATION.
   METHOD stop.
     WRITE: 'Cake stopping'.
   ENDMETHOD.
+  METHOD constructor.
+    me->speed = 1.
+  ENDMETHOD.
 ENDCLASS.
 
 "This class inherits from cake. It reuses the start and stop methods and defines an additional
@@ -70,7 +75,8 @@ ENDCLASS.
 
 CLASS brownie DEFINITION INHERITING FROM cake.
   PUBLIC SECTION.
-    METHODS: open_cooker.
+    METHODS: open_cooker,
+             constructor.
   PROTECTED SECTION.
     DATA: number_of_doors TYPE i.
 ENDCLASS.
@@ -78,6 +84,9 @@ ENDCLASS.
 CLASS car IMPLEMENTATION.
   METHOD open_cooker.
     WRITE: 'Opening cooker'.
+  ENDMETHOD.
+  METHOD constructor.
+    super->start( ).
   ENDMETHOD.
 ENDCLASS.
 
@@ -180,7 +189,7 @@ START-OF-SELECTION.
 
 ### Instance vs. Static Attributes and Methods
 
-> [Object Oriented Programming in ABAP](#ABAP_OO) > [Content](#content) > [This section](##instance_vs_static)
+> [Object Oriented Programming in ABAP](#ABAP_OO) > [Content](#content) > [This section](#instance_vs_static)
 
 #### Attributes 
 
@@ -236,7 +245,7 @@ ENDCLASS.
 
 ````
 
-##### Comparicion
+##### Comparison
 
 | **Aspect**               | **Instance Attributes & Methods**                                         | **Static Attributes & Methods**                                       |
 |--------------------------|---------------------------------------------------------------------------|----------------------------------------------------------------------|
@@ -247,6 +256,18 @@ ENDCLASS.
 | **Lifecycle**             | Exists as long as the object (instance) exists.                           | Exists as long as the program (or class) exists, regardless of object instantiation. |
 | **Example (Attributes)**  | `obj->name` (where `name` is an instance attribute).                     | `class=>counter` (where `counter` is a static attribute).            |
 | **Example (Methods)**     | `obj->calculate_salary( )` (instance method).                             | `class=>get_total_employees( )` (static method).                     |
+
+
+### Static Class vs Singleton Class
+
+> [Object Oriented Programming in ABAP](#ABAP_OO) > [Content](#content) > [This section](#singleton)
+
+
+
+
+### Advanced OOP Concepts: Final Class & Abstract Class
+
+> [Object Oriented Programming in ABAP](#ABAP_OO) > [Content](#content) > [This section](#advance)
 
 
 
