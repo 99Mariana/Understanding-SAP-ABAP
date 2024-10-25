@@ -262,6 +262,58 @@ ENDCLASS.
 
 > [Object Oriented Programming in ABAP](#ABAP_OO) > [Content](#content) > [This section](#advance)
 
+#### Abstraction
+
+Abstract classes are simply classes that cannot be instantiated, that is, you cannot use the `CREATE OBJECT` or `NEW` statements to create objects of this class. Note that it is still possible to use a reference to an abstract class. However, when such a reference is filled in, it must point to an object of an inheriting class and of the abstract class.
+
+An abstract method is simply a method that must be redefined in the child class. By definition, an abstract method must belong to an abstract class.
+
+```` ABAP
+
+CLASS lcl_saida_template DEFINITION ABSTRACT.
+    PROTECTED SECTION.
+    METHODS imprimir ABSTRACT.
+
+ENDCLASS.
+
+CLASS lcl_saida_alv DEFINITION
+    INHERITING FROM lcl_saida_template.
+
+    PROTECTED SECTION.
+    METHODS imprimir REDEFINITION. "Obrigatorio
+
+ENDCLASS.
+
+CLASS lcl_saida_alv IMPLEMENTATION.
+    METHOD imprimir.
+        "exibeALV
+    ENDMETHOD.
+
+ENDCLASS.
+
+````
+
+#### Final
+
+The concept of finalization is used when one wants to avoid the use of inheritance. Similarly, FINAL methods are those that cannot be redefined.
+
+```` ABAP
+
+CLASS lcl_saida_alv DEFINITION.
+    PUBLICSECTION.
+    METHODSformat_columnsFINAL.
+
+ENDCLASS.
+
+CLASS lcl_saida_alv IMPLEMENTATION.
+    METHOD format_columns.
+        "IS NOT POSIBLE TO REDEFINE THIS METHOD. 
+    ENDMETHOD.
+
+ENDCLASS.
+
+```` 
+
 
 ### Static Class vs Singleton Class
 
