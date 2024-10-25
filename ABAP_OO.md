@@ -271,6 +271,7 @@ An abstract method is simply a method that must be redefined in the child class.
 ```` ABAP
 
 CLASS lcl_saida_template DEFINITION ABSTRACT.
+
     PROTECTED SECTION.
     METHODS imprimir ABSTRACT.
 
@@ -285,6 +286,7 @@ CLASS lcl_saida_alv DEFINITION
 ENDCLASS.
 
 CLASS lcl_saida_alv IMPLEMENTATION.
+
     METHOD imprimir.
         "exibeALV
     ENDMETHOD.
@@ -300,12 +302,14 @@ The concept of finalization is used when one wants to avoid the use of inheritan
 ```` ABAP
 
 CLASS lcl_saida_alv DEFINITION.
+
     PUBLIC SECTION.
     METHODSformat_columnsFINAL.
 
 ENDCLASS.
 
 CLASS lcl_saida_alv IMPLEMENTATION.
+
     METHOD format_columns.
         "IS NOT POSIBLE TO REDEFINE THIS METHOD. 
     ENDMETHOD.
@@ -331,38 +335,50 @@ Una example of a singleton creation could be:
 ```` ABAP
 
 CLASS logger DEFINITION.
+
   PUBLIC SECTION.
     " Static method to get the single instance
     CLASS-METHODS: get_instance RETURNING VALUE(instance) TYPE REF TO logger.
+
     " Method to log messages
     METHODS: log_message IMPORTING message TYPE string.
 
   PRIVATE SECTION.
     " Private constructor to prevent direct instantiation
     METHODS: constructor.
+
     " Class attribute to hold the single instance
     CLASS-DATA: singleton_instance TYPE REF TO logger.
+
 ENDCLASS.
 
 CLASS logger IMPLEMENTATION.
+
   METHOD constructor.
     " Private constructor to control instance creation
   ENDMETHOD.
 
   METHOD get_instance.
+
     " Check if the instance already exists
     IF singleton_instance IS INITIAL.
+
       " If not, create it
       CREATE OBJECT singleton_instance.
+
     ENDIF.
+
     " Return the single instance
     instance = singleton_instance.
+
   ENDMETHOD.
 
   METHOD log_message.
     " A simple example of logging a message
     WRITE: / message.
+
   ENDMETHOD.
+
 ENDCLASS.
 
 ````
@@ -372,6 +388,7 @@ To use the singleton class in ABAP, call get_instance to get the single instance
 ```` ABAP
 
 START-OF-SELECTION.
+
   DATA(logger_instance) = logger=>get_instance( ).
   logger_instance->log_message( 'First log message' ).
 
