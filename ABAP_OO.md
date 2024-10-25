@@ -319,6 +319,70 @@ ENDCLASS.
 
 > [Object Oriented Programming in ABAP](#ABAP_OO) > [Content](#content) > [This section](#singleton)
 
+A static class is a class that contains only static methods and attributes and cannot be instantiated. That's mean that all the functionality and data within the class are accessed directly through the class itself. Static classes are often used for utility functions, constants, or global methods where object state is irrelevant.
+
+A Singleton class is a design pattern that ensures that a class can only have one instance throughout the lifetime of the application. It is useful when only one object is needed to coordinate actions or store a global state. The instance is lazily created the first time it is accessed, and subsequent calls return the same instance. Singleton classes are used when only one object is needed to manage global resources like logging, configuration settings, or a connection pool. This helps avoid unnecessary duplication of objects, is reused across the application, providing controlled access to global resources.
+
+In a sumarize way we can say that is recommended to use se a Singleton when you need shared, stateful access across the application, particularly when managing resources like configuration settings, logging, or database connections. On the other hand
+it may be more advantageous to use a Static Class for stateless utility functions and constants, where no instance-specific state or flexibility is required.
+
+Una example of a singleton creation could be: 
+
+```` ABAP
+
+CLASS logger DEFINITION.
+  PUBLIC SECTION.
+    " Static method to get the single instance
+    CLASS-METHODS: get_instance RETURNING VALUE(instance) TYPE REF TO logger.
+    " Method to log messages
+    METHODS: log_message IMPORTING message TYPE string.
+
+  PRIVATE SECTION.
+    " Private constructor to prevent direct instantiation
+    METHODS: constructor.
+    " Class attribute to hold the single instance
+    CLASS-DATA: singleton_instance TYPE REF TO logger.
+ENDCLASS.
+
+CLASS logger IMPLEMENTATION.
+  METHOD constructor.
+    " Private constructor to control instance creation
+  ENDMETHOD.
+
+  METHOD get_instance.
+    " Check if the instance already exists
+    IF singleton_instance IS INITIAL.
+      " If not, create it
+      CREATE OBJECT singleton_instance.
+    ENDIF.
+    " Return the single instance
+    instance = singleton_instance.
+  ENDMETHOD.
+
+  METHOD log_message.
+    " A simple example of logging a message
+    WRITE: / message.
+  ENDMETHOD.
+ENDCLASS.
+
+````
+
+To use the singleton class in ABAP, call get_instance to get the single instance, and then use it to call methods. The usage of the singleton will seens like:
+
+```` ABAP
+
+START-OF-SELECTION.
+  DATA(logger_instance) = logger=>get_instance( ).
+  logger_instance->log_message( 'First log message' ).
+
+  " Retrieve the same instance again
+  DATA(another_logger_instance) = logger=>get_instance( ).
+  another_logger_instance->log_message( 'Second log message' ).
+
+  " Both logger_instance and another_logger_instance refer to the same object
+
+```` 
+
 
 
 
