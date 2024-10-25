@@ -7,8 +7,8 @@
     - [Introduction](#introduction)
     - [Key OOP Concepts and Principles](#core)
     - [Instance vs. Static Attributes and Methods](#instance_vs_static)
-    - [Static Class vs Singleton Class](#singleton)
     - [Advanced OOP Concepts: Final Class & Abstract Class](#advance)
+    - [Static Class vs Singleton Class](#singleton)
  
 
 ### Introduction
@@ -258,16 +258,14 @@ ENDCLASS.
 | **Example (Methods)**     | `obj->calculate_salary( )` (instance method).                             | `class=>get_total_employees( )` (static method).                     |
 
 
-### Static Class vs Singleton Class
-
-> [Object Oriented Programming in ABAP](#ABAP_OO) > [Content](#content) > [This section](#singleton)
-
-
-
-
 ### Advanced OOP Concepts: Final Class & Abstract Class
 
 > [Object Oriented Programming in ABAP](#ABAP_OO) > [Content](#content) > [This section](#advance)
+
+
+### Static Class vs Singleton Class
+
+> [Object Oriented Programming in ABAP](#ABAP_OO) > [Content](#content) > [This section](#singleton)
 
 
 
