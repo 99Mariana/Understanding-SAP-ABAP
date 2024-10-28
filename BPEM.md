@@ -6,6 +6,7 @@
 - [Business Process Exception Management (BPEM)](BPEM.md):
     - [Introduction](#introduction)
     - [Advantages of Using BPEM](#advantages)
+    - [BPEM Processes and Transactions](#process)
 
  
 
@@ -37,5 +38,9 @@ The key advantages of using BPEM include:
 - Business process analytics
 - Reduced exception rates, resulting in smoother business processes
 - Lower operating costs through efficient exception management
+
+### BPEM Processes and Transactions
+
+> [Business Process Exception Management (BPEM)](#BPEM) > [Content](#content) > [This section](#process)
 
 
