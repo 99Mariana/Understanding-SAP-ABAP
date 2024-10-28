@@ -58,11 +58,39 @@ BPEM gathers relevant application information from all storage locations within 
 
 2- **Clarification cases are created either automatically/manually/BAPI's:**
 
+BPEM compares the collected error data and and the related business objects with conditions described in the defined clarification case categories. Then when the conditions are matched a clarification case. 
+The clarification cases can be generated  manually by: 
+
+- Transaction `EMMAC1` ->  Create Clarification Cases
+- BAPI `BAPI_EMMA_CASE_CREATE` -> Create Clarification Case Manually
+- BOR Method `EMMACase.Create` ->  Create Clarification Case Manually
 
 
-3- Clarification cases are distributed or forwarded to various groups to work on.
-4- Back office completes clarification cases.
-5- Management reports in Business Warehouse.
+3- **Clarification cases are distributed or forwarded to various groups to work on:** 
+
+A clarification case can be assigned and routed to a specific agent or agent group based on the processor determination rule defined in the clarification case category. There is no specific transaction for the automatic distribution of clarification cases, as the processor determination rule is applied immediately after the clarification case is created in process step 2. Some important transaction related to this step are: 
+
+ - `EMMACL`  -> Clarification Case List
+ - `EMMACLS` -> Clarification Case List with Shortcut Keys
+
+4- **Back office completes clarification cases/ Resolution and Completion of Clarification Cases:**
+
+Agents analyze and resolve the clarification case supported by the information and solution processes as presented in the clarification case. The system documents the result of the analysis of the business exceptions and executed solution processes in an application log.
+Some important transaction related to this step are: 
+
+ - `EMMAC2`   -> Change a Clarification Case
+ - `EMMAC3`   -> Display a Clarification Case
+
+The system can execute solution processes of clarification cases if you marked these solution processes as automatic solution processes for that the following transations could be important: 
+
+ - `FPEMMAMA` -> BPEM: Mass Activity
+ - `EMMAJP`   -> Business Process Analysis: Process Jobs
+ - `EMMACAP`  -> Execute Automatic Solution Processes
+
+
+5- **Transfer of KPIs to Business Information Warehouse:**
+
+In this process step, key data from clarification cases is extracted to a business information warehouse to evaluate business process performance. This capability is accessible across all applications. Additionally, specialized extractors are available for SAP for Utilities processes, allowing for further data extraction, including statistics on successful and failed business processes specific to SAP for Utilities.
 
 
 
