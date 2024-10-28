@@ -43,7 +43,25 @@ The key advantages of using BPEM include:
 
 > [Business Process Exception Management (BPEM)](#BPEM) > [Content](#content) > [This section](#process)
 
-####  BPEM Job Preparation
+Business processes store their error mensages and additional information in application logs and crete an entry in the BPEM job list.  Starting from this entry, BPEM can pick up the stored information from any place and make it available to the agents.
+
+Once the business process finished the BPEM process supports these five main steps: 
+
+1- **Error are monitor by administration / BPEM job preparation:**
+
+BPEM gathers relevant application information from all storage locations within the application, evaluates its importance, and organizes it by system timestamp and associated business object. It identifies failed business objects based on error and warning messages, consolidates this collected data, and stores it in BPEM-specific database tables for efficient future access. Some important transaction related to this step are: 
+
+`FPEMMAMA` -> BPEM: Mass Activity
+`EMMAJP`   -> Business Process Analysis: Process Jobs
+`EMMAJL`   -> Business Process Analysis: Job List
+
+
+
+2- Clarification cases are created either automatically/manually/BAPI's.
+3- Clarification cases are distributed or forwarded to various groups to work on.
+4- Back office completes clarification cases.
+5- Management reports in Business Warehouse.
+
 
 
 
