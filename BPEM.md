@@ -7,6 +7,7 @@
     - [Introduction](#introduction)
     - [Advantages of Using BPEM](#advantages)
     - [BPEM Processes and Transactions](#process)
+      - BPEM Job Preparation
 
  
 
@@ -42,5 +43,8 @@ The key advantages of using BPEM include:
 ### BPEM Processes and Transactions
 
 > [Business Process Exception Management (BPEM)](#BPEM) > [Content](#content) > [This section](#process)
+
+####  BPEM Job Preparation
+
 
 
