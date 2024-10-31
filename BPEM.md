@@ -8,6 +8,7 @@
     - [Advantages of Using BPEM](#advantages)
     - [BPEM Processes and Transactions](#process)
     - [Clarification Case Categories](#categories)
+    - [Working with Clarification Cases](#cases)
 
  
 
@@ -121,6 +122,23 @@ En esta transaciones es posible consultar toda la informacion desde la infomacio
 In this transaction, it is possible to view all information, including basic details, the message pool, objects (data that will appear as inputs in the solution processes and the definition of special rules or information displayed in the clarification case). Within this transaction, you can also access the description screen, which contains detailed documentation to support the agent in efficiently resolving the clarification case. The Processes screen defines a list of solution processes designed to assist agents in handling the clarification case, with each action linked to a functional module. Note that solution processes can be executed either automatically or manually.
 
 ![image](https://github.com/user-attachments/assets/3e7bd8a6-f84f-4960-b83b-1b0badc92523)
+
+
+###  Working with Clarification Cases
+
+> [Business Process Exception Management (BPEM)](#BPEM) > [Content](#content) > [This section](#cases)
+
+
+A clarification case represents a specific business exception, providing options to analyze the issue and outlining possible solution processes to aid in its resolution. Additionally, each clarification case is assigned a status that indicates its progress, from the moment it is created to when it is fully resolved and closed.
+
+Typically, the system, rather than the agents, automatically generates most clarification cases, primarily as follow-up tasks from large-scale activities run during nightly processing. As a result, a large number of new cases await resolution each morning. To efficiently handle this volume, cases must be prioritized based on factors such as creation date, due date, and assigned importance. The EMMACL transaction offers extensive filtering options to select and organize these cases by their resolution priority. In the following figure illustrates the EMMACL transaction’s selection screen.
+
+![image](https://github.com/user-attachments/assets/f4bbca7b-88ca-4eec-995f-bb7bb2d92c06)
+
+
+
+
+
 
 
 
