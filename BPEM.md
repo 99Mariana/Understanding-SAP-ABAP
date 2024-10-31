@@ -119,7 +119,7 @@ The elements are stored in what is called the Clarification Case Container. When
 
 En esta transaciones es posible consultar toda la informacion desde la infomacion basica, la pool de mensages, objetos ( dados that will be shown as inputs in the solucion processes, definicion of regras especiais or informaciones exibidas em el caso de esclarecimento). In this transacion is posible to see the descriptions screen, that contain detailed documentation to support the agent resolving the clarification case efficiently. The Processes screen define the list of solution processes that shall help the agents to resolve the clarification case, each acion as an Modulo de funciones associated. Note that Solution processes can be executed either automatically or manually. 
 
-In this transaction, it is possible to view all information, including basic details, the message pool, objects (data that will appear as inputs in the solution processes and the definition of special rules or information displayed in the clarification case). Within this transaction, you can also access the description screen, which contains detailed documentation to support the agent in efficiently resolving the clarification case. The Processes screen defines a list of solution processes designed to assist agents in handling the clarification case, with each action linked to a functional module. Note that solution processes can be executed either automatically or manually.
+In this transaction, it is possible to view all information, including basic details, the message pool, objects (data that will appear as inputs in the solution processes and the definition of special rules or information displayed in the clarification case) . Within this transaction, you can also access the description screen, which contains detailed documentation to support the agent in efficiently resolving the clarification case. The Processes screen defines a list of solution processes designed to assist agents in handling the clarification case, with each action linked to a functional module. Note that solution processes can be executed either automatically or manually.
 
 ![image](https://github.com/user-attachments/assets/3e7bd8a6-f84f-4960-b83b-1b0badc92523)
 
@@ -131,9 +131,21 @@ In this transaction, it is possible to view all information, including basic det
 
 A clarification case represents a specific business exception, providing options to analyze the issue and outlining possible solution processes to aid in its resolution. Additionally, each clarification case is assigned a status that indicates its progress, from the moment it is created to when it is fully resolved and closed.
 
-Typically, the system, rather than the agents, automatically generates most clarification cases, primarily as follow-up tasks from large-scale activities run during nightly processing. As a result, a large number of new cases await resolution each morning. To efficiently handle this volume, cases must be prioritized based on factors such as creation date, due date, and assigned importance. The EMMACL transaction offers extensive filtering options to select and organize these cases by their resolution priority. In the following figure illustrates the EMMACL transaction’s selection screen.
+Typically, the system, rather than the agents, automatically generates most clarification cases, primarily as follow-up tasks from large-scale activities run during nightly processing. As a result, a large number of new cases await resolution each morning. To efficiently handle this volume, cases must be prioritized based on factors such as creation date, due date, and assigned importance. The `EMMACL` transaction offers extensive filtering options to select and organize these cases by their resolution priority. In the following figure illustrates the `EMMACL` transaction’s selection screen.
 
 ![image](https://github.com/user-attachments/assets/f4bbca7b-88ca-4eec-995f-bb7bb2d92c06)
+
+After enter the filters to select the clarification cases to analyse , a list as show in the following format : 
+
+![image](https://github.com/user-attachments/assets/5e24aa51-d377-49e7-9791-97e021de337b)
+
+With a double-click on each row, the details of the case are displayed, and certain actions can be performed. The user can initiate clarification case maintenance either from a list of cases `EMMACL` or in alternative by accessing each case individually through the `EMMAC2` transaction.
+
+![image](https://github.com/user-attachments/assets/49de1381-c62c-49ff-8e3f-d8fb5968d949)
+
+Note that usually the clarification cases are created automatically by the respective BPEM clarification case generation transactions, such as the `FPEMMAMA` transaction or by a BAPI. However in sometimes is need to create a clarification cases manually, for that a `EMMAC1` transaction is used. 
+
+
 
 
 
