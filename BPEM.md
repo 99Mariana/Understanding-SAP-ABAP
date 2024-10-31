@@ -147,7 +147,7 @@ With a double-click on each row, the details of the case are displayed, and cert
 
 ![image](https://github.com/user-attachments/assets/49de1381-c62c-49ff-8e3f-d8fb5968d949)
 
-Note that usually the clarification cases are created automatically by the respective BPEM clarification case generation transactions, such as the `FPEMMAMA` transaction or by a BAPI. However in sometimes is need to create a clarification cases manually, for that a `EMMAC1` transaction is used. 
+Usually the clarification cases are created automatically by the respective BPEM clarification case generation transactions, such as the `FPEMMAMA` transaction or by a BAPI. However in sometimes is need to create a clarification cases manually, for that a `EMMAC1` transaction is used. 
 
 
 
