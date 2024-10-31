@@ -1,6 +1,6 @@
 # Understanding-SAP-ABAP
 
-After 2 years of experience working as a SAP ABAP Technical consultant, I wanted to go further and deepen my knowledge the area far beyond of building lines of code.
+After 2 years of experience working as a SAP ABAP Technical Consultant, I wanted to go further and deepen my knowledge the area far beyond of building lines of code.
 
 
 Quoting one of the phrases that most impacted me during my academic path:
