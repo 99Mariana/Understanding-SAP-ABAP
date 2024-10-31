@@ -22,7 +22,7 @@ When issues are detected, BPEM allows the creation of clarification cases that c
 
 Managing these issues manually is usually time-consuming, but BPEM simplifies the process by reducing the time needed for log analysis and allowing direct navigation from error messages to the associated business objects, streamlining issue resolution. 
 
-This sections will explore some basic and usefull concepts related with BPEM, for following informacion, and some step-by-step descriptions take a look of: 
+This section will cover essential and useful concepts related to BPEM. For further details, including additional information and step-by-step instructions, take a look of SAP’s BPEM Implementation Guide:
 
 https://help.sap.com/doc/c6d6a233e1a546a38ff4388f12c28438/6.0/en-US/BPEM_Implementation_Guide_v2%203.pdf
 
