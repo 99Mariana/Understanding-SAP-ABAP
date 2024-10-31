@@ -104,12 +104,12 @@ The system can automatically generate clarification cases if application error m
 
 Some important transaction related to Clarification Case Categories are: 
 
-`EMMACCAT1`  -> Create Clarification Case Category
-`EMMACCAT1M` -> Create Clarification Case Category from Message
-`EMMACCAT2`  -> Change Clarification Case Category
-`EMMACCAT3`  -> Display Clarification Case Category
-`EMMACCAT4`  -> Delete Clarification Case Category
-`EMMACCAT5`  -> Add Clarification Case Category to Transport Request
+- `EMMACCAT1`  -> Create Clarification Case Category
+- `EMMACCAT1M` -> Create Clarification Case Category from Message
+- `EMMACCAT2`  -> Change Clarification Case Category
+- `EMMACCAT3`  -> Display Clarification Case Category
+- `EMMACCAT4`  -> Delete Clarification Case Category
+- `EMMACCAT5`  -> Add Clarification Case Category to Transport Request
 
 
 The elements are stored in what is called the Clarification Case Container. When you double-click on a category within the Clarification Case Categories, a new window opens, showing the details of the selected category.
