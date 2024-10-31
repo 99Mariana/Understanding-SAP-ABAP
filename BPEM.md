@@ -112,7 +112,9 @@ Some important transaction related to Clarification Case Categories are:
 
 
 The elements are stored in what is called the Clarification Case Container. When you double-click on a category within the Clarification Case Categories, a new window opens, showing the details of the selected category.
-![image](https://github.com/user-attachments/assets/0b9f3be7-dc00-4ac7-bfda-8d79555be9a1)
+
+![image](https://github.com/user-attachments/assets/ee8b8290-22d2-4068-baad-f7646e2b7b87)
+
 
 En esta transaciones es posible consultar toda la informacion desde la infomacion basica, la pool de mensages, objetos ( dados that will be shown as inputs in the solucion processes, definicion of regras especiais or informaciones exibidas em el caso de esclarecimento). In this transacion is posible to see the descriptions screen, that contain detailed documentation to support the agent resolving the clarification case efficiently. The Processes screen define the list of solution processes that shall help the agents to resolve the clarification case, each acion as an Modulo de funciones associated. Note that Solution processes can be executed either automatically or manually. 
 
