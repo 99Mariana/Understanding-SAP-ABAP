@@ -7,6 +7,7 @@
     - [Introduction](#introduction)
     - [Advantages of Using BPEM](#advantages)
     - [BPEM Processes and Transactions](#process)
+    - [Clarification Case Categories](#categories)
 
  
 
@@ -91,6 +92,33 @@ The system can execute solution processes of clarification cases if you marked t
 5- **Transfer of KPIs to Business Information Warehouse:**
 
 In this process step, key data from clarification cases is extracted to a business information warehouse to evaluate business process performance. This capability is accessible across all applications. Additionally, specialized extractors are available for SAP for Utilities processes, allowing for further data extraction, including statistics on successful and failed business processes specific to SAP for Utilities.
+
+
+###  Clarification Case Categories
+
+> [Business Process Exception Management (BPEM)](#BPEM) > [Content](#content) > [This section](#categories)
+
+
+The system can automatically generate clarification cases if application error messages match the triggering messages defined in a clarification case category. Each category is tied to a specific business process and acts as a template for creating cases. Multiple categories can be set for each process, with conditions that determine which category should be used based on different types of exceptions. Each exception is identified by specific error or warning messages, which serve as the basis for creating cases. Solution processes can also be defined to help agents identify and resolve the issue efficiently.
+
+Some important transaction related to Clarification Case Categories are: 
+
+`EMMACCAT1`  -> Create Clarification Case Category
+`EMMACCAT1M` -> Create Clarification Case Category from Message
+`EMMACCAT2`  -> Change Clarification Case Category
+`EMMACCAT3`  -> Display Clarification Case Category
+`EMMACCAT4`  -> Delete Clarification Case Category
+`EMMACCAT5`  -> Add Clarification Case Category to Transport Request
+
+
+The elements are stored in what is called the Clarification Case Container. When you double-click on a category within the Clarification Case Categories, a new window opens, showing the details of the selected category.
+![image](https://github.com/user-attachments/assets/0b9f3be7-dc00-4ac7-bfda-8d79555be9a1)
+
+En esta transaciones es posible consultar toda la informacion desde la infomacion basica, la pool de mensages, objetos ( dados that will be shown as inputs in the solucion processes, definicion of regras especiais or informaciones exibidas em el caso de esclarecimento). In this transacion is posible to see the descriptions screen, that contain detailed documentation to support the agent resolving the clarification case efficiently. The Processes screen define the list of solution processes that shall help the agents to resolve the clarification case, each acion as an Modulo de funciones associated. Note that Solution processes can be executed either automatically or manually. 
+
+In this transaction, it is possible to view all information, including basic details, the message pool, objects (data that will appear as inputs in the solution processes and the definition of special rules or information displayed in the clarification case). Within this transaction, you can also access the description screen, which contains detailed documentation to support the agent in efficiently resolving the clarification case. The Processes screen defines a list of solution processes designed to assist agents in handling the clarification case, with each action linked to a functional module. Note that solution processes can be executed either automatically or manually.
+
+![image](https://github.com/user-attachments/assets/3e7bd8a6-f84f-4960-b83b-1b0badc92523)
 
 
 
