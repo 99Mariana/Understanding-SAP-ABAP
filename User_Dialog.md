@@ -40,5 +40,5 @@ In the table bellow, resume the elements that can be used in a selection screen,
 | **Block Groups**   | Logical grouping of fields for organization.                                                        | `SELECTION-SCREEN BEGIN OF BLOCK b1 WITH FRAME.`          |
 | **Tab Strips**     | Organizes elements into tabs for complex screens.                                                   | `SELECTION-SCREEN BEGIN OF TABBED BLOCK tab1 FOR 10 LINES.` |
 | **Drop-Down Lists**| Predefined list of selectable values (list box).                                                    | `PARAMETERS: p_plant TYPE mara-werks AS LISTBOX.`         |
-| **Icons/Images**   | Visual elements for guidance, such as logos or status icons.                                        | N/A (requires custom development for images/icons)        |
+
 
