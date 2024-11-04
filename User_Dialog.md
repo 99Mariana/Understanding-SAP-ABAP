@@ -6,6 +6,7 @@
 - [User Dialog](User.md):
     - [Introduction](#introduction)
     - [Selection Screen](#SS)
+    - [Dynpros](#Dynpros)
 
  
 
@@ -57,5 +58,10 @@ Selection screens have specific events that allow developers to manage user inte
 | `AT SELECTION-SCREEN OUTPUT`                      | Triggered before the selection screen is displayed on the screen. Used to dynamically modify screen elements (e.g., hiding/showing fields). |
 | `AT SELECTION-SCREEN ON <FIELD/BLOCK/RADIOBUTTON GROUP/END OF SELECT-OPTION>` | Triggered when a specific field, block, radio button group, or select-option range is modified, allowing targeted validation and logic. |
 | `START-OF-SELECTION`                              | Triggered after the user clicks "Execute" and input has been validated. This is where the main program logic begins.   |
+
+
+### Dynpros
+
+> [User Dialog](#User) > [Content](#content) > [This section](#Dynpros)
 
 
