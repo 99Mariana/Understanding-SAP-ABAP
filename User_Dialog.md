@@ -67,4 +67,19 @@ Selection screens have specific events that allow developers to manage user inte
 
 > [User Dialog](#User) > [Content](#content) > [This section](#Dynpros)
 
+### SAP GUI (Graphical User Interface)
+
+> [User Dialog](#User) > [Content](#content) > [This section](#interface)
+
+### ALV (ABAP List Viewer)
+
+> [User Dialog](#User) > [Content](#content) > [This section](#alv)
+
+### Email
+
+> [User Dialog](#User) > [Content](#content) > [This section](#email)
+
+### Handle files
+
+> [User Dialog](#User) > [Content](#content) > [This section](#files)
 
