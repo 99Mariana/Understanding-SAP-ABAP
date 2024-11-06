@@ -79,6 +79,52 @@ Selection screens have specific events that allow developers to manage user inte
 
 > [User Dialog](#User) > [Content](#content) > [This section](#email)
 
+In some context can be useful to notify a user by email about some result of a process. In the code below is shown a exempal of how can we code a email body mensage development. 
+
+```` abap
+    DATA: lv_text      TYPE soli,
+          lv_numero    TYPE char10,
+          lv_total     TYPE char10,
+          lv_fecha     TYPE string,
+          lv_sociedad  TYPE bukrs,
+          lv_total_aux TYPE integer.
+
+
+    rt_email-subject-obj_name = 'DIs_email'.
+    rt_email-subject-obj_langu = sy-langu.
+    rt_email-subject-obj_descr = 'Numero de DIs contabilizados'.
+
+    CONCATENATE sy-datum+6(2) sy-datum+4(2) sy-datum(4) INTO lv_fecha SEPARATED BY ' / '.
+    CONCATENATE 'Facturas del día:' lv_fecha INTO lv_text SEPARATED BY space.
+    APPEND lv_text TO rt_email-texts.
+    APPEND ' ' TO rt_email-texts.
+
+    lv_total_aux =  VALUE #( it_di_contab[ sociedad = c_total ]-ndoc OPTIONAL ) .
+    lv_total = CONV #( lv_total_aux ).
+    CONCATENATE 'Faturados:' lv_total  'DIs' INTO lv_text SEPARATED BY space.
+    APPEND lv_text TO rt_email-texts.
+    APPEND ' ' TO rt_email-texts.
+
+    LOOP AT it_di_contab ASSIGNING FIELD-SYMBOL(<lfs_di_cont>).
+      lv_numero = CONV #( <lfs_di_cont>-ndoc ).
+      lv_sociedad = <lfs_di_cont>-sociedad.
+      if lv_sociedad <> c_total.
+      CONCATENATE '->' lv_sociedad ':' lv_numero  'DIs' INTO lv_text SEPARATED BY space.
+      APPEND lv_text TO rt_email-texts.
+      APPEND ' ' TO rt_email-texts.
+      else.
+      APPEND ' ' TO rt_email-texts.
+      CONCATENATE 'Total:' lv_numero  'DIs' INTO lv_text SEPARATED BY space.
+      APPEND lv_text TO rt_email-texts.
+      endif.
+
+    ENDLOOP.
+
+    lv_text = 'Saludo.'.
+    APPEND lv_text TO rt_email-texts.
+
+```` 
+
 ### Handle files
 
 > [User Dialog](#User) > [Content](#content) > [This section](#files)
