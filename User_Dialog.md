@@ -173,3 +173,121 @@ By pressing the "Preview" button, you can see how the email will appear when the
 
 > [User Dialog](#User) > [Content](#content) > [This section](#files)
 
+ABAP allows file handling across various environments, including directories on the application server, the user’s local computer (presentation server), and through integrations like web services. 
+
+The application server hosts the SAP system itself, making it a suitable place for batch processing or managing large data imports and exports. Transaction AL11 allows you to view the directories available on the application server and manage files within them. Although primarily an administrative tool, it’s helpful for directly inspecting or verifying file structures.
+
+| **Command**       | **Description**                                               |
+|-------------------|---------------------------------------------------------------|
+| **OPEN DATASET**  | Opens a file for reading, writing, or appending.              |
+| **FOR INPUT**     | Opens a file for reading.                                     |
+| **FOR OUTPUT**    | Opens a file for writing (truncates existing content).        |
+| **FOR APPENDING** | Opens a file for writing without truncating existing content. |
+| **READ DATASET**  | Reads data from an open file.                                 |
+| **TRANSFER**      | Writes data to an open file.                                  |
+| **CLOSE DATASET** | Closes the file.                                              |
+
+It is possible to create search help when selecting the file path. To do this, you should use the function '/SAPDMC/LSM_F4_SERVER_FILE':
+
+```` ABAP
+    constants lc_dir type char9 value 'directory'.
+
+    call function '/SAPDMC/LSM_F4_SERVER_FILE'
+      exporting
+        filemask         = lc_dir
+      importing
+        serverfile       = p_ruta
+      exceptions
+        canceled_by_user = 1
+        others           = 2.
+    if sy-subrc ne 0.
+      clear p_ruta.
+    endif.
+
+````
+
+Code example for a file for reading process:
+
+```` abap
+    "abrir el fichero
+    open dataset lv_fichero for input in text mode encoding default with smart linefeed.
+    if sy-subrc eq 0.
+      do.
+        read dataset lv_fichero into ls_data.
+        if sy-subrc eq 0.
+          append ls_data to lt_data.
+        elseif sy-subrc ne 0.
+          exit.
+        endif.
+      enddo.
+
+      close dataset lv_fichero.
+      if sy-subrc eq 0.
+        clear lv_error.
+      endif.
+
+      if lt_data[] is initial.
+        lv_error = abap_true.
+      endif.
+
+    else.
+      lv_error = abap_true.
+    endif.
+
+    if lv_error = abap_false.
+      if lt_data[] is not initial.
+        loop at lt_data into ls_data.
+
+          split ls_data at c_semicolon
+           into ls_fichero-crm_product
+                ls_fichero-complemento
+                ls_fichero-text30.
+
+          append ls_fichero to lt_fichero.
+
+        endloop.
+
+      endif.
+
+    endif.
+````
+Code example for a file for writing process:
+
+```` abap
+    data: ls_line  type string.
+    "file name
+    concatenate 'ATUALIZA_AEAT' '_' sy-datum '_' sy-uzeit '.csv' into data(lv_filename).
+    data(lv_target) = conv saepfad( p_ruta && '/' && lv_filename ).
+
+    "open file
+    open dataset lv_target for output in text mode encoding default.
+
+    if sy-subrc eq 0.
+      "header line
+      concatenate 'Z_CFACTURA'
+                  'STATUS'
+                  'MSG'
+       into ls_line separated by ';'.
+      transfer ls_line to lv_target.
+
+      loop at it_log assigning field-symbol(<fs_line>).
+
+        concatenate <fs_line>-z_cfactura
+                    <fs_line>-status
+                    <fs_line>-msg
+         into ls_line separated by ';'.
+        transfer ls_line to lv_target.
+
+      endloop.
+
+      "close de file
+      close dataset lv_target.
+
+    endif.
+
+```` 
+
+In contrast, the presentation server refers to the client-side machine where the SAP GUI is accessed, typically the end-user’s computer. Reading and writing files on the presentation server is often necessary for user-driven tasks like downloading or uploading files directly from their local system.
+
+
+
