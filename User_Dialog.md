@@ -165,7 +165,8 @@ The result of this action can be seen in the modulo function `ALINK_CALL_TRANSAC
 
 By pressing the "Preview" button, you can see how the email will appear when the program is in IEP mode. In the coded example, the result should look something like this:
 
-![image](https://github.com/user-attachments/assets/a75ad55e-80b0-43c5-aed6-0360b77038a3)
+![image](https://github.com/user-attachments/assets/01c44d71-d126-4749-a2e5-d3d49ac61ab7)
+
 
 
 ### Handle files
