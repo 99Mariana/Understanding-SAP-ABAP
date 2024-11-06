@@ -79,51 +79,94 @@ Selection screens have specific events that allow developers to manage user inte
 
 > [User Dialog](#User) > [Content](#content) > [This section](#email)
 
-In some context can be useful to notify a user by email about some result of a process. In the code below is shown a exempal of how can we code a email body mensage development. 
+In some contexts, it may be useful to notify a user by email about the result of a process. The code below shows an example of how to create an email body message. In this example, the program is designed to determine the number of print documents created on a specific date and send this information by email to the responsible parties.
 
 ```` abap
+
+    types: BEGIN OF ty_email,
+             subject TYPE sodocchgi1,
+             texts   TYPE STANDARD TABLE OF soli WITH DEFAULT KEY,
+           END OF ty_email.
+
     DATA: lv_text      TYPE soli,
           lv_numero    TYPE char10,
           lv_total     TYPE char10,
           lv_fecha     TYPE string,
           lv_sociedad  TYPE bukrs,
-          lv_total_aux TYPE integer.
+          lv_total_aux TYPE integer,
+          ls_email     type ty_email. 
 
 
-    rt_email-subject-obj_name = 'DIs_email'.
-    rt_email-subject-obj_langu = sy-langu.
-    rt_email-subject-obj_descr = 'Numero de DIs contabilizados'.
+    ls_email-subject-obj_name = 'DIs_email'.
+    ls_email-subject-obj_langu = sy-langu.
+    ls_email-subject-obj_descr = 'Numero de DIs contabilizados'.
 
     CONCATENATE sy-datum+6(2) sy-datum+4(2) sy-datum(4) INTO lv_fecha SEPARATED BY ' / '.
     CONCATENATE 'Facturas del día:' lv_fecha INTO lv_text SEPARATED BY space.
-    APPEND lv_text TO rt_email-texts.
-    APPEND ' ' TO rt_email-texts.
+    APPEND lv_text TO ls_email-texts.
+    APPEND ' ' TO ls_email-texts.
 
     lv_total_aux =  VALUE #( it_di_contab[ sociedad = c_total ]-ndoc OPTIONAL ) .
     lv_total = CONV #( lv_total_aux ).
     CONCATENATE 'Faturados:' lv_total  'DIs' INTO lv_text SEPARATED BY space.
-    APPEND lv_text TO rt_email-texts.
-    APPEND ' ' TO rt_email-texts.
+    APPEND lv_text TO ls_email-texts.
+    APPEND ' ' TO ls_email-texts.
 
     LOOP AT it_di_contab ASSIGNING FIELD-SYMBOL(<lfs_di_cont>).
       lv_numero = CONV #( <lfs_di_cont>-ndoc ).
       lv_sociedad = <lfs_di_cont>-sociedad.
       if lv_sociedad <> c_total.
       CONCATENATE '->' lv_sociedad ':' lv_numero  'DIs' INTO lv_text SEPARATED BY space.
-      APPEND lv_text TO rt_email-texts.
-      APPEND ' ' TO rt_email-texts.
+      APPEND lv_text TO ls_email-texts.
+      APPEND ' ' TO ls_email-texts.
       else.
-      APPEND ' ' TO rt_email-texts.
+      APPEND ' ' TO ls_email-texts.
       CONCATENATE 'Total:' lv_numero  'DIs' INTO lv_text SEPARATED BY space.
-      APPEND lv_text TO rt_email-texts.
+      APPEND lv_text TO ls_email-texts.
       endif.
 
     ENDLOOP.
 
     lv_text = 'Saludo.'.
-    APPEND lv_text TO rt_email-texts.
+    APPEND lv_text TO ls_email-texts.
 
-```` 
+````
+
+For to send the email to the recipients teh function `SO_NEW_DOCUMENT_SEND_API1` can be used: 
+```` abap
+
+    data: lt_recipients TYPE STANDARD TABLE OF somlrec90 WITH DEFAULT KEY.
+    " Thelt_recipients table is filled with the email recipients.
+
+    CALL FUNCTION 'SO_NEW_DOCUMENT_SEND_API1'
+      EXPORTING
+        document_data              = ls_email-subject
+      TABLES
+        object_content             = ls_email-texts
+        receivers                  = lt_recipients
+      EXCEPTIONS
+        too_many_receivers         = 1
+        document_not_sent          = 2
+        document_type_not_exist    = 3
+        operation_no_authorization = 4
+        parameter_error            = 5
+        x_error                    = 6
+        enqueue_error              = 7
+        OTHERS                     = 8.
+
+    IF sy-subrc EQ 0.
+      COMMIT WORK.
+    ENDIF.
+````
+
+The result of this action can be seen in the modulo function `ALINK_CALL_TRANSACTION` for that the code `SOST` shoud entered into the field named `TRANSACTIONNAME` and in debbug the autorizacion check should be jump. 
+
+![image](https://github.com/user-attachments/assets/a9d40f7e-8d7b-4803-9bce-2fdd5e6ce543)
+
+By pressing the "Preview" button, you can see how the email will appear when the program is in IEP mode. In the coded example, the result should look something like this:
+
+![image](https://github.com/user-attachments/assets/a75ad55e-80b0-43c5-aed6-0360b77038a3)
+
 
 ### Handle files
 
