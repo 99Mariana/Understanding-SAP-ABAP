@@ -175,7 +175,7 @@ By pressing the "Preview" button, you can see how the email will appear when the
 
 ABAP allows file handling across various environments, including directories on the application server, the user’s local computer (presentation server), and through integrations like web services. 
 
-The application server hosts the SAP system itself, making it a suitable place for batch processing or managing large data imports and exports. Transaction AL11 allows you to view the directories available on the application server and manage files within them. Although primarily an administrative tool, it’s helpful for directly inspecting or verifying file structures.
+The application server hosts the SAP system itself, making it a suitable place for batch processing or managing large data imports and exports. Transaction AL11 allows you to view the directories available on the application server and manage files within them. Although primarily an administrative tool, it’s helpful for directly inspecting or verifying file structures. Apps like WinSCP and FileZilla are very useful for uploading and downloading files to directories in an easy way.
 
 | **Command**       | **Description**                                               |
 |-------------------|---------------------------------------------------------------|
@@ -287,7 +287,6 @@ Code example for a file for writing process:
 
 ```` 
 
-In contrast, the presentation server refers to the client-side machine where the SAP GUI is accessed, typically the end-user’s computer. Reading and writing files on the presentation server is often necessary for user-driven tasks like downloading or uploading files directly from their local system.
-
+In contrast, the presentation server refers to the client-side machine where the SAP GUI is accessed, typically the end user’s computer. Reading and writing files on the presentation server is often necessary for user-driven tasks like downloading or uploading files directly from their local system. In this context, to create search help when selecting the file path, the `CL_GUI_FRONTEND_SERVICES=>DIRECTORY_BROWSE` method is called. For file uploads, the method used is `CL_GUI_FRONTEND_SERVICES=>GUI_UPLOAD`, and for downloads, the method `CL_GUI_FRONTEND_SERVICES=>GUI_DOWNLOAD` is available.
 
 
