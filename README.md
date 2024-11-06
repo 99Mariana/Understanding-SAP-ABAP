@@ -38,6 +38,14 @@ This project came up as a result of my desire to deepen my knowledge of SAP ABAP
     - How Is Data Stored? ( RDBMS, IMDB )
     - Colocation Groups
     - Performance Considerations
+- [User Dialogs](User.md):
+     - Introduction
+     - Selection Screen
+     - Dynpros
+     - SAP GUI (Graphical User Interface)
+     - ALV (ABAP List Viewer)
+     - Email
+     - Handle files
 -  [Trace Analysis in SAP](Trace_Analysis.md):
     - Introduction
     - SQL Trace vs ABAP Runtime Trace
@@ -69,15 +77,6 @@ This project came up as a result of my desire to deepen my knowledge of SAP ABAP
      - BPEM Processes and Transactions
      - Clarification Case Categories
      - Working with Clarification Cases
-- [User Dialogs](User.md):
-     - Introduction
-     - Selection Screen
-     - Dynpros
-     - SAP GUI (Graphical User Interface)
-     - ALV (ABAP List Viewer)
-     - Email
-     - Handle files
-
 
  
 
