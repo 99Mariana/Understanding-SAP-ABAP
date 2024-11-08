@@ -75,7 +75,55 @@ In SAP ABAP, a Dynpro(short for "Dynamic Program," ) is a type of screen/user in
 2. **Flow Logic**:
    Flow logic consists of the ABAP code that governs how the screen responds to user interactions. It includes specific events, like PBO (Process Before Output) and PAI (Process After Input), which determine what actions occur before the screen appears and what happens after user input is received.
 
-   
+#### Dynpro Events
+
+Dynpros are controlled through events that initiate specific actions in the program flow:
+
+- **PBO (Process Before Output)**: This event occurs right before the screen is shown to the user. It’s often used to initialize values or fill in screen fields.
+
+- **PAI (Process After Input)**: This event is triggered after the user interacts with the screen, such as by pressing Enter or clicking a button. At this stage, the data entered by the user is processed.
+
+
+#### How to Create a Screen
+
+Each screen is assigned a Screen Number, which is used to navigate between screens within the same application.
+
+A Dynpro program typically includes multiple screens that work together, passing data between each other to accomplish various tasks within the application.
+
+There are several ways to create a screen:
+- **Forward navigation** -> In the ABAP Editor, double-click the screen number. The system opens the Screen Painter automatically.
+- **Object Navigator** -> You can create a new program object screen for your program directly from the object list in the navigation area.
+
+In this images show how can we create a screen:
+
+![image](https://github.com/user-attachments/assets/a029a2da-ec91-400c-aff4-b71cfbf6c86c)
+![image](https://github.com/user-attachments/assets/6c65c940-59ed-4df8-a4a1-be04c01e0af7)
+
+
+the we should create the PBO and PAI includes:
+![image](https://github.com/user-attachments/assets/6f15ce1f-8175-4cbb-b882-b306e5e594c4)
+
+In the PBO we should create: 
+![image](https://github.com/user-attachments/assets/2f5ed45c-b5b5-42e8-899d-9c58f5f4d7cf)
+
+in "TELA" is posible to choose de buttons that will appear in the menu bar, for instance:
+![image](https://github.com/user-attachments/assets/4e2d20f7-de92-4262-865e-dcf11b864638)
+
+In the PAI, we create the code flow for the options available for the user to choose. This can include functions defined in the menu bar, such as "EXIT," as well as other buttons created in the screen layout:
+![image](https://github.com/user-attachments/assets/bd3fda05-211d-4de3-aa64-6e27b035f431)
+
+By double-clicking on the screen number and then clicking the "Layout" button, the Screen Painter opens, allowing you to design the screen. Using the Graphical Screen Painter tool, you can easily create various screen elements, such as input and output fields, labels, and borders. 
+![image](https://github.com/user-attachments/assets/5f7b6ee7-28a4-4670-899e-2af815e30fdf)
+
+
+There are two methods for setting field attributes for the screen fields:
+
+1. **Retrieve from ABAP Dictionary**:
+   You can import field types and attributes directly from existing ABAP Dictionary structures. This approach provides access to all relevant information about the fields, including semantic details, data element definitions, and foreign key relationships. The field names are also sourced directly from the ABAP Dictionary.
+
+2. **Retrieve from Program**:
+   You can also use field attributes from data objects that are already defined within the program. However, for this to work, the program must have an existing compiled version. The name of the data object then serves as the field name on the screen.
+
 
 ### SAP GUI (Graphical User Interface)
 
