@@ -67,6 +67,16 @@ Selection screens have specific events that allow developers to manage user inte
 
 > [User Dialog](#User) > [Content](#content) > [This section](#Dynpros)
 
+In SAP ABAP, a Dynpro(short for "Dynamic Program," ) is a type of screen/user interface component that enables user interactions in SAP applications. It’s an integral part of the SAP GUI (Graphical User Interface) and is essential for creating standard SAP transactions. Each Dynpro is part of an ABAP program, consisting of both the visual screen elements and the logic that controls how users interact with these elements. In this way we can say that a Dynpro is made up of two primary components:
+
+1. **Screen Layout (Layout Editor)**:
+   This part defines the interactive elements of the user interface, such as input fields, buttons, checkboxes, and tables, that users engage with on the screen. The layout editor in SAP is used to organize and style the layout and appearance of these screen elements.
+
+2. **Flow Logic**:
+   Flow logic consists of the ABAP code that governs how the screen responds to user interactions. It includes specific events, like PBO (Process Before Output) and PAI (Process After Input), which determine what actions occur before the screen appears and what happens after user input is received.
+
+   
+
 ### SAP GUI (Graphical User Interface)
 
 > [User Dialog](#User) > [Content](#content) > [This section](#interface)
