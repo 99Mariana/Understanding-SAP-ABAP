@@ -138,6 +138,23 @@ There are two methods for setting field attributes for the screen fields:
 > [User Dialog](#User) > [Content](#content) > [This section](#alv)
 
 
+In SAP ABAP (Advanced Business Application Programming), ALV, or ABAP List Viewer, is a suite of tools and functions that SAP provides to improve report outputs. ALV offers developers a standardized approach for displaying, formatting, and managing lists and tables, helping them to create reports that are both user-friendly and visually polished.
+
+The key benefits of using ALV in SAP ABAP are:
+
+1. **Consistent and Professional Display**: Provides a standardized, polished look for reports.
+2. **Enhanced Functionality**: Built-in features like sorting, filtering, and exporting data.
+3. **Interactivity**: Allows users to sort, filter, reorder, and aggregate data directly in the report.
+4. **Simplified Development**: Reduces coding effort with predefined functions for common tasks.
+5. **Improved Error Handling**: Displays error messages and warnings clearly. 
+
+These features make ALV ideal for creating user-friendly, interactive, and efficient reports.
+
+The following graphic illustrates the steps required to display a list with the ALV Grid Control:
+![image](https://github.com/user-attachments/assets/815a247b-38bb-4ebb-8900-48dc546eec39)
+
+
+
 
 
 
