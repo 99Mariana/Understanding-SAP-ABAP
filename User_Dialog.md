@@ -11,6 +11,8 @@
     - [ALV (ABAP List Viewer)](#alv)
     - [Email](#email)
     - [Handle files](#files)
+    - [Visual Data Representations](#graphics)
+
       
 
 ### Introduction
@@ -582,5 +584,10 @@ Code example for a file for writing process:
 ```` 
 
 In contrast, the presentation server refers to the client-side machine where the SAP GUI is accessed, typically the end user’s computer. Reading and writing files on the presentation server is often necessary for user-driven tasks like downloading or uploading files directly from their local system. In this context, to create search help when selecting the file path, the `CL_GUI_FRONTEND_SERVICES=>DIRECTORY_BROWSE` method is called. For file uploads, the method used is `CL_GUI_FRONTEND_SERVICES=>GUI_UPLOAD`, and for downloads, the method `CL_GUI_FRONTEND_SERVICES=>GUI_DOWNLOAD` is available.
+
+
+### Visual Data Representations
+
+> [User Dialog](#User) > [Content](#content) > [This section](#graphics)
 
 
