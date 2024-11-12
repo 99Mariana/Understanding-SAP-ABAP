@@ -150,13 +150,71 @@ The key benefits of using ALV in SAP ABAP are:
 
 These features make ALV ideal for creating user-friendly, interactive, and efficient reports.
 
+
+#### Create a ALV
+
 The following graphic illustrates the steps required to display a list with the ALV Grid Control:
 
 ![image](https://github.com/user-attachments/assets/815a247b-38bb-4ebb-8900-48dc546eec39)
 
 To display data using ALV, you must provide an internal table containing the data, known as the output table, along with a description of the data’s structure. This structure information is supplied to the ALV Grid Control via a field catalog or by using the appropriate structure from the Data Dictionary.
 
-To a automatic ALV creation you can call the function `REUSE_ALV_GRID_DISPLAY`.  For a manual creacion of a alv some steps should be taken:
+To a automatic ALV creation you can call the function `REUSE_ALV_GRID_DISPLAY`.  A example of the code could be, where the lt_layout and the lt_fieldcat are optional: 
+```` abap
+
+  method alv_spool.
+
+    data: lt_fieldcat  type slis_t_fieldcat_alv,
+          ls_fcat      type slis_fieldcat_alv,
+          lt_layout    type slis_layout_alv,
+          lt_result    type ty_tb_log_alv.
+
+    lt_result = it_result.
+
+    ls_fcat-fieldname = 'ZSECPROC' .
+    ls_fcat-seltext_l = 'Nº Secuencial Proceso' .
+    lt_layout-colwidth_optimize = 'X'.
+    append ls_fcat to lt_fieldcat.
+    clear ls_fcat.
+
+    ls_fcat-fieldname = 'BLOQ_BORRADO' .
+    ls_fcat-seltext_l = 'Se ha borrado bloqueo' .
+    lt_layout-colwidth_optimize = 'X'.
+    append ls_fcat to lt_fieldcat.
+    clear ls_fcat.
+
+    ls_fcat-fieldname = 'TABLAS_ATUAL' .
+    ls_fcat-seltext_l = 'Se han atualizado las tablas sap' .
+    lt_layout-colwidth_optimize = 'X'.
+    append ls_fcat to lt_fieldcat.
+    clear ls_fcat.
+
+    ls_fcat-fieldname = 'MENSAGE' .
+    ls_fcat-seltext_l = 'Mensage' .
+    lt_layout-colwidth_optimize = 'X'.
+    append ls_fcat to lt_fieldcat.
+    clear ls_fcat.
+
+    call function 'REUSE_ALV_GRID_DISPLAY'
+      exporting
+        it_fieldcat   = lt_fieldcat
+        is_layout     = lt_layout
+      tables
+        t_outtab      = lt_result
+      exceptions
+        program_error = 1
+        others        = 2.
+
+    if sy-subrc = 0.      "sad cast rules
+      data(l_dummy_cast) = abap_false.
+    endif.
+
+  endmethod.
+
+````
+
+For manual creation of an ALV, several steps need to be followed. A code example is provided in the section below. 
+Manual creation allows for a more flexible ALV setup, enabling additional configurations and features to be added as needed.
 
 ```abap
 DATA: 
@@ -187,13 +245,17 @@ MODULE display_alv OUTPUT.
   go_event_handler = NEW lcl_event_handler( ).
   SET HANDLER go_event_handler->handler_toolbar FOR go_grid.    
 
-* Method that creates the ALV table. Note that set_table_for_first_display already exists in SAP 
+* Method that creates the ALV table. Note that set_table_for_first_display already exists in SAP
+* Displaying a List in the ALV Grid Control 
   CALL METHOD go_grid->set_table_for_first_display
        EXPORTING
          is_layout       = ls_layout
        CHANGING
          it_outtab       = lt_result[]
          it_fieldcatalog = lt_fieldcatalog.
+
+*add the method that the define code logic to the new button created( if is the case)
+set handler go_event_handler->user_command for go_grid.
 
 ENDMODULE.
 ````
@@ -226,13 +288,85 @@ FORM f_layout CHANGING ps_layout TYPE LVC_S_LAYO.
 
 ENDFORM.
 
+````
+
+#### How to add a button in a Alv Toolbar
+
+In some situations, it can be very useful to have the possibility to add new buttons to an ALV toolbar. For this to be possible, methods to define the button and specify the logic that should be triggered by the button should be called in the PBO include. Below is an example of the code.
+
+```` abap
+
+class lcl_event_handler definition.
+
+  public section.
+    methods: handler_toolbar for event toolbar of cl_gui_alv_grid
+      importing e_object e_interactive.
+endclass.
+
+class lcl_event_handler implementation.
+
+  method handler_toolbar.
+    data: ls_toolbar type stb_button.
+    clear ls_toolbar.
+    ls_toolbar-text       = 'Guardar na Base de Dados' .
+    ls_toolbar-butn_type  = '0'.
+    ls_toolbar-function   = 'TB_SAVE'.
+    ls_toolbar-icon       = '@2L@'.
+    append ls_toolbar to e_object->mt_toolbar.
+
+  endmethod.
+endclass.
 
 ````
 
+![image](https://github.com/user-attachments/assets/903b6466-aa68-4e5a-8092-fd2a051bb5b7)
 
 
 
+```` abap
+method user_command.
+    data: lv_answer     type c,
+          lt_rows       type lvc_t_row,
+          lt_table_data type table of ymasccm_final,
+          ls_table_data type ymasccm_final.
 
+    if e_ucomm = 'TB_SAVE'.
+
+      call function 'POPUP_CONTINUE_YES_NO'
+        exporting
+          textline1 = 'Deseja Gravar'
+          titel     = 'Confirmação'
+        importing
+          answer    = lv_answer.
+
+      check lv_answer = 'J'.
+
+      go_grid->get_selected_rows( importing et_index_rows = lt_rows ).
+      loop at lt_rows into data(ls_rows).
+       read table lt_result index ls_rows-index into data(ls_selected_rows).
+       if sy-subrc eq 0.
+
+          ls_table_data-parceiro           = ls_selected_rows-gpart.
+          ls_table_data-conta_contrato     = ls_selected_rows-vkont.
+          ls_table_data-contrato           = ls_selected_rows-vertrag.
+          ls_table_data-nome               = ls_selected_rows-nome.
+
+          append ls_table_data to lt_table_data.
+          clear ls_table_data.
+
+        endif.
+      endloop.
+      modify ymasccm_final from table lt_table_data.
+
+      if sy-subrc ne 0.
+        message e004(y_erro).
+      endif.
+
+    endif.
+  endmethod.
+````
+
+As you can see in the example above, the methods are defined with a reference to an event of the class `CL_GUI_ALV_GRID`. Using these events, which are already created by SAP, we can implement functionalities in our ALVs, such as HOTSPOT, triggering processes with a double-click on an ALV row, and so on.
 
 
 ### Email
