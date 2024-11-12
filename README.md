@@ -46,6 +46,7 @@ This project came up as a result of my desire to deepen my knowledge of SAP ABAP
      - ALV (ABAP List Viewer)
      - Email
      - Handle files
+     - Visual Data Representations
 -  [Trace Analysis in SAP](Trace_Analysis.md):
     - Introduction
     - SQL Trace vs ABAP Runtime Trace
