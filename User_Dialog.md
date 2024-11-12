@@ -151,7 +151,84 @@ The key benefits of using ALV in SAP ABAP are:
 These features make ALV ideal for creating user-friendly, interactive, and efficient reports.
 
 The following graphic illustrates the steps required to display a list with the ALV Grid Control:
+
 ![image](https://github.com/user-attachments/assets/815a247b-38bb-4ebb-8900-48dc546eec39)
+
+To display data using ALV, you must provide an internal table containing the data, known as the output table, along with a description of the data’s structure. This structure information is supplied to the ALV Grid Control via a field catalog or by using the appropriate structure from the Data Dictionary.
+
+To a automatic ALV creation you can call the function `REUSE_ALV_GRID_DISPLAY`.  For a manual creacion of a alv some steps should be taken:
+
+```abap
+DATA: 
+    go_container TYPE REF TO cl_gui_custom_container,
+    go_grid TYPE REF TO cl_gui_alv_grid.
+````
+Create a module 'display_alv' in PBO
+
+```` abap
+MODULE display_alv OUTPUT.
+* SET PF-STATUS 'xxxxxxxx'.
+* SET TITLEBAR 'xxx'.
+  DATA: lt_fieldcatalog TYPE LVC_T_FCAT,  
+        ls_layout       TYPE LVC_S_LAYO.
+
+  IF go_container IS NOT BOUND.
+    go_container = NEW cl_gui_custom_container( container_name = 'CONT_ALV' ).
+  ENDIF.
+  
+  IF go_grid IS NOT BOUND.
+    go_grid = NEW cl_gui_alv_grid( i_parent = go_container ).
+  ENDIF.
+  
+  PERFORM f_fieldcatalog CHANGING lt_fieldcatalog.
+  PERFORM f_layout CHANGING ls_layout.
+
+* Calls a method from the class that allows adding a button to the toolbar (this step is not always necessary)
+  go_event_handler = NEW lcl_event_handler( ).
+  SET HANDLER go_event_handler->handler_toolbar FOR go_grid.    
+
+* Method that creates the ALV table. Note that set_table_for_first_display already exists in SAP 
+  CALL METHOD go_grid->set_table_for_first_display
+       EXPORTING
+         is_layout       = ls_layout
+       CHANGING
+         it_outtab       = lt_result[]
+         it_fieldcatalog = lt_fieldcatalog.
+
+ENDMODULE.
+````
+
+Create PERFORMs for the field catalog and layout
+
+```` abap
+
+FORM f_fieldcatalog CHANGING lt_fieldcatalog TYPE LVC_T_FCAT.
+
+  DATA ls_fcat TYPE LVC_s_FCAT.
+  
+  ls_fcat-hotspot   = 'X'.
+  ls_fcat-fieldname = 'VKONT'.
+  ls_fcat-inttype   = 'C'.
+  ls_fcat-outputlen = '20'.
+* ls_fcat-seltext_m = 'Account Number'.
+  ls_fcat-coltext   = 'Account Number'.
+  
+  APPEND ls_fcat TO lt_fieldcatalog.
+  CLEAR ls_fcat.
+* Repeat for all fields in the table to be displayed in the ALV
+  
+ENDFORM.
+
+FORM f_layout CHANGING ps_layout TYPE LVC_S_LAYO.
+
+* ps_layout-colwidth_optimize = 'X'.
+  ps_layout-sel_mode = 'A'.
+
+ENDFORM.
+
+
+````
+
 
 
 
