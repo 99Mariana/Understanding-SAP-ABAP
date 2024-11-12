@@ -590,4 +590,9 @@ In contrast, the presentation server refers to the client-side machine where the
 
 > [User Dialog](#User) > [Content](#content) > [This section](#graphics)
 
+Chart outputs are visual representations of data that can be very powerful in engaging and supporting better data analysis. Although not very common, it is possible to incorporate charting functionality into ABAP reports. For this, two main function modules are typically used:
 
+- `GFW_PRES_SHOW` 
+- `GRAPH_MATRIX_3D`
+
+For detailed examples, see this website: https://community.sap.com/t5/application-development-blog-posts/drawing-graphical-charts-with-abap/ba-p/13262780
