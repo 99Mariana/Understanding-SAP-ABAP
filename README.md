@@ -42,7 +42,6 @@ This project came up as a result of my desire to deepen my knowledge of SAP ABAP
      - Introduction
      - Selection Screen
      - Dynpros
-     - SAP GUI (Graphical User Interface)
      - ALV (ABAP List Viewer)
      - Email
      - Handle files
