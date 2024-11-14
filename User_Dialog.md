@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/7b1122c9-0f72-4084-96fb-04ef721b35e7)# [User Dialog](#User)
+# [User Dialog](#User)
 
 
 ## [Content](#content)
