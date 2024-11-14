@@ -7,7 +7,6 @@
     - [Introduction](#introduction)
     - [Selection Screen](#SS)
     - [Dynpros](#Dynpros)
-    - [SAP GUI (Graphical User Interface)](#interface)
     - [ALV (ABAP List Viewer)](#alv)
     - [Email](#email)
     - [Handle files](#files)
@@ -125,14 +124,6 @@ There are two methods for setting field attributes for the screen fields:
 
 2. **Retrieve from Program**:
    You can also use field attributes from data objects that are already defined within the program. However, for this to work, the program must have an existing compiled version. The name of the data object then serves as the field name on the screen.
-
-
-### SAP GUI (Graphical User Interface)
-
-> [User Dialog](#User) > [Content](#content) > [This section](#interface)
-
-
-
 
 
 ### ALV (ABAP List Viewer)
