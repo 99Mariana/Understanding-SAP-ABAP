@@ -1,4 +1,4 @@
-# [User Dialog](#User)
+![image](https://github.com/user-attachments/assets/7b1122c9-0f72-4084-96fb-04ef721b35e7)# [User Dialog](#User)
 
 
 ## [Content](#content)
@@ -584,6 +584,149 @@ Code example for a file for writing process:
 ```` 
 
 In contrast, the presentation server refers to the client-side machine where the SAP GUI is accessed, typically the end user’s computer. Reading and writing files on the presentation server is often necessary for user-driven tasks like downloading or uploading files directly from their local system. In this context, to create search help when selecting the file path, the `CL_GUI_FRONTEND_SERVICES=>DIRECTORY_BROWSE` method is called. For file uploads, the method used is `CL_GUI_FRONTEND_SERVICES=>GUI_UPLOAD`, and for downloads, the method `CL_GUI_FRONTEND_SERVICES=>GUI_DOWNLOAD` is available.
+
+
+#### How to Read a File Without Knowing the Struture
+
+In this subsection, we will explore how it may be possible to upload a file containing information to update a SAP table, even when the structure of the input file is unknown. The only requirement in this case is that the file must include the key field and the field(s) to be updated. This is an additional subsection but may be very useful in specific situations.
+
+First of all, it is important to identify the SAP table we want to update. Once identified, we can call the function module to retrieve information about the fields.
+
+``` abap
+    data: lt_fieldinfo  type table of dfies.
+
+    call function 'DDIF_FIELDINFO_GET'
+      exporting
+        tabname        = lv_table_name
+      tables
+        dfies_tab      = lt_fieldinfo
+      exceptions
+        not_found      = 1
+        internal_error = 2
+        others         = 3. 
+
+```
+
+Next, we compare the structure of the header with the field information obtained from the function above. In this step, we also verify the key fields.
+
+
+``` abap
+
+    types: begin of ty_comp,
+             fieldname  type  fieldname,
+             keyflag    type  keyflag,
+             file_exist type  flag,
+             index      type  i,
+           end of ty_comp, 
+           ty_tb_comp   type table of ty_comp.
+
+   constants: c_semicolon type c value ';'.
+
+    data: gt_comp       type ty_tb_comp,
+          lt_data       type ty_tb_text,
+          lv_table_name type ddobjname,
+          lt_header     type ty_tb_text,
+          ls_comp       type ty_comp,
+          ls_data       type string,
+          ls_fkkvkp     type fkkvkp,
+          lt_line_info  type ty_tb_text.
+
+  # Identify the header and delete the existent blank characters
+    data(ls_header) = lt_data[ 1 ].
+
+    split ls_header at c_semicolon into table lt_header.
+
+    loop at lt_header assigning field-symbol(<lv_field>).
+      condense <lv_field> no-gaps.  " Trims spaces from the field
+    endloop.
+
+  # Identify the fields existents in the file and if their are a key fields
+    loop at lt_fieldinfo assigning field-symbol(<lfs_comp>).
+
+      clear ls_comp.
+
+      ls_comp-fieldname = <lfs_comp>-fieldname.
+      ls_comp-keyflag   = <lfs_comp>-keyflag.
+
+      if line_exists( lt_header[ table_line = <lfs_comp>-fieldname ] ).
+        ls_comp-file_exist = abap_true.
+        read table lt_header into ls_header with key table_line = <lfs_comp>-fieldname.
+        ls_comp-index      = sy-tabix.
+      endif.
+
+      append ls_comp to gt_comp.
+
+    endloop.
+
+```
+
+With this information, we can proceed to read and transfer the file data into an internal table, which will be needed to update the database table.
+
+``` abap
+
+  #Read the file -> note that in this part of the program logic is essencial nothing the table root to the fields presented in the file. 
+    loop at lt_data into ls_data.
+      if sy-tabix > 1.
+        if r_fkkvkp is not initial.
+
+          split ls_data at c_semicolon into table lt_line_info.
+
+          loop at gt_comp assigning field-symbol(<lfs_aux>) where file_exist = abap_true.
+            assign component <lfs_aux>-fieldname of structure ls_fkkvkp to <fs_field>.
+
+            if sy-subrc = 0.
+              <fs_field> = lt_line_info[ <lfs_aux>-index ].
+            endif.
+          endloop.
+
+          append ls_fkkvkp to ct_fkkvkp.
+          clear ls_fkkvkp.
+
+        endif.
+      endif.
+    endloop. 
+
+```
+The last step involves updating the SAP table.
+
+``` abap
+method update_fkkvkp.
+
+    data: ls_fkkvkp      type fkkvkp,
+          ls_fkkvkp_file type fkkvkp.
+
+    field-symbols: <fs_field> type any.
+
+    ls_fkkvkp = is_fkkvkp.
+    ls_fkkvkp_file = is_fkkvkp_file.
+
+    loop at gt_comp assigning field-symbol(<lfs_aux>) where file_exist = abap_true and keyflag = abap_false.
+
+      assign component <lfs_aux>-fieldname of structure ls_fkkvkp to <fs_field>.
+
+      if sy-subrc = 0.
+
+        data(lv_fieldname) = |ls_fkkvkp_file-{ <lfs_aux>-fieldname }|.
+        assign (lv_fieldname) to field-symbol(<value>) .
+
+        <fs_field> = <value>.
+
+      endif.
+
+    endloop.
+
+    ls_fkkvkp-aedatp = sy-datum.
+    ls_fkkvkp-aenamp = sy-uname.
+
+    modify fkkvkp from ls_fkkvkp.
+
+    if sy-subrc ne 0.
+      rv_error = abap_true.
+    endif.
+
+  endmethod. 
+
+```
 
 
 ### Visual Data Representations
