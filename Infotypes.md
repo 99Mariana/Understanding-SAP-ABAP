@@ -8,7 +8,7 @@
       - Understanding the Concept
       - Why Infotypes Exist?
       - Infotypes vs Tables
-    - [Structure of an Infotype](#)
+    - [Structure of an Infotype](#structure)
     - [Types of Infotypes](#)
     - [Infotype Management](#)
     - [Access & Maintenance](#)
@@ -45,6 +45,29 @@ This approach provides:
 | **User Interaction** | Users interact directly via SAP screens (create, change, view, delete records) | Typically accessed indirectly through programs, transactions, or reports; not user-friendly |
 | **Data Organization** | Organized logically by HR category (personal info, payroll, addresses, etc.) | Organized physically as rows and columns, without inherent business logic |
 | **Time-Dependence** | Often time-dependent; maintains historical data with validity dates | Not inherently time-dependent; history must be handled manually |
+
+### Structure of an Infotype
+
+> [Infotypes](#Infotypes) > [Content](#content) > [This section](#structure)
+
+
+Every infotype is assigned a **unique four-digit number**, which is how SAP identifies it internally. This number is not random — it is standardized across SAP systems so that HR data remains consistent.  
+
+**Standard infotypes** use numbers from `0000` to `0999`. Example: `0002 = Personal Data`, `0006 = Address`  
+**Customer-specific infotypes** use numbers from `9000` to `9999` . This allows companies to create their own forms when they need additional or specialized data fields.  
+
+Each record within an infotype must be unique. To ensure this uniqueness, SAP relies on certain key fields, the most important being:  
+
+- **Personnel Number (PERNR):** The employee’s unique ID in SAP, which ensures that the data belongs to the correct person.  
+- **Validity Dates (BEGDA and ENDDA):** The start and end dates that define when the data is valid. This allows SAP to maintain history without overwriting old records.  
+- **Additional Keys (if needed):** Some infotypes allow multiple records at the same time. Example: Infotype `0014 (Recurring Payments and Deductions)` may include different types of allowances. In such cases, a **subtype field** acts as an additional key to distinguish between the records.  
+
+Although users see infotypes as **screens or forms**, the actual data is stored in **transparent tables** in the SAP database. Each infotype has a corresponding transparent table, usually named **PA + infotype number**. Example: Infotype `0002 (Personal Data)` → Table `PA0002`  
+
+We can think of it like this:  
+- The **infotype** is the *“front-end form”* that the HR user works with.  
+- The **transparent table** is the *“back-end database”* where the actual rows of data are saved.  
+
 
 
 
