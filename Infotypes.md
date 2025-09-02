@@ -14,8 +14,10 @@
        - Payroll (PY)
        - Time Management (PT)
        - Organizational Management (OM)
-    - [Access & Maintenance](#)
-    - [Integration](#)
+    - [Access & Maintenance](#access)
+      - Transactions
+      - How to create a infotype?
+      - Add Custom Fields to an Infotype
 
 
 ### Definition & Concept
@@ -123,3 +125,48 @@ Organizational Management focuses on the **structure of the company itself**, ra
 - **1007 – Vacancy:** Indicates whether a position is vacant.  
 - **1011 – Work Schedule:** Defines default work schedules for positions.  
 - **1018 – Cost Distribution:** Assigns costs for positions or organizational units to cost centers.  
+
+### Access & Maintenance
+
+> [Infotypes](#Infotypes) > [Content](#content) > [This section](#access)
+
+#### Transactions
+
+#### How to create an infotype
+
+- **1. Access Transaction PM01 and create PS Structure**
+Enter transaction code `PM01` in the SAP command field.
+Enter a four-digit number for the Infotype (e.g., 9001–9999).
+Select **Employee Infotype** and choose **PS Structure**.
+Click **Create** to define the structure.
+Add the necessary fields (e.g., `PERNR`, `BEGDA`, `ENDDA`, plus any custom fields) and save and activate the structure.
+  <img width="769" height="565" alt="image" src="https://github.com/user-attachments/assets/fb12f823-1d56-41a3-a4f1-9d21cd78b003" />
+
+- **2. Generate Required Objects**
+  Return to the PM01 initial screen.
+  Click **Generate Objects** to create the necessary database tables and views.
+
+- **3. Maintain Infotype Characteristics**
+  Click on **Infotype Characteristics**.
+  Enter the Infotype number and description.
+  Set the **Time Constraint** and other relevant attributes.
+  Save the entries.
+  <img width="798" height="583" alt="image" src="https://github.com/user-attachments/assets/b90aa284-78d7-4d57-940e-6fdd6c6c040b" />
+
+
+- **4. Maintain Technical Attributes**
+  Click on **Technical Attributes**.
+  Assign the appropriate database table and structure.
+  Save and assign the development to a transport request.
+  <img width="718" height="604" alt="image" src="https://github.com/user-attachments/assets/400aa868-3ec2-494d-a11e-5fdadf030115" />
+
+
+- **5. Modify Screen Layout**
+  In PM01, select the **Screen** radio button and enter screen number `2000`.
+  Click **Edit** to access the layout editor.
+  Make the necessary changes to the screen layout.
+
+- **6. Test the Infotype**
+  Use transaction code `PA30` to test the new Infotype.
+  Enter an employee number and verify the functionality.
+
