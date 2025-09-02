@@ -5,6 +5,9 @@
 
 - [Infotypes](Infotypes.md):
     - [Definition & Concept](#concept)
+      - Understanding the Concept
+      - Why Infotypes Exist?
+      - Infotypes vs Tables
     - [Structure of an Infotype](#)
     - [Types of Infotypes](#)
     - [Infotype Management](#)
@@ -16,7 +19,7 @@
 
 > [Infotypes](#Infotypes) > [Content](#content) > [This section](#concept)
 
-#### Conceptual Understanding
+#### Understanding the Concept
 
 An infotype is a group of object-based pieces of information on a particular area. It represents a unit of information in the SAP system, where related data fields are logically grouped together. From a user’s perspective, an infotype acts as an input screen that allows the creation, modification, copying, delimiting, or deletion of employee-related or business data that belongs together.
 
