@@ -9,12 +9,11 @@
       - Why Infotypes Exist?
       - Infotypes vs Tables
     - [Structure of an Infotype](#structure)
-    - [Types of Infotypes](#)
+    - [Types of Infotypes](#types)
        - Personnel Administration (PA)
        - Payroll (PY)
        - Time Management (PT)
        - Organizational Management (OM)
-    - [Infotype Management](#)
     - [Access & Maintenance](#)
     - [Integration](#)
 
