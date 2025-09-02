@@ -32,3 +32,16 @@ This approach provides:
   - **Clarity** →  users always know where to find a particular type of data, such as an employee’s address in Infotype 0006 or salary details in Infotype 0008
   - **History tracking** → Many infotypes are time-dependent, which allows SAP to store historical data alongside current data, such as previous addresses or past salaries.
   - **Efficiency** → SAP only needs to load the relevant category of data when it is required, avoiding unnecessary processing of unrelated information.
+
+#### Infotypes vs Tables
+
+| Feature | Infotypes | Database Tables |
+|---------|-----------|----------------|
+| **Definition** | Logical grouping of HR data in SAP, designed for specific business purposes | Physical storage structure in the database storing raw data in rows and columns |
+| **Purpose** | Designed for HR processes such as personnel administration, payroll, and time management | Stores data for all kinds of applications; general-purpose storage |
+| **User Interaction** | Users interact directly via SAP screens (create, change, view, delete records) | Typically accessed indirectly through programs, transactions, or reports; not user-friendly |
+| **Data Organization** | Organized logically by HR category (personal info, payroll, addresses, etc.) | Organized physically as rows and columns, without inherent business logic |
+| **Time-Dependence** | Often time-dependent; maintains historical data with validity dates | Not inherently time-dependent; history must be handled manually |
+
+
+
