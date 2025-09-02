@@ -10,3 +10,8 @@
     - [Infotype Management](#)
     - [Access & Maintenance](#)
     - [Integration](#)
+
+
+### Definition & Concept
+
+> [Infotypes](#Infotypes) > [Content](#content) > [This section](#concept)
