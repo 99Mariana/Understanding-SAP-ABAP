@@ -76,48 +76,51 @@ We can think of it like this:
 
 > [Infotypes](#Infotypes) > [Content](#content) > [This section](#types)
 
-SAP HCM (Human Capital Management)  manage all aspects of human resources within an organization. It is divided into several key areas, each focusing on a specific aspect of HR management. These areas work together to ensure that employee data is accurate, organizational structures are clear, time and payroll are correctly managed, and personnel development is aligned with company goals. The main areas of SAP HCM include **Personnel Administration (PA), Payroll (PY), Time Management (PT), Organizational Management (OM).**
+SAP HCM (Human Capital Management) **manages all aspects of human resources** within an organization. It is divided into several key areas, each focusing on a specific aspect of HR management. These areas work together to ensure that employee data is accurate, organizational structures are clear, time and payroll are correctly managed, and personnel development aligns with company goals. The main areas of SAP HCM include **Personnel Administration (PA), Payroll (PY), Time Management (PT), and Organizational Management (OM).**
+
 
 #### Personnel Administration (PA)
 
-Personnel Administration focuses on the core employee master data. It handles all information that identifies the employee and determines where they fit in the organization. This includes personal details, organizational assignments, addresses, employment contracts, and other payroll-relevant information. Common activities in PA include hiring new employees, recording promotions or transfers, and managing terminations. Essentially, PA acts as the employee’s central file in SAP, storing the foundational data required for all HR processes. Some of the most important infotypes in this context are : 
+Personnel Administration focuses on the **core employee master data**. It handles all information that identifies the employee and determines where they fit in the organization. This includes personal details, organizational assignments, addresses, employment contracts, and other payroll-relevant information. Common activities in PA include hiring new employees, recording promotions or transfers, and managing terminations. Essentially, PA acts as the **employee’s central file** in SAP, storing the foundational data required for all HR processes.  
 
- - **0000** – Actions: Records major HR events like hiring, termination, transfers, promotions, or retirements.
- - **0001** – Organizational Assignment: Stores the employee’s position, job, cost center, and organizational unit.
- - **0002** – Personal Data: Contains personal details like name, date of birth, marital status, and gender.
- - **0006** – Address: Keeps the employee’s permanent and temporary addresses.
+**Important Infotypes:**  
+- **0000 – Actions:** Records major HR events like hiring, termination, transfers, promotions, or retirements.  
+- **0001 – Organizational Assignment:** Stores the employee’s position, job, cost center, and organizational unit.  
+- **0002 – Personal Data:** Contains personal details such as name, date of birth, marital status, and gender.  
+- **0006 – Address:** Keeps the employee’s permanent and temporary addresses.  
 
 #### Payroll (PY)
 
-Payroll is focused on compensating employees accurately and on time. It relies on information from Personnel Administration and Time Management to calculate salaries, deductions, benefits, and taxes. PY handles gross-to-net calculations, one-time and recurring payments, and ensures compliance with legal and statutory requirements. These infotypes ensure employees are paid correctly and in compliance with legal requirements. Some of the most important infotypes in this context are : 
+Payroll focuses on **compensating employees accurately and on time**. It relies on information from Personnel Administration and Time Management to calculate salaries, deductions, benefits, and taxes. PY handles gross-to-net calculations, one-time and recurring payments, and ensures compliance with legal and statutory requirements.  
 
- - **0007** – Planned Working Time: Defines the employee’s work schedule, shifts, and hours.
- - **0008** – Basic Pay: Stores salary, pay scale group, pay grade, and wage type information.
- - **0014** – Recurring Payments and Deductions: Captures recurring allowances (e.g., car allowance) or deductions.
- - **0015** – Additional Payments: Used for one-time payments like bonuses or expense reimbursements.
- - **0169** – Savings Plans: Stores employee and employer contributions to retirement or savings schemes.
+**Important Infotypes:**  
+- **0007 – Planned Working Time:** Defines the employee’s work schedule, shifts, and hours.  
+- **0008 – Basic Pay:** Stores salary, pay scale group, pay grade, and wage type information.  
+- **0014 – Recurring Payments and Deductions:** Captures recurring allowances (e.g., car allowance) or deductions.  
+- **0015 – Additional Payments:** Used for one-time payments like bonuses or expense reimbursements.  
+- **0169 – Savings Plans:** Stores employee and employer contributions to retirement or savings schemes.  
+
 
 #### Time Management (PT)
 
-Time Management deals with working time, absences, and schedules. It records when employees work, when they are absent, and how their time is allocated. PT tracks attendance, absences, overtime, leave quotas, and work schedules. The data captured in PT is also essential for payroll processing, as it affects wage calculations and benefits. These infotypes ensure accurate tracking of employee availability and feed into payroll calculations. Some of the most important infotypes in this context are : 
+Time Management deals with **working time, absences, and schedules**. It records when employees work, when they are absent, and how their time is allocated. PT tracks attendance, absences, overtime, leave quotas, and work schedules. The data captured in PT is also essential for payroll processing, as it affects wage calculations and benefits.  
 
- - **2001** – Absences: Records vacation, sick leave, maternity leave, or other absence types.
- - **2002** – Attendances: Logs worked hours, overtime, or training attendance.
- - **2003** – Substitutions: Captures temporary role changes, e.g., when an employee covers for a colleague.
- - **2006** – Absence Quotas: Manages entitlements such as annual leave balances or compensatory time.
+**Important Infotypes:**  
+- **2001 – Absences:** Records vacation, sick leave, maternity leave, or other absence types.  
+- **2002 – Attendances:** Logs worked hours, overtime, or training attendance.  
+- **2003 – Substitutions:** Captures temporary role changes, e.g., when an employee covers for a colleague.  
+- **2006 – Absence Quotas:** Manages entitlements such as annual leave balances or compensatory time.  
+
 
 #### Organizational Management (OM)
 
-Organizational Management focuses on the structure of the company itself, rather than individual employees. OM defines organizational units, jobs, positions, and reporting relationships, creating the framework into which employees are assigned through PA. It also manages aspects such as planned compensation, cost distribution, and position vacancies. OM acts as the blueprint of the organization, providing a clear picture of roles, responsibilities, and reporting lines across the company. Some of the most important infotypes in this context are : 
+Organizational Management focuses on the **structure of the company itself**, rather than individual employees. OM defines organizational units, jobs, positions, and reporting relationships, creating the framework into which employees are assigned through PA. It also manages aspects such as planned compensation, cost distribution, and position vacancies. OM acts as the **blueprint of the organization**, providing a clear picture of roles, responsibilities, and reporting lines across the company.  
 
- - **1000** – Object: Stores the basic information (name, abbreviation, validity period) of an OM object.
- - **1001** – Relationships: Defines how OM objects are related (e.g., “Position reports to Org Unit”).
- - **1002** – Description: Holds detailed descriptions of objects such as jobs or positions.
- - **1005** – Planned Compensation: Stores planned salary data for jobs or positions.
- - **1007** – Vacancy: Indicates whether a position is vacant.
- - **1011** – Work Schedule: Defines default work schedules for positions.
- - **1018** – Cost Distribution: Assigns costs for positions or organizational units to cost centers.
-
-
-
-
+**Important Infotypes:**  
+- **1000 – Object:** Stores the basic information (name, abbreviation, validity period) of an OM object.  
+- **1001 – Relationships:** Defines how OM objects are related (e.g., “Position reports to Org Unit”).  
+- **1002 – Description:** Holds detailed descriptions of objects such as jobs or positions.  
+- **1005 – Planned Compensation:** Stores planned salary data for jobs or positions.  
+- **1007 – Vacancy:** Indicates whether a position is vacant.  
+- **1011 – Work Schedule:** Defines default work schedules for positions.  
+- **1018 – Cost Distribution:** Assigns costs for positions or organizational units to cost centers.  
