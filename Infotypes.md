@@ -173,24 +173,22 @@ Add the necessary fields (e.g., `PERNR`, `BEGDA`, `ENDDA`, plus any custom field
 
 #### Add Custom Fields to an Infotype
 
--**1. Access Transaction PM01**
-- Use transaction code `PM01` to open the "Enhance Infotype" screen.
+ - **1. Access Transaction PM01**
+  Use transaction code `PM01` to open the "Enhance Infotype" screen.
 
--**2. Select Infotype**
-- Enter `0001` as the Infotype number and choose the "Single Screen" tab.
+ - **2. Select Infotype**
+  Enter `0001` as the Infotype number and choose the "Single Screen" tab.
 
--**3. Create Customer Include**
-- Click on **Create** to generate a Customer Include (e.g., `CI_P0001`).  
-- This will allow you to add custom fields to the Infotype.
+ - **3. Create Customer Include**
+  Click on **Create** to generate a Customer Include (e.g., `CI_P0001`). This will allow you to add custom fields to the Infotype.
 
--**4 Enhance Screen Layout**
-- Use the Screen Painter (transaction `SE51`) to add the new fields to the Infotype screen.
+ - **4 Enhance Screen Layout**
+  Use the Screen Painter (transaction `SE51`) to add the new fields to the Infotype screen.
 
--**5 Modify Module Pool**
-- If needed, adjust the module pool (e.g., `ZP000100`) to handle the logic for the new fields.
+ - **5 Modify Module Pool**
+  If needed, adjust the module pool (e.g., `ZP000100`) to handle the logic for the new fields.
 <img width="534" height="442" alt="image" src="https://github.com/user-attachments/assets/bb061fea-dbcb-4ca7-85da-700d97e0f14d" />
 
-
--**6 Update T582C Table**
-- Ensure that the new fields are added to the `T582C` table to make them visible in the Infotype.
+ - **6 Update T582C Table**
+  Ensure that the new fields are added to the `T582C` table to make them visible in the Infotype.
 
