@@ -132,6 +132,22 @@ Organizational Management focuses on the **structure of the company itself**, ra
 
 #### Transactions
 
+SAP provides several standard transactions to view, maintain, and automate infotype data. These are essential tools in **Human Capital Management (HCM)**.
+
+
+**1. PA20 – Display Infotype**
+ - **Purpose:** View employee data without making changes.
+ - **Usage:** Check personal information (name, date of birth, contact info).  Review job assignments and organizational data. Inspect absence records and other HR-related information.
+
+**2. PA30 – Maintain Infotype**
+ - **Purpose:** Create, modify, or delete infotype records.
+ - **Usage:** Add new employee records. Update addresses, phone numbers, or marital status. Record absences or other HR events.
+
+**3. PA40 – Personnel Actions**
+ - **Purpose:** Automate predefined HR actions for employees.
+ - **Usage:** Examples of actions: hiring, transfer, promotion, termination. Automatically creates or updates multiple infotypes associated with an action. Reduces manual data entry and ensures consistency across records.
+
+
 #### How to create an infotype
 
 - **1. Access Transaction PM01 and create PS Structure**
