@@ -140,7 +140,7 @@ Enter a four-digit number for the Infotype (e.g., 9001–9999).
 Select **Employee Infotype** and choose **PS Structure**.
 Click **Create** to define the structure.
 Add the necessary fields (e.g., `PERNR`, `BEGDA`, `ENDDA`, plus any custom fields) and save and activate the structure.
-  <img width="769" height="565" alt="image" src="https://github.com/user-attachments/assets/fb12f823-1d56-41a3-a4f1-9d21cd78b003" />
+<img width="769" height="565" alt="image" src="https://github.com/user-attachments/assets/fb12f823-1d56-41a3-a4f1-9d21cd78b003" />
 
 - **2. Generate Required Objects**
   Return to the PM01 initial screen.
