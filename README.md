@@ -77,6 +77,11 @@ This project came up as a result of my desire to deepen my knowledge of SAP ABAP
      - BPEM Processes and Transactions
      - Clarification Case Categories
      - Working with Clarification Cases
+- [Infotypes](Infotypes.md):
+    - Definition & Concept ( Understanding the Concept; Why Infotypes Exist? ; Infotypes vs Tables )
+    - Structure of an Infotype
+    - Types of Infotypes ( Personnel Administration (PA); Payroll (PY); Time Management (PT); Organizational Management (OM) )
+    - Access & Maintenance ( Transactions; How to create a infotype?; Add Custom Fields to an Infotype )
 
  
 
